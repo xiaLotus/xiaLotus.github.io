@@ -1168,7 +1168,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #90a6eb;
+  background: #6bffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2575,7 +2575,7 @@ body {
   -ms-background-size: cover;
 }
 .post-block {
-  background: #fff none repeat scroll !important;
+  background: rgba(255,255,255,0.8) none repeat scroll !important;
 }
 .pagination {
   background: rgba(255,255,255,0.9);

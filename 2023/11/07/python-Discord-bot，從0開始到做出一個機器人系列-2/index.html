@@ -20,30 +20,42 @@
     var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="xia的小窩">
-<meta property="og:type" content="website">
-<meta property="og:title" content="xia的小窩">
-<meta property="og:url" content="https://xialotus.github.io/index.html">
+  <meta name="description" content="安裝 + 最最最基本的Hello world簡介 什麼是Python Python本意是指蟒蛇，是一種面相對象的解釋型語言 人生苦短，我學Python​   Python的版本 目前有2.x和3.x，不過由於2.x版本只支援到2020，所以目前學習都已3.x為主​   Python 能做什麼 Web開發 大數據處理 人工智能 自動化運維開發 雲計算 爬蟲 遊戲開發​    搭建環境​  開發環境​">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-Discord-bot，從0開始到做出一個機器人系列-2">
+<meta property="og:url" content="https://xialotus.github.io/2023/11/07/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-2/index.html">
 <meta property="og:site_name" content="xia的小窩">
-<meta property="og:description" content="xia的小窩">
+<meta property="og:description" content="安裝 + 最最最基本的Hello world簡介 什麼是Python Python本意是指蟒蛇，是一種面相對象的解釋型語言 人生苦短，我學Python​   Python的版本 目前有2.x和3.x，不過由於2.x版本只支援到2020，所以目前學習都已3.x為主​   Python 能做什麼 Web開發 大數據處理 人工智能 自動化運維開發 雲計算 爬蟲 遊戲開發​    搭建環境​  開發環境​">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/3RjqIgo.png">
+<meta property="og:image" content="https://i.imgur.com/2UEydhR.png">
+<meta property="og:image" content="https://i.imgur.com/vUJPYEV.png">
+<meta property="og:image" content="https://i.imgur.com/QDu8x6R.png">
+<meta property="og:image" content="https://i.imgur.com/YpQ5geU.png">
+<meta property="og:image" content="https://i.imgur.com/BsjaIn5.png">
+<meta property="og:image" content="https://i.imgur.com/2mlZnZa.png">
+<meta property="og:image" content="https://i.imgur.com/WPDjm8J.png">
+<meta property="article:published_time" content="2023-11-07T15:56:42.000Z">
+<meta property="article:modified_time" content="2023-11-07T16:45:00.481Z">
 <meta property="article:author" content="xiaLotus">
+<meta property="article:tag" content="2021iT鐵人賽">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/3RjqIgo.png">
 
-<link rel="canonical" href="https://xialotus.github.io/">
+<link rel="canonical" href="https://xialotus.github.io/2023/11/07/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-2/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>xia的小窩</title>
+  <title>python-Discord-bot，從0開始到做出一個機器人系列-2 | xia的小窩</title>
   
 
 
@@ -157,13 +169,14 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-        
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/07/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-1/">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/07/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
@@ -175,10 +188,9 @@
       <meta itemprop="name" content="xia的小窩">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/11/07/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-1/" class="post-title-link" itemprop="url">python-Discord-bot，從0開始到做出一個機器人系列-1</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          python-Discord-bot，從0開始到做出一個機器人系列-2
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -187,14 +199,14 @@
               </span>
               <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2023-11-07 22:51:47" itemprop="dateCreated datePublished" datetime="2023-11-07T22:51:47+08:00">2023-11-07</time>
+              <time title="創建時間：2023-11-07 23:56:42" itemprop="dateCreated datePublished" datetime="2023-11-07T23:56:42+08:00">2023-11-07</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2023-11-08 00:12:00" itemprop="dateModified" datetime="2023-11-08T00:12:00+08:00">2023-11-08</time>
+                <time title="修改時間：2023-11-08 00:45:00" itemprop="dateModified" datetime="2023-11-08T00:45:00+08:00">2023-11-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -212,7 +224,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>234</span>
+              <span>224</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -231,116 +243,77 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="前言與接下來的學習歷程"><a href="#前言與接下來的學習歷程" class="headerlink" title="前言與接下來的學習歷程"></a>前言與接下來的學習歷程</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p> 一開始是為了一些蠢事而做的，至於是什麼蠢事，這邊就暫且不提，後來自己看見Meet6機器人的強大功能後，便決定自己也寫一個來玩玩看。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/11/07/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-1/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+        <h2 id="安裝-最最最基本的Hello-world"><a href="#安裝-最最最基本的Hello-world" class="headerlink" title="安裝 + 最最最基本的Hello world"></a>安裝 + 最最最基本的Hello world</h2><h3 id="簡介"><a href="#簡介" class="headerlink" title="簡介"></a>簡介</h3><ul>
+<li>什麼是Python<ol>
+<li>Python本意是指蟒蛇，是一種面相對象的解釋型語言</li>
+<li>人生苦短，我學Python<br>​</li>
+</ol>
+</li>
+<li>Python的版本<ol>
+<li>目前有2.x和3.x，不過由於2.x版本只支援到2020，所以目前學習都已3.x為主<br>​</li>
+</ol>
+</li>
+<li>Python 能做什麼<ol>
+<li>Web開發</li>
+<li>大數據處理</li>
+<li>人工智能</li>
+<li>自動化運維開發</li>
+<li>雲計算</li>
+<li>爬蟲</li>
+<li>遊戲開發<br>​</li>
+</ol>
+</li>
+</ul>
+<h3 id="搭建環境"><a href="#搭建環境" class="headerlink" title="搭建環境"></a>搭建環境</h3><p>​</p>
+<ul>
+<li>開發環境<br><img src="https://i.imgur.com/3RjqIgo.png"><br>​<br>​</li>
+<li><a target="_blank" rel="noopener" href="https://www.python.org/downloads/">安裝Python(windows)</a><br><img src="https://i.imgur.com/2UEydhR.png"><br>​</li>
+<li>打開exe檔，並執行<br><img src="https://i.imgur.com/vUJPYEV.png"><br>​</li>
+<li>添加路徑，下方的Add to Path記得勾選<br><img src="https://i.imgur.com/QDu8x6R.png"><br>​</li>
+<li>下載好後，打開CMD，輸入Python<br><img src="https://i.imgur.com/YpQ5geU.png"><br>​</li>
+</ul>
+<h3 id="第一個Python程式，Hello-World"><a href="#第一個Python程式，Hello-World" class="headerlink" title="第一個Python程式，Hello World"></a>第一個Python程式，Hello World</h3><ol>
+<li>在CMD裡執行<br><img src="https://i.imgur.com/BsjaIn5.png"><br>​</li>
+<li>在Python自帶的IDLE實行<br><img src="https://i.imgur.com/2mlZnZa.png"><br>​</li>
+</ol>
+<h3 id="運行寫好的python文件"><a href="#運行寫好的python文件" class="headerlink" title="運行寫好的python文件"></a>運行寫好的python文件</h3><ul>
+<li>自定義python檔案<br><img src="https://i.imgur.com/WPDjm8J.png"><br>​</li>
+</ul>
+<h3 id="使用的編譯器"><a href="#使用的編譯器" class="headerlink" title="使用的編譯器"></a>使用的編譯器</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/">vscode</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jetbrains.com/pycharm/">PyCharm</a><br>編譯器可以自己選喜歡的下載</li>
+</ul>
+
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/2021iT%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2021iT鐵人賽</a>
+          </div>
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/07/%E9%96%8B%E7%AF%87/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
-      <meta itemprop="name" content="xiaLotus">
-      <meta itemprop="description" content="xia的小窩">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xia的小窩">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/11/07/%E9%96%8B%E7%AF%87/" class="post-title-link" itemprop="url">開篇</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2023-11-07 19:48:42 / 修改時間：23:39:05" itemprop="dateCreated datePublished" datetime="2023-11-07T19:48:42+08:00">2023-11-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%A8%E7%AD%86/" itemprop="url" rel="index"><span itemprop="name">隨筆</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="文章字數">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">文章字數：</span>
-              <span>165</span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              <span>1 分鐘</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="自我介紹"><a href="#自我介紹" class="headerlink" title="自我介紹"></a>自我介紹</h3><p>大家好，我是xiaLotus，是個被程式耽誤的小說家…不對，我就是興趣寫寫，反正也寫不過那些大佬…好啦，不多說，該睡覺就去睡覺，該努力的時候努力…就好！</p>
-<h3 id="為甚麼想做這個bolg"><a href="#為甚麼想做這個bolg" class="headerlink" title="為甚麼想做這個bolg?"></a>為甚麼想做這個bolg?</h3><p>好問題欸，可能是閒著蛋疼，有些東西可以搬過來這邊，比較美觀?</p>
-<h3 id="這裡會放甚麼？"><a href="#這裡會放甚麼？" class="headerlink" title="這裡會放甚麼？"></a>這裡會放甚麼？</h3><p>一樣是個好問題，我的話可能放些雜七雜八…不管是小說也好程式也好都會放的，然後在這邊放一個disord的邀請連結：</p>
-<p><a target="_blank" rel="noopener" href="https://discord.gg/3E44JQgMfc">discord</a> &lt;- 點我</p>
-<p>歡迎進來找我聊程式小說都行。</p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/07/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-1/" rel="prev" title="python-Discord-bot，從0開始到做出一個機器人系列-1">
+      <i class="fa fa-chevron-left"></i> python-Discord-bot，從0開始到做出一個機器人系列-1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-3/" rel="next" title="python-Discord-bot，從0開始到做出一個機器人系列-3">
+      python-Discord-bot，從0開始到做出一個機器人系列-3 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -393,6 +366,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-%E6%9C%80%E6%9C%80%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84Hello-world"><span class="nav-number">1.</span> <span class="nav-text">安裝 + 最最最基本的Hello world</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B0%A1%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">簡介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E7%92%B0%E5%A2%83"><span class="nav-number">1.2.</span> <span class="nav-text">搭建環境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E5%80%8BPython%E7%A8%8B%E5%BC%8F%EF%BC%8CHello-World"><span class="nav-number">1.3.</span> <span class="nav-text">第一個Python程式，Hello World</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%8B%E8%A1%8C%E5%AF%AB%E5%A5%BD%E7%9A%84python%E6%96%87%E4%BB%B6"><span class="nav-number">1.4.</span> <span class="nav-text">運行寫好的python文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E7%B7%A8%E8%AD%AF%E5%99%A8"><span class="nav-number">1.5.</span> <span class="nav-text">使用的編譯器</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
