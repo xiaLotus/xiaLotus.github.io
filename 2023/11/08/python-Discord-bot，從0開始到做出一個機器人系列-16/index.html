@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="加上random與time模組，限制次數與時間的管理(2)製造一個停止條件 我會在這邊設置新變數">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-Discord-bot，從0開始到做出一個機器人系列-16">
+<meta property="og:url" content="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-16/index.html">
+<meta property="og:site_name" content="xia的小窩">
+<meta property="og:description" content="加上random與time模組，限制次數與時間的管理(2)製造一個停止條件 我會在這邊設置新變數">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-11-08T06:51:40.000Z">
+<meta property="article:modified_time" content="2023-11-08T08:25:08.929Z">
+<meta property="article:author" content="xiaLotus">
+<meta property="article:tag" content="2021iT鐵人賽">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-16/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>python-Discord-bot，從0開始到做出一個機器人系列-16 | xia的小窩</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xia的小窩</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一起來coding和碼字吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-16/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+      <meta itemprop="name" content="xiaLotus">
+      <meta itemprop="description" content="xia的小窩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xia的小窩">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python-Discord-bot，從0開始到做出一個機器人系列-16
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-11-08 14:51:40 / 修改時間：16:25:08" itemprop="dateCreated datePublished" datetime="2023-11-08T14:51:40+08:00">2023-11-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>784</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>3 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="加上random與time模組，限制次數與時間的管理-2"><a href="#加上random與time模組，限制次數與時間的管理-2" class="headerlink" title="加上random與time模組，限制次數與時間的管理(2)"></a>加上random與time模組，限制次數與時間的管理(2)</h2><h3 id="製造一個停止條件"><a href="#製造一個停止條件" class="headerlink" title="製造一個停止條件"></a>製造一個停止條件</h3><ul>
+<li><p>我會在這邊設置新變數</p>
+<span id="more"></span>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mat = <span class="number">0</span></span><br></pre></td></tr></table></figure></li>
+<li><p>但是我也必須要有一個可以寫入的函式</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">write_data</span>(<span class="params">user, mat</span>):</span><br><span class="line">    users = <span class="keyword">await</span> read_data()</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">str</span>(user) <span class="keyword">in</span> users:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;match.json&quot;</span>, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        json.dump(users, f)</span><br><span class="line">    <span class="keyword">return</span> Ture</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把剛才的變數加入rand函式裡</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@bot.command(<span class="params">pass_context = <span class="literal">True</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">rand</span>(<span class="params">ctx</span>):</span><br><span class="line">    users, mat = <span class="keyword">await</span> write_data(ctx.author, mat = <span class="number">0</span>)</span><br><span class="line">    get = <span class="keyword">await</span> match_data(ctx.author, mat) </span><br><span class="line">    cat = random.randint(<span class="number">0</span>, <span class="number">4</span>)</span><br><span class="line">    <span class="keyword">await</span> ctx.send(lucky[<span class="built_in">int</span>(cat)])</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">&quot;本日次數已用完&quot;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>關於mat，就是傳給write_data()這個函式的一個變數。<br>所以我們可以利用計數的方式，去讓它做一個中止點。在上面先假設了mat &#x3D; 0，之後就依照所求去做斷點。</p>
+</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> mat == <span class="number">1</span>:</span><br><span class="line">    get = <span class="keyword">await</span> match_data(ctx.author, mat) </span><br><span class="line">    cat = random.randint(<span class="number">0</span>, <span class="number">4</span>)</span><br><span class="line">    <span class="keyword">await</span> ctx.send(lucky[<span class="built_in">int</span>(cat)])</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">&quot;本日次數已用完&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="關於mat回傳值"><a href="#關於mat回傳值" class="headerlink" title="關於mat回傳值"></a>關於mat回傳值</h3><ul>
+<li><p>回到write_data()</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># user = author，但為甚麼要加上ctx呢，因為姑且算是文字吧XD</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">write_data</span>(<span class="params">user, mat</span>):</span><br><span class="line">    <span class="comment"># 省略</span></span><br><span class="line">    <span class="keyword">return</span> Ture</span><br></pre></td></tr></table></figure></li>
+<li><p>其實應該要回傳2個東西回去，但是這邊只有一個，所以需要更改</p>
+</li>
+<li><p>我們需要知道在json裡面的key and value，但這邊要先設想一個情況，如果key根本沒在json裡怎麼辦</p>
+</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)] = &#123;&#125;</span><br><span class="line">users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)][<span class="string">&quot;count&quot;</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>再來，我們處理json key的部分<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if str(user.id) not in users : </span><br><span class="line">    users[str(user.id)] = &#123;&#125;</span><br><span class="line">    users[str(user.id)][&quot;count&quot;] = 0</span><br><span class="line">    mat = 1</span><br></pre></td></tr></table></figure></li>
+<li>如果key不在裡面，就創建一個附與給他，然後直接給它一個mat &#x3D; 1</li>
+</ul>
+<h3 id="出現了問題"><a href="#出現了問題" class="headerlink" title="出現了問題"></a>出現了問題</h3><ul>
+<li><p>第一，mat的值</p>
+</li>
+<li><p>第二，我們忘記的match_data函式還沒下手</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)][<span class="string">&quot;count&quot;</span>] = <span class="number">0</span></span><br><span class="line">mat = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果說，我們是用 mat 來計數的話，那我們還要處理一下這個部分</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)][<span class="string">&quot;count&quot;</span>] == <span class="number">0</span>:</span><br><span class="line">    users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)] = &#123;&#125;</span><br><span class="line">    users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)][<span class="string">&quot;count&quot;</span>] = <span class="number">1</span></span><br><span class="line">    mat = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我們把value改成了 1 ，雖然說mat值不變，但你要記得回傳給它</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="literal">True</span>, mat</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然後我們處理一下 match_data()</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">match_data</span>(<span class="params">user, mat</span>):</span><br><span class="line">    users = <span class="keyword">await</span> read_data()</span><br></pre></td></tr></table></figure></li>
+<li><p>這邊我主要是改mat的值，因為不管怎麼說，使用了!rand指令後，不管有沒有在json檔裡面，創建好{ }後，value都會直接變成1</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> mat == <span class="number">1</span>:</span><br><span class="line">    mat = <span class="number">2</span></span><br><span class="line">     <span class="keyword">return</span> <span class="literal">True</span>, mat</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="這部分的程式碼"><a href="#這部分的程式碼" class="headerlink" title="這部分的程式碼"></a>這部分的程式碼</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> discord.ext <span class="keyword">import</span> commands</span><br><span class="line"><span class="keyword">import</span> discord</span><br><span class="line"><span class="keyword">from</span> discord.ext.commands <span class="keyword">import</span> bot</span><br><span class="line"><span class="keyword">from</span> core.<span class="built_in">any</span> <span class="keyword">import</span> Cog_Extension</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">lucky = [<span class="string">&quot;lucky~~~&quot;</span>, <span class="string">&quot;not bad&quot;</span>, <span class="string">&quot;Soso&quot;</span>, <span class="string">&quot;green hat&quot;</span>, </span><br><span class="line"><span class="string">&quot;fuck your self&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">randomLucky</span>(<span class="title class_ inherited__">Cog_Extension</span>):</span><br><span class="line">    </span><br><span class="line"><span class="meta">    @commands.command()</span></span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">rand</span>(<span class="params">self,ctx</span>):</span><br><span class="line">        users, mat = <span class="keyword">await</span> write_data(ctx.author, mat = <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> mat == <span class="number">1</span>:</span><br><span class="line">            get = <span class="keyword">await</span> match_data(ctx.author, mat) </span><br><span class="line">            cat = random.randint(<span class="number">0</span>, <span class="number">4</span>)</span><br><span class="line">            <span class="keyword">await</span> ctx.send(lucky[<span class="built_in">int</span>(cat)])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">await</span> ctx.send(<span class="string">&quot;本日次數已用完&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">read_data</span>():</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;match.json&quot;</span>, <span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        users = json.load(file)</span><br><span class="line">    <span class="keyword">return</span> users</span><br><span class="line">    </span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">write_data</span>(<span class="params">user, mat</span>):</span><br><span class="line">    users = <span class="keyword">await</span> read_data()</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">str</span>(user) <span class="keyword">in</span> users:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="comment"># find json.key   </span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">str</span>(user.<span class="built_in">id</span>) <span class="keyword">not</span> <span class="keyword">in</span> users : </span><br><span class="line">        users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)] = &#123;&#125;</span><br><span class="line">        users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)][<span class="string">&quot;count&quot;</span>] = <span class="number">0</span></span><br><span class="line">        mat = <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)][<span class="string">&quot;count&quot;</span>] == <span class="number">0</span>:</span><br><span class="line">        users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)] = &#123;&#125;</span><br><span class="line">        users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)][<span class="string">&quot;count&quot;</span>] = <span class="number">1</span></span><br><span class="line">        mat = <span class="number">1</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;match.json&quot;</span>, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        json.dump(users, f)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span>, mat  </span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">match_data</span>(<span class="params">user, mat</span>):</span><br><span class="line">    users = <span class="keyword">await</span> read_data()</span><br><span class="line">    <span class="keyword">if</span> mat == <span class="number">1</span>:</span><br><span class="line">        mat = <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span>, mat</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">setup</span>(<span class="params">bot</span>):</span><br><span class="line">    bot.add_cog(randomLucky(bot))</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-0部分更改"><a href="#2-0部分更改" class="headerlink" title="2.0部分更改"></a>2.0部分更改</h3><p>小改一部份</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">randomLucky</span>(commands.cog):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, bot</span>):</span><br><span class="line">        self.bot = bot</span><br><span class="line"></span><br><span class="line">    <span class="comment"># @commands.command()</span></span><br><span class="line">    <span class="comment"># async def rand(self,ctx):</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">setup</span>(<span class="params">bot: commands.Bot</span>):</span><br><span class="line">    <span class="keyword">await</span> bot.add_cog(randomLucky(bot))</span><br></pre></td></tr></table></figure>
+<p>json的部分應該沒毛病。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2021iT%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2021iT鐵人賽</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-15/" rel="prev" title="python-Discord-bot，從0開始到做出一個機器人系列-15">
+      <i class="fa fa-chevron-left"></i> python-Discord-bot，從0開始到做出一個機器人系列-15
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-17/" rel="next" title="python-Discord-bot，從0開始到做出一個機器人系列-17">
+      python-Discord-bot，從0開始到做出一個機器人系列-17 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E4%B8%8Arandom%E8%88%87time%E6%A8%A1%E7%B5%84%EF%BC%8C%E9%99%90%E5%88%B6%E6%AC%A1%E6%95%B8%E8%88%87%E6%99%82%E9%96%93%E7%9A%84%E7%AE%A1%E7%90%86-2"><span class="nav-number">1.</span> <span class="nav-text">加上random與time模組，限制次數與時間的管理(2)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%BD%E9%80%A0%E4%B8%80%E5%80%8B%E5%81%9C%E6%AD%A2%E6%A2%9D%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">製造一個停止條件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%9C%E6%96%BCmat%E5%9B%9E%E5%82%B3%E5%80%BC"><span class="nav-number">1.2.</span> <span class="nav-text">關於mat回傳值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BA%E7%8F%BE%E4%BA%86%E5%95%8F%E9%A1%8C"><span class="nav-number">1.3.</span> <span class="nav-text">出現了問題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%99%E9%83%A8%E5%88%86%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-number">1.4.</span> <span class="nav-text">這部分的程式碼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-0%E9%83%A8%E5%88%86%E6%9B%B4%E6%94%B9"><span class="nav-number">1.5.</span> <span class="nav-text">2.0部分更改</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaLotus"
+      src="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xiaLotus</p>
+  <div class="site-description" itemprop="description">xia的小窩</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaLotus</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">16k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">1:01</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
