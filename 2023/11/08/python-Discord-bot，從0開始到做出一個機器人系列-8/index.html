@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="難搞的字串符字符串編碼轉換在 python3.x 中，默認採用編碼格式為UTF-8在 python 中，有兩種常用的字符串類型，為bytes 和 str。str(Unicode字符)、bytes(二進制數據)str(在內存中以Unicode表示)如果在網路上傳輸，或者保存進硬碟，就需要把 str 傳換成 bytes 類型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-Discord-bot，從0開始到做出一個機器人系列-8">
+<meta property="og:url" content="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-8/index.html">
+<meta property="og:site_name" content="xia的小窩">
+<meta property="og:description" content="難搞的字串符字符串編碼轉換在 python3.x 中，默認採用編碼格式為UTF-8在 python 中，有兩種常用的字符串類型，為bytes 和 str。str(Unicode字符)、bytes(二進制數據)str(在內存中以Unicode表示)如果在網路上傳輸，或者保存進硬碟，就需要把 str 傳換成 bytes 類型">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-11-08T02:32:36.000Z">
+<meta property="article:modified_time" content="2023-11-08T03:11:25.869Z">
+<meta property="article:author" content="xiaLotus">
+<meta property="article:tag" content="2021iT鐵人賽">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>python-Discord-bot，從0開始到做出一個機器人系列-8 | xia的小窩</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xia的小窩</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一起來coding和碼字吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+      <meta itemprop="name" content="xiaLotus">
+      <meta itemprop="description" content="xia的小窩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xia的小窩">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python-Discord-bot，從0開始到做出一個機器人系列-8
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-11-08 10:32:36 / 修改時間：11:11:25" itemprop="dateCreated datePublished" datetime="2023-11-08T10:32:36+08:00">2023-11-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>941</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>3 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="難搞的字串符"><a href="#難搞的字串符" class="headerlink" title="難搞的字串符"></a>難搞的字串符</h2><h3 id="字符串編碼轉換"><a href="#字符串編碼轉換" class="headerlink" title="字符串編碼轉換"></a>字符串編碼轉換</h3><p>在 python3.x 中，默認採用編碼格式為UTF-8<br>在 python 中，有兩種常用的字符串類型，為bytes 和 str。str(Unicode字符)、bytes(二進制數據)<br>str(在內存中以Unicode表示)<br>如果在網路上傳輸，或者保存進硬碟，就需要把 str 傳換成 bytes 類型</p>
+<span id="more"></span>
+
+<h3 id="使用encode-函數解編碼"><a href="#使用encode-函數解編碼" class="headerlink" title="使用encode()函數解編碼"></a>使用encode()函數解編碼</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>.encode([encoding = <span class="string">&#x27;utf8&#x27;</span>][, error = <span class="string">&#x27;strict&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<p>str : 表示要轉換的字符串<br>encoding&#x3D;’utf8’ : 可選參數，用於指定進行轉碼時採用的字符編碼<br>error &#x3D; ‘strict’ : 用於指定錯誤的處理方式，有ignore, replace, xmlcharrefreplace……等，strict為默認值</p>
+<ul>
+<li>範例<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ex = <span class="string">&quot;人生苦短，我愛Python&quot;</span></span><br><span class="line">ex = ex.encode(<span class="string">&#x27;utf8&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(ex)</span><br><span class="line"><span class="comment"># b&#x27;\xe4\xba\xba\xe7\x94\x9f\xe8\x8b\xa6\xe7\x9f\xad\xef\xbc\x8c\xe6\x88\x91\xe6\x84\x9bPython&#x27;</span></span><br><span class="line"><span class="comment"># 使用utf-81編碼，轉換後的二進制數據</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="使用decode-函數解碼"><a href="#使用decode-函數解碼" class="headerlink" title="使用decode()函數解碼"></a>使用decode()函數解碼</h3><ul>
+<li>二進制轉換回字符串<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ex = <span class="string">b&#x27;\xe4\xba\xba\xe7\x94\x9f\xe8\x8b\xa6\xe7\x9f\xad\xef\xbc\x8c\xe6\x88\x91\xe6\x84\x9bPython&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(ex.decode())</span><br><span class="line"><span class="comment"># 人生苦短，我愛Python</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="字符串常用操作"><a href="#字符串常用操作" class="headerlink" title="字符串常用操作"></a>字符串常用操作</h3><p>:package:在Python的開發過程中，很多時候都要對字符串做相應的處理，比如拼接、擷取、格式化……</p>
+<h3 id="拼接字符串"><a href="#拼接字符串" class="headerlink" title="拼接字符串"></a>拼接字符串</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fir = <span class="string">&quot;人生苦短&quot;</span></span><br><span class="line">sec = <span class="string">&quot;我愛Python&quot;</span></span><br><span class="line"><span class="built_in">print</span>(fir + <span class="string">&quot; , &quot;</span> + sec)</span><br><span class="line"><span class="comment"># 人生苦短 , 我愛Python</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>一定要字串型態加上字串型態才可以拼起來<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fir = <span class="string">&quot;人生苦短&quot;</span></span><br><span class="line">sec = <span class="string">&quot;我愛Python&quot;</span></span><br><span class="line">num = <span class="number">55</span></span><br><span class="line"><span class="built_in">print</span>(fir + <span class="string">&quot; ， &quot;</span>+ sec + num)</span><br><span class="line"><span class="comment"># TypeError: can only concatenate str (not &quot;int&quot;) to str</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>所以說，一定要轉換成相同的型態</p>
+<h3 id="計算字符串長度"><a href="#計算字符串長度" class="headerlink" title="計算字符串長度"></a>計算字符串長度</h3><p>在Python中，在默認的情況下，一個漢字佔3個字節，數字及其它基本上都佔1個字節</p>
+<ul>
+<li>在Python中，有提供len()函數計算長度<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str_test = <span class="string">&quot;人生苦短,我愛Python&quot;</span></span><br><span class="line"><span class="built_in">print</span>(str_test)</span><br><span class="line"><span class="comment"># 13</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>然而，在默認的情況下，使用len()函數，所有字符都認為是1字節</p>
+<ul>
+<li>換成encode()函數<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">str_test = <span class="string">&quot;人生苦短,我愛Python&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(str_test.encode(<span class="string">&#x27;utf-8&#x27;</span>)))</span><br><span class="line"><span class="comment"># 25</span></span><br><span class="line"><span class="comment"># 3 * 6 + 7 = 25</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="擷取字符串"><a href="#擷取字符串" class="headerlink" title="擷取字符串"></a>擷取字符串</h3><ul>
+<li>用slice(切片)的方式<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str_test = <span class="string">&#x27;abcdefg&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(str_test[<span class="number">0</span>:<span class="number">3</span>:<span class="number">2</span>])</span><br><span class="line"><span class="comment"># ac</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>如果在超出範圍的情況下，可以用try……except IndexError解決 </p>
+<h3 id="分割字符串"><a href="#分割字符串" class="headerlink" title="分割字符串"></a>分割字符串</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>.split(sep, maxsplit)</span><br></pre></td></tr></table></figure>
+<p>用於指定分割字符串，可以包含多個字符<br>可選參數，用於指定分割的次數，如果不指定或者為-1，則分割次數沒有限制，否則返回結果列表元素各數最多為maxsplit+1</p>
+<ul>
+<li>舉例<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">str_test = <span class="string">&quot;abc \ndefg&quot;</span></span><br><span class="line">str_test.split()</span><br><span class="line"><span class="built_in">print</span>(str_test)</span><br><span class="line"><span class="comment"># abc </span></span><br><span class="line"><span class="comment"># defg</span></span><br></pre></td></tr></table></figure></li>
+<li>附贈<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在某些情況下，需要分開進行輸入</span></span><br><span class="line">nums = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split()))</span><br><span class="line"><span class="built_in">print</span>(nums)</span><br><span class="line"><span class="comment"># input 0 1 2 3 4 5 6 7 8 9 </span></span><br><span class="line"><span class="comment"># output [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="合併字符串"><a href="#合併字符串" class="headerlink" title="合併字符串"></a>合併字符串</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str_new = string.join(iterable)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>範例<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str_test = [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;-&quot;</span>.join(str_test))</span><br><span class="line"><span class="comment"># a-b-c</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="檢索字符串"><a href="#檢索字符串" class="headerlink" title="檢索字符串"></a>檢索字符串</h3><ul>
+<li><p>使用count()函數</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str_test = <span class="string">&quot;aaaabb&quot;</span></span><br><span class="line"><span class="built_in">print</span>(str_test.count(<span class="string">&quot;a&quot;</span>))</span><br><span class="line"><span class="comment"># 4</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用find()函數</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 返回首次出現的下標</span></span><br><span class="line">str_test = <span class="string">&quot;aaaabb&quot;</span></span><br><span class="line"><span class="built_in">print</span>(str_test.find(<span class="string">&quot;b&quot;</span>))</span><br><span class="line"><span class="comment"># 4</span></span><br></pre></td></tr></table></figure></li>
+<li><p>使用index()函數</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 返回首次出現的下標</span></span><br><span class="line">str_test = <span class="string">&quot;aaaabb&quot;</span></span><br><span class="line"><span class="built_in">print</span>(str_test.index(<span class="string">&quot;b&quot;</span>))</span><br><span class="line"><span class="comment"># 4</span></span><br></pre></td></tr></table></figure></li>
+<li><p>使用startwith()函數</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 確認開頭首字母</span></span><br><span class="line">str_test = <span class="string">&quot;abcabcabc&quot;</span></span><br><span class="line"><span class="built_in">print</span>(str_test.startswith(<span class="string">&quot;b&quot;</span>))</span><br><span class="line"><span class="comment"># False</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用endswith()函數</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 確認末尾字母</span></span><br><span class="line">str_test = <span class="string">&quot;abcabcabc&quot;</span></span><br><span class="line"><span class="built_in">print</span>(str_test.endswith(<span class="string">&quot;c&quot;</span>))</span><br><span class="line"><span class="comment"># True</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="字母大小寫轉換"><a href="#字母大小寫轉換" class="headerlink" title="字母大小寫轉換"></a>字母大小寫轉換</h3><ul>
+<li>使用lower()函數全部轉小寫<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str_test = <span class="string">&quot;wsdjahAKSJD&quot;</span></span><br><span class="line"><span class="built_in">print</span>(str_test.lower())</span><br><span class="line"><span class="comment"># wsdjahaksjd</span></span><br></pre></td></tr></table></figure></li>
+<li>使用upper()函數全部轉大寫<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str_test = <span class="string">&quot;wsdjahAKSJD&quot;</span></span><br><span class="line"><span class="built_in">print</span>(str_test.upper())</span><br><span class="line"><span class="comment"># WSDJAHAKSJD</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="去除字符串中的空格和特殊字符"><a href="#去除字符串中的空格和特殊字符" class="headerlink" title="去除字符串中的空格和特殊字符"></a>去除字符串中的空格和特殊字符</h3><ul>
+<li><p>可以使用strip()函數去除前後的空格</p>
+</li>
+<li><p>當然還有lstrip()和rstrip()……<br>*這裡的特殊字符是指\t、\r、\n等 </p>
+</li>
+<li><p>使用strip()函數</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 掐頭去尾</span></span><br><span class="line">str_test = <span class="string">&quot; ssd &quot;</span></span><br><span class="line"><span class="built_in">print</span>(str_test)</span><br><span class="line"><span class="comment">#  ssd </span></span><br><span class="line"><span class="built_in">print</span>(str_test.strip())</span><br><span class="line"><span class="comment"># ssd</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lstrip()與rstrip()的概念一樣</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># l =&gt; left</span></span><br><span class="line"><span class="comment"># r =&gt; right</span></span><br><span class="line">str_test = <span class="string">&quot; ssd &quot;</span></span><br><span class="line"><span class="built_in">print</span>(str_test.lstrip())</span><br><span class="line"><span class="comment"># ssd</span></span><br><span class="line"><span class="built_in">print</span>(str_test.rstrip())</span><br><span class="line"><span class="comment">#  ssd</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a>格式化字符串</h3><ul>
+<li>使用format()函數<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># str.format(args)</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&#123;&#125; &#123;&#125; &#123;:.5f&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">50</span>, <span class="string">&quot;中&quot;</span>, <span class="number">20.5555556</span>))</span><br><span class="line"><span class="comment">#c 50 中 20.55556</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2021iT%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2021iT鐵人賽</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-7/" rel="prev" title="python-Discord-bot，從0開始到做出一個機器人系列-7">
+      <i class="fa fa-chevron-left"></i> python-Discord-bot，從0開始到做出一個機器人系列-7
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-9/" rel="next" title="python-Discord-bot，從0開始到做出一個機器人系列-9">
+      python-Discord-bot，從0開始到做出一個機器人系列-9 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%A3%E6%90%9E%E7%9A%84%E5%AD%97%E4%B8%B2%E7%AC%A6"><span class="nav-number">1.</span> <span class="nav-text">難搞的字串符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B7%A8%E7%A2%BC%E8%BD%89%E6%8F%9B"><span class="nav-number">1.1.</span> <span class="nav-text">字符串編碼轉換</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8encode-%E5%87%BD%E6%95%B8%E8%A7%A3%E7%B7%A8%E7%A2%BC"><span class="nav-number">1.2.</span> <span class="nav-text">使用encode()函數解編碼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8decode-%E5%87%BD%E6%95%B8%E8%A7%A3%E7%A2%BC"><span class="nav-number">1.3.</span> <span class="nav-text">使用decode()函數解碼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">1.4.</span> <span class="nav-text">字符串常用操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%BC%E6%8E%A5%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.5.</span> <span class="nav-text">拼接字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%88%E7%AE%97%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%B7%E5%BA%A6"><span class="nav-number">1.6.</span> <span class="nav-text">計算字符串長度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.7.</span> <span class="nav-text">擷取字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%89%B2%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.8.</span> <span class="nav-text">分割字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E4%BD%B5%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.9.</span> <span class="nav-text">合併字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AA%A2%E7%B4%A2%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.10.</span> <span class="nav-text">檢索字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E6%AF%8D%E5%A4%A7%E5%B0%8F%E5%AF%AB%E8%BD%89%E6%8F%9B"><span class="nav-number">1.11.</span> <span class="nav-text">字母大小寫轉換</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC%E5%92%8C%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="nav-number">1.12.</span> <span class="nav-text">去除字符串中的空格和特殊字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.13.</span> <span class="nav-text">格式化字符串</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaLotus"
+      src="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xiaLotus</p>
+  <div class="site-description" itemprop="description">xia的小窩</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaLotus</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">8k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">28 分鐘</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

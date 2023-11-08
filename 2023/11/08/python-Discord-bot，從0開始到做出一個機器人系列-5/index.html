@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="流程控制選擇語句 最簡單的版本 12if 表達式:    接下來需要做的......">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-Discord-bot，從0開始到做出一個機器人系列-5">
+<meta property="og:url" content="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-5/index.html">
+<meta property="og:site_name" content="xia的小窩">
+<meta property="og:description" content="流程控制選擇語句 最簡單的版本 12if 表達式:    接下來需要做的......">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/6Khcenb.png">
+<meta property="article:published_time" content="2023-11-08T02:25:35.000Z">
+<meta property="article:modified_time" content="2023-11-08T03:10:59.283Z">
+<meta property="article:author" content="xiaLotus">
+<meta property="article:tag" content="2021iT鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/6Khcenb.png">
+
+<link rel="canonical" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>python-Discord-bot，從0開始到做出一個機器人系列-5 | xia的小窩</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xia的小窩</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一起來coding和碼字吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+      <meta itemprop="name" content="xiaLotus">
+      <meta itemprop="description" content="xia的小窩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xia的小窩">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python-Discord-bot，從0開始到做出一個機器人系列-5
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-11-08 10:25:35 / 修改時間：11:10:59" itemprop="dateCreated datePublished" datetime="2023-11-08T10:25:35+08:00">2023-11-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>494</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>2 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="選擇語句"><a href="#選擇語句" class="headerlink" title="選擇語句"></a>選擇語句</h3><ul>
+<li><p>最簡單的版本</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 表達式:</span><br><span class="line">    接下來需要做的......</span><br></pre></td></tr></table></figure>
+<span id="more"></span></li>
+<li><p>當然，前一章也看過了，也有else這種東西</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">4</span></span><br><span class="line"><span class="keyword">if</span> a = <span class="number">5</span>:</span><br><span class="line"><span class="comment">#如果a = 5 </span></span><br><span class="line">    <span class="built_in">print</span>(a)</span><br><span class="line">    <span class="comment">#輸出a</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    a = <span class="number">6</span></span><br><span class="line">    <span class="comment">#把6這個數值賦予給a</span></span><br></pre></td></tr></table></figure></li>
+<li><p>還有if&#x2F;elif&#x2F;else語句喔</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">5</span></span><br><span class="line"><span class="keyword">if</span> a = <span class="number">4</span>: <span class="built_in">print</span>(a)</span><br><span class="line"><span class="keyword">elif</span> a = <span class="number">3</span>: <span class="built_in">print</span>(a)</span><br><span class="line"><span class="keyword">else</span>: <span class="built_in">print</span>(a)</span><br><span class="line"><span class="comment">#最後輸出 5</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>盡量不要使用嵌(千)套<br><img src="https://i.imgur.com/6Khcenb.png"></p>
+</li>
+</ul>
+<h3 id="循環語句"><a href="#循環語句" class="headerlink" title="循環語句"></a>循環語句</h3><ul>
+<li><p>while迴圈</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i &lt; <span class="number">5</span>:</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line"><span class="comment">#i加到4的時候就會停了，記得要給它加判斷，不然會造成無線迴圈</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>for迴圈</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">items = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">    <span class="built_in">print</span>(item * <span class="number">2</span>)</span><br><span class="line"><span class="comment"># 2 </span></span><br><span class="line"><span class="comment"># 4 </span></span><br><span class="line"><span class="comment"># 6</span></span><br><span class="line"><span class="comment"># 其中的item是迭代變量，而items是對象，對象可以是list, str, tuple等，這邊就想程式每個東西都run過一遍會比較好理解</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>另一種for循環(range)</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">5</span>, <span class="number">2</span>):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line"><span class="comment"># 0 </span></span><br><span class="line"><span class="comment"># 2 </span></span><br><span class="line"><span class="comment"># 4</span></span><br><span class="line"><span class="comment"># range的配置如下</span></span><br><span class="line"><span class="comment"># range(start開始, end結束, step間隔)</span></span><br><span class="line"><span class="comment"># 由上述例子可知，start包含的起始點</span></span><br><span class="line"><span class="comment"># 當然，也可以只用一個參數，這樣就只有end</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="循環嵌套"><a href="#循環嵌套" class="headerlink" title="循環嵌套"></a>循環嵌套</h3><ul>
+<li>就是在while裡有for迴圈，在for裡有while迴圈……<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#自行建立test.py檔案 </span></span><br><span class="line"><span class="comment">#點擊 Ctrl + ~ 打開終端機</span></span><br><span class="line"><span class="comment">#輸入python test.py，即可看到結果</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">6</span>):</span><br><span class="line">        <span class="built_in">print</span>(i * j)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="break-continue-pass語句"><a href="#break-continue-pass語句" class="headerlink" title="break, continue, pass語句"></a>break, continue, pass語句</h3><ul>
+<li><p>break是強制停止的意思</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="comment"># 原本在這個迴圈哩，i的最大值為4</span></span><br><span class="line"><span class="comment"># 在加上了判斷條件後，i到3時，便會強制跳出迴圈</span></span><br></pre></td></tr></table></figure></li>
+<li><p>continue的意思是進入下一次循環</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">100</span>):</span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line"><span class="comment"># 在i%2的情況下，會直接跳過print的動作</span></span><br><span class="line"><span class="comment"># i的部分會直接+1，進入下個循環</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>pass的意思是不用做任何事情</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(i, end = <span class="string">&quot;&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"><span class="comment"># 2 4 6 8</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2021iT%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2021iT鐵人賽</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-4/" rel="prev" title="python-Discord-bot，從0開始到做出一個機器人系列-4">
+      <i class="fa fa-chevron-left"></i> python-Discord-bot，從0開始到做出一個機器人系列-4
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-6/" rel="next" title="python-Discord-bot，從0開始到做出一個機器人系列-6">
+      python-Discord-bot，從0開始到做出一個機器人系列-6 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%B8%E6%93%87%E8%AA%9E%E5%8F%A5"><span class="nav-number">1.1.</span> <span class="nav-text">選擇語句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%92%B0%E8%AA%9E%E5%8F%A5"><span class="nav-number">1.2.</span> <span class="nav-text">循環語句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%92%B0%E5%B5%8C%E5%A5%97"><span class="nav-number">1.3.</span> <span class="nav-text">循環嵌套</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#break-continue-pass%E8%AA%9E%E5%8F%A5"><span class="nav-number">1.4.</span> <span class="nav-text">break, continue, pass語句</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaLotus"
+      src="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xiaLotus</p>
+  <div class="site-description" itemprop="description">xia的小窩</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaLotus</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">8k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">28 分鐘</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

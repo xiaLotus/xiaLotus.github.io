@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="()，[] – 列表與元組序列 索引python比較神奇，可以從正面數或反著數，每一個位置都有自己的下標">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-Discord-bot，從0開始到做出一個機器人系列-6">
+<meta property="og:url" content="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-6/index.html">
+<meta property="og:site_name" content="xia的小窩">
+<meta property="og:description" content="()，[] – 列表與元組序列 索引python比較神奇，可以從正面數或反著數，每一個位置都有自己的下標">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/AWWWpvg.png">
+<meta property="article:published_time" content="2023-11-08T02:28:03.000Z">
+<meta property="article:modified_time" content="2023-11-08T03:11:17.192Z">
+<meta property="article:author" content="xiaLotus">
+<meta property="article:tag" content="2021iT鐵人賽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/AWWWpvg.png">
+
+<link rel="canonical" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>python-Discord-bot，從0開始到做出一個機器人系列-6 | xia的小窩</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xia的小窩</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一起來coding和碼字吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+      <meta itemprop="name" content="xiaLotus">
+      <meta itemprop="description" content="xia的小窩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xia的小窩">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python-Discord-bot，從0開始到做出一個機器人系列-6
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-11-08 10:28:03 / 修改時間：11:11:17" itemprop="dateCreated datePublished" datetime="2023-11-08T10:28:03+08:00">2023-11-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>4 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="，-–-列表與元組"><a href="#，-–-列表與元組" class="headerlink" title="()，[] – 列表與元組"></a>()，[] – 列表與元組</h2><h3 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h3><ul>
+<li><p>索引<br>python比較神奇，可以從正面數或反著數，每一個位置都有自己的下標</p>
+<span id="more"></span>
+<p><img src="https://i.imgur.com/AWWWpvg.png"></p>
+</li>
+<li><p>切片<br>  假設現在有一陣列</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">0</span>:<span class="number">4</span>:<span class="number">2</span>])</span><br><span class="line"><span class="comment"># [1, 3, 5]</span></span><br><span class="line"><span class="comment"># a是陣列的名稱</span></span><br><span class="line"><span class="comment"># []裡面的第一個數字是起點(start)</span></span><br><span class="line"><span class="comment"># 第二個是終點(end)</span></span><br><span class="line"><span class="comment"># 第三個是間隔(step)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>相加 and 相乘</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">b = [<span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="built_in">print</span>(a + b)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>檢查某個值是否存在</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="number">5</span> <span class="keyword">in</span> a)</span><br><span class="line"><span class="comment"># True</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>長度、最大值、最小值</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(a), <span class="built_in">max</span>(a), <span class="built_in">min</span>(a))</span><br><span class="line"><span class="comment"># 5 9 1</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="陣列"><a href="#陣列" class="headerlink" title="陣列"></a>陣列</h3><ul>
+<li><p>建立</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接創建</span></span><br><span class="line">name = [element1, element2, ...]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 創建空陣列</span></span><br><span class="line">name = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用list()函數</span></span><br><span class="line">nums = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line"><span class="comment"># [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>刪除</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"><span class="keyword">del</span> name</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="陣列查詢"><a href="#陣列查詢" class="headerlink" title="陣列查詢"></a>陣列查詢</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="built_in">print</span>(name[<span class="number">2</span>])</span><br><span class="line"><span class="comment"># 3</span></span><br></pre></td></tr></table></figure>
+<h3 id="陣列遍歷"><a href="#陣列遍歷" class="headerlink" title="陣列遍歷"></a>陣列遍歷</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">name = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用for迴圈</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> name:</span><br><span class="line">    <span class="built_in">print</span>(item, end = <span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用for迴圈和enumerate()函數</span></span><br><span class="line"><span class="keyword">for</span> index, item <span class="keyword">in</span> <span class="built_in">enumerate</span>(name):</span><br><span class="line">    <span class="built_in">print</span>(index, item)</span><br></pre></td></tr></table></figure>
+
+<h3 id="新增、修改、刪除元素"><a href="#新增、修改、刪除元素" class="headerlink" title="新增、修改、刪除元素"></a>新增、修改、刪除元素</h3><ul>
+<li><p>新增</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># append()是加在屁股後面的</span></span><br><span class="line">name = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">name.append(<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(name)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以使用insert()，但效率不高，不推薦使用</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用extend()將2個陣列加在一起</span></span><br><span class="line">name2 = [<span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"><span class="built_in">print</span>(name.extend(name2))</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改元素</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>]</span><br><span class="line">name[<span class="number">2</span>] = <span class="number">2</span></span><br><span class="line"><span class="built_in">print</span>(name)</span><br><span class="line"><span class="comment">#[0, 1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>刪除元素</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">name = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根據index值</span></span><br><span class="line"><span class="keyword">del</span> name[<span class="number">3</span>]</span><br><span class="line"><span class="comment"># [0, 1, 2]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 根據元素值</span></span><br><span class="line">name.remove(<span class="number">2</span>)</span><br><span class="line"><span class="comment"># [0, 1]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="對陣列進行統計"><a href="#對陣列進行統計" class="headerlink" title="對陣列進行統計"></a>對陣列進行統計</h3><ul>
+<li><p>使用count()函數</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nums = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>]</span><br><span class="line"><span class="built_in">print</span>(nums.count(<span class="number">1</span>))</span><br><span class="line"><span class="comment"># 2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>獲得指定元素第一次出現的位置</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># index(object)</span></span><br><span class="line">nums = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">answer = nums.index(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(answer)</span><br><span class="line"><span class="comment"># 1</span></span><br></pre></td></tr></table></figure></li>
+<li><p>統計數值和</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sum(listname[, start])</span></span><br><span class="line">nums = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">answer = <span class="built_in">sum</span>(nums)</span><br><span class="line"><span class="built_in">print</span>(answer)</span><br><span class="line"><span class="comment"># 6</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="陣列排序"><a href="#陣列排序" class="headerlink" title="陣列排序"></a>陣列排序</h3><ul>
+<li>使用sort()函數<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># namelist.sort(key = None, reverse = True)</span></span><br><span class="line"><span class="comment"># key是比較的鍵(值)</span></span><br><span class="line"><span class="comment"># reverse則可指定是升序或降序</span></span><br><span class="line"></span><br><span class="line">nums = [<span class="number">0</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">nums = nums.sort()</span><br><span class="line"><span class="built_in">print</span>(nums)</span><br><span class="line"><span class="comment"># [0, 1, 2, 3, 4, 5]</span></span><br><span class="line"></span><br><span class="line">nums = nums.sort(reverse = <span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(nums)</span><br><span class="line"><span class="comment"># [5, 4, 3, 2, 1, 0]</span></span><br></pre></td></tr></table></figure></li>
+<li>使用sorted()函數<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 簡單明瞭的意思是把sort()反過來看就好</span></span><br><span class="line">nums = [<span class="number">0</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">nums = <span class="built_in">sorted</span>(nums)</span><br><span class="line"><span class="built_in">print</span>(nums)</span><br><span class="line"><span class="comment"># [0, 1, 2, 5, 6]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="陣列生成式"><a href="#陣列生成式" class="headerlink" title="陣列生成式"></a>陣列生成式</h3><ul>
+<li><p>生成式可快速生成一個陣列</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list = [表達式 for 循環變量 in range()]</span></span><br><span class="line"></span><br><span class="line">nums = [i <span class="keyword">for</span> i i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)]</span><br><span class="line"><span class="built_in">print</span>(nums)</span><br><span class="line"><span class="comment"># [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span><br></pre></td></tr></table></figure></li>
+<li><p>根據陣列指定需求成新陣列</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list = [表達式 for 循環變量 in 原陣列]</span></span><br><span class="line"></span><br><span class="line">nums = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">new_nums = [x*<span class="number">0.5</span> <span class="keyword">for</span> x <span class="keyword">in</span> nums]</span><br><span class="line"><span class="built_in">print</span>(new_nums)</span><br><span class="line"><span class="comment"># [0.0, 0.5, 1.0, 1.5]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>選擇符合條件的元素生成新陣列</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nums = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">9</span>]</span><br><span class="line">new_nums = [x <span class="keyword">for</span> x <span class="keyword">in</span> nums <span class="keyword">if</span> x % <span class="number">3</span> == <span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(new_nums)</span><br><span class="line"><span class="comment"># [0, 3, 9]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="二維陣列"><a href="#二維陣列" class="headerlink" title="二維陣列"></a>二維陣列</h3><ul>
+<li><p>定義二維陣列(下標位置)</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># [[00, 01, 02, 03],</span></span><br><span class="line"><span class="comment">#  [10, 11, 12, 13],......]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用雙層for迴圈</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    test.append([])</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">        test[i].append(j)</span><br><span class="line"><span class="built_in">print</span>(test)</span><br><span class="line"><span class="comment"># [[0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4]]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用陣列生成式創建</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nums = [[i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)] <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)]</span><br><span class="line"><span class="built_in">print</span>(nums)</span><br><span class="line"><span class="comment"># [[0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4]]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="創建元組"><a href="#創建元組" class="headerlink" title="創建元組"></a>創建元組</h3><ul>
+<li><p>使用賦值運算符直接創建</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 是()，不是[]，[]是陣列非元組</span></span><br><span class="line">nums = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 其實未必要用()，用 , 隔開就可以了</span></span><br><span class="line">nums = <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(nums)</span><br><span class="line"><span class="comment"># (&#x27;0&#x27;, &#x27;1&#x27;, &#x27;2&#x27;)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>創建空元組</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">empty = ()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建立data元組</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tuple(data)</span></span><br><span class="line"></span><br><span class="line">nums = <span class="built_in">tuple</span>(<span class="built_in">range</span>(<span class="number">0</span>, <span class="number">5</span>, <span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(nums)</span><br><span class="line"><span class="comment"># (0, 2, 4)</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="刪除元組"><a href="#刪除元組" class="headerlink" title="刪除元組"></a>刪除元組</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接刪除即可</span></span><br><span class="line"></span><br><span class="line">nums = (<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="keyword">del</span> nums</span><br></pre></td></tr></table></figure>
+
+<h3 id="尋找元組元素"><a href="#尋找元組元素" class="headerlink" title="尋找元組元素"></a>尋找元組元素</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nums = (<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(nums[<span class="number">0</span>])</span><br><span class="line"><span class="comment"># 0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(nums[<span class="number">0</span>:<span class="number">2</span>])</span><br><span class="line"><span class="comment"># (0, 1)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>這邊可以結合上面陣列的enumerate()函數進行遍歷元組</li>
+</ul>
+<h3 id="修改元組"><a href="#修改元組" class="headerlink" title="修改元組"></a>修改元組</h3><ul>
+<li>元組不能進行單個修改，所以……<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nums = (<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">nums = (<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(nums)</span><br><span class="line"><span class="comment"># (1, 2)</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="元組相加"><a href="#元組相加" class="headerlink" title="元組相加"></a>元組相加</h3><ul>
+<li>必須是元組加元組<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nums = (<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">add_nums = (<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(nums + add_nums)</span><br><span class="line"><span class="comment"># (0, 1, 2, 3, 4)</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="元組推導式"><a href="#元組推導式" class="headerlink" title="元組推導式"></a>元組推導式</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">nums = (random.randint(<span class="number">10</span>, <span class="number">100</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line"><span class="built_in">print</span>(nums)</span><br><span class="line"><span class="comment"># &lt;generator object &lt;genexpr&gt; at 0x0000016C21DD8190&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>這邊還需要一個tuple，因為元組推導式生成的結果不是一個元組，所以還需要轉換</p>
+</li>
+<li><p>加上</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nums = <span class="built_in">tuple</span>(nums)</span><br><span class="line"><span class="built_in">print</span>(nums)</span><br><span class="line"><span class="comment"># (24, 23, 59, 81, 35, 46, 18, 60, 89, 87)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>這邊可以用for遍歷，或是__next__()方法輸出元素</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nums = (i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>))</span><br><span class="line"><span class="built_in">print</span>(nums.__next__())</span><br><span class="line"><span class="comment"># 0</span></span><br><span class="line"><span class="built_in">print</span>(nums.__next__())</span><br><span class="line"><span class="comment"># 1</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="陣列與元組的區別"><a href="#陣列與元組的區別" class="headerlink" title="陣列與元組的區別"></a>陣列與元組的區別</h3><ul>
+<li>陣列可拿單獨的元素出來改寫，元組須整個替換</li>
+<li>陣列有append()、extend()、insert()、remove()、pop()等方法改寫，但元組都沒有</li>
+<li>兩者都支援slice，但元組不支援修改</li>
+<li>元組的速度比陣列快，不果資料不須更動，不進行修改，建議使用元組</li>
+<li>陣列不能作為字典的鍵，但元組可以</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2021iT%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2021iT鐵人賽</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-5/" rel="prev" title="python-Discord-bot，從0開始到做出一個機器人系列-5">
+      <i class="fa fa-chevron-left"></i> python-Discord-bot，從0開始到做出一個機器人系列-5
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-7/" rel="next" title="python-Discord-bot，從0開始到做出一個機器人系列-7">
+      python-Discord-bot，從0開始到做出一個機器人系列-7 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%8C-%E2%80%93-%E5%88%97%E8%A1%A8%E8%88%87%E5%85%83%E7%B5%84"><span class="nav-number">1.</span> <span class="nav-text">()，[] – 列表與元組</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%8F%E5%88%97"><span class="nav-number">1.1.</span> <span class="nav-text">序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%A3%E5%88%97"><span class="nav-number">1.2.</span> <span class="nav-text">陣列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%A3%E5%88%97%E6%9F%A5%E8%A9%A2"><span class="nav-number">1.3.</span> <span class="nav-text">陣列查詢</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%A3%E5%88%97%E9%81%8D%E6%AD%B7"><span class="nav-number">1.4.</span> <span class="nav-text">陣列遍歷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E3%80%81%E4%BF%AE%E6%94%B9%E3%80%81%E5%88%AA%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-number">1.5.</span> <span class="nav-text">新增、修改、刪除元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8D%E9%99%A3%E5%88%97%E9%80%B2%E8%A1%8C%E7%B5%B1%E8%A8%88"><span class="nav-number">1.6.</span> <span class="nav-text">對陣列進行統計</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%A3%E5%88%97%E6%8E%92%E5%BA%8F"><span class="nav-number">1.7.</span> <span class="nav-text">陣列排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%A3%E5%88%97%E7%94%9F%E6%88%90%E5%BC%8F"><span class="nav-number">1.8.</span> <span class="nav-text">陣列生成式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E7%B6%AD%E9%99%A3%E5%88%97"><span class="nav-number">1.9.</span> <span class="nav-text">二維陣列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%B5%E5%BB%BA%E5%85%83%E7%B5%84"><span class="nav-number">1.10.</span> <span class="nav-text">創建元組</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E5%85%83%E7%B5%84"><span class="nav-number">1.11.</span> <span class="nav-text">刪除元組</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8B%E6%89%BE%E5%85%83%E7%B5%84%E5%85%83%E7%B4%A0"><span class="nav-number">1.12.</span> <span class="nav-text">尋找元組元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%85%83%E7%B5%84"><span class="nav-number">1.13.</span> <span class="nav-text">修改元組</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E7%B5%84%E7%9B%B8%E5%8A%A0"><span class="nav-number">1.14.</span> <span class="nav-text">元組相加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E7%B5%84%E6%8E%A8%E5%B0%8E%E5%BC%8F"><span class="nav-number">1.15.</span> <span class="nav-text">元組推導式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%A3%E5%88%97%E8%88%87%E5%85%83%E7%B5%84%E7%9A%84%E5%8D%80%E5%88%A5"><span class="nav-number">1.16.</span> <span class="nav-text">陣列與元組的區別</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaLotus"
+      src="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xiaLotus</p>
+  <div class="site-description" itemprop="description">xia的小窩</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaLotus</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">8k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">28 分鐘</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

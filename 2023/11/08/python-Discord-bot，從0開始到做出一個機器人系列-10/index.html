@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="後浪推前浪–前浪死在沙灘上，淺談class物件導向概述物件導向程式設計(Object Oriented Programming)簡稱OOP，主要針對大型軟體設計而提出，它可以使軟體設計更加靈活。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-Discord-bot，從0開始到做出一個機器人系列-10">
+<meta property="og:url" content="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-10/index.html">
+<meta property="og:site_name" content="xia的小窩">
+<meta property="og:description" content="後浪推前浪–前浪死在沙灘上，淺談class物件導向概述物件導向程式設計(Object Oriented Programming)簡稱OOP，主要針對大型軟體設計而提出，它可以使軟體設計更加靈活。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-11-08T02:35:52.000Z">
+<meta property="article:modified_time" content="2023-11-08T03:11:32.180Z">
+<meta property="article:author" content="xiaLotus">
+<meta property="article:tag" content="2021iT鐵人賽">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-10/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>python-Discord-bot，從0開始到做出一個機器人系列-10 | xia的小窩</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xia的小窩</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一起來coding和碼字吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+      <meta itemprop="name" content="xiaLotus">
+      <meta itemprop="description" content="xia的小窩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xia的小窩">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python-Discord-bot，從0開始到做出一個機器人系列-10
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-11-08 10:35:52 / 修改時間：11:11:32" itemprop="dateCreated datePublished" datetime="2023-11-08T10:35:52+08:00">2023-11-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>5 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="後浪推前浪–前浪死在沙灘上，淺談class"><a href="#後浪推前浪–前浪死在沙灘上，淺談class" class="headerlink" title="後浪推前浪–前浪死在沙灘上，淺談class"></a>後浪推前浪–前浪死在沙灘上，淺談class</h2><h3 id="物件導向概述"><a href="#物件導向概述" class="headerlink" title="物件導向概述"></a>物件導向概述</h3><p>物件導向程式設計(Object Oriented Programming)簡稱OOP，主要針對大型軟體設計而提出，它可以使軟體設計更加靈活。</p>
+<span id="more"></span>
+<h3 id="對象"><a href="#對象" class="headerlink" title="對象"></a>對象</h3><p>這是一個抽象的概念，世間萬物皆為對象。比如一個人。</p>
+<ul>
+<li>靜態被分為屬性，任何對象都具備自身屬性，如人的性別</li>
+<li>動態表示對方的行為，及對象執行的動作，孺人可以行走</li>
+<li>在Python中，一切都是對象。</li>
+</ul>
+<h3 id="類"><a href="#類" class="headerlink" title="類"></a>類</h3><p>類是封裝對象的屬性及行為的載體，反過來說，具有相同屬性和行為的類實體被稱為類</p>
+<h3 id="OOP設計特點"><a href="#OOP設計特點" class="headerlink" title="OOP設計特點"></a>OOP設計特點</h3><ol>
+<li><p>封裝<br> 將對象的屬性和行為封裝起來，而將對象的屬性和行為封裝起來的截體就是類，類通常對客戶隱藏實際細節。</p>
+</li>
+<li><p>繼承<br> 子能繼承父的特性，但無法反過來</p>
+</li>
+<li><p>多態<br> 一個父親能有多個兒子，兒子能繼承父親的技能，但兒子們也有自身的技能</p>
+</li>
+</ol>
+<h3 id="定義類"><a href="#定義類" class="headerlink" title="定義類"></a>定義類</h3><ul>
+<li><p>在Python中，類的定義使用class關鍵字</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Classname</span>:</span><br><span class="line">    statement</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>也可以先用pass卡著</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Geese</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="創建類的實例"><a href="#創建類的實例" class="headerlink" title="創建類的實例"></a>創建類的實例</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">classname(parameterlist)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>比如，定義一個Geese類的實例<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wildGeese = Geese()</span><br><span class="line"><span class="built_in">print</span>(wildGeese)</span><br><span class="line"><span class="comment"># &lt;__main__.Geese object at 0x000002AD716B4DC0&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="建立-init-方法"><a href="#建立-init-方法" class="headerlink" title="建立__init__方法"></a>建立__init__方法</h3><p>__init__是一個特殊的方法，每當創建一個新實例的時候，Pytho都會自動執行它。<br>__init__方法必須包含一個self參數，而且必須是第一個參數。<br>self參數是指象實例本身的引用，屬於訪問類的屬性和方法。<br>在方法要調用時會傳遞實際self參數。<br>因此，當__init__方法只有一個參數時，就不需要只掉參數。</p>
+<ul>
+<li><p>舉例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Geese</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;我是大雁類&quot;</span>)</span><br><span class="line"></span><br><span class="line">wildGeese = Geese()</span><br><span class="line"><span class="comment"># 我是大雁類</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果把self拿掉便會出現......</span></span><br><span class="line"><span class="comment"># TypeError: __init__() takes 0 positional arguments but 1 was given</span></span><br><span class="line"><span class="comment"># 所以說還是需要self的</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其實還可以自定義參數</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Geese</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, beak, wing, claw</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;我是大雁類&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(beak)</span><br><span class="line">        <span class="built_in">print</span>(wing)</span><br><span class="line">        <span class="built_in">print</span>(claw)</span><br><span class="line"></span><br><span class="line">beak_1 = <span class="string">&quot;嘴&quot;</span></span><br><span class="line">wing_1 = <span class="string">&quot;翅膀&quot;</span></span><br><span class="line">claw_1 = <span class="string">&quot;爪子&quot;</span></span><br><span class="line">wildGeese = Geese(beak_1, wing_1, claw_1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 我是大雁類</span></span><br><span class="line"><span class="comment"># 嘴</span></span><br><span class="line"><span class="comment"># 翅膀</span></span><br><span class="line"><span class="comment"># 爪子</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="創建類的成員並使用"><a href="#創建類的成員並使用" class="headerlink" title="創建類的成員並使用"></a>創建類的成員並使用</h3><ul>
+<li><p>創建實例方法並使用</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">funcName</span>(<span class="params">self, parametetlist</span>):</span><br><span class="line">    <span class="comment"># block </span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>創建方法完成後，可以透過類的實例名稱和”.”操作符進行呼叫</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instanceName.functionName(parametervalue)</span><br></pre></td></tr></table></figure></li>
+<li><p>實際創造一個函數(fly())</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Geese</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, beak, wing, claw</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;我是大雁類&quot;</span>)</span><br><span class="line">        <span class="comment">#print(beak)</span></span><br><span class="line">        <span class="comment">#print(wing)</span></span><br><span class="line">        <span class="comment">#print(claw)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">fly</span>(<span class="params">self, state</span>):</span><br><span class="line">        <span class="built_in">print</span>(state)</span><br><span class="line"></span><br><span class="line">beak_1 = <span class="string">&quot;嘴&quot;</span></span><br><span class="line">wing_1 = <span class="string">&quot;翅膀&quot;</span></span><br><span class="line">claw_1 = <span class="string">&quot;爪子&quot;</span></span><br><span class="line">wildGeese = Geese(beak_1, wing_1, claw_1)</span><br><span class="line">wildGeese.fly(<span class="string">&quot;我可以直衝雲霄&quot;</span>)</span><br><span class="line"><span class="comment"># 我是大雁類</span></span><br><span class="line"><span class="comment"># 我可以直衝雲霄</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>創建數據成員並使用</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Geese</span>:</span><br><span class="line">    </span><br><span class="line">    neck = <span class="string">&quot;脖子&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(self.neck)</span><br><span class="line"></span><br><span class="line">geese = Geese()</span><br><span class="line"><span class="comment"># 脖子</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 此寫法等同於</span></span><br><span class="line"></span><br><span class="line">self.neck = <span class="string">&quot;脖子&quot;</span></span><br><span class="line"><span class="built_in">print</span>(self.neck)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="訪問限制"><a href="#訪問限制" class="headerlink" title="訪問限制"></a>訪問限制</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* _foo : 以單下滑線開頭表示protect(保護)類型的，只允許子類及本身，不能使from module import  * 語句導入。</span><br><span class="line"></span><br><span class="line">* __foo():雙下滑線到表私有，只允許定義該方法的類本身進行訪問，可以透過&quot;類的實例名.類名.__xxx&quot;方式訪問。</span><br><span class="line"></span><br><span class="line">* __foo__():代表特殊定義方法，一般表示系統定義名字，比如:__init__() </span><br></pre></td></tr></table></figure>
+
+
+<h3 id="屬性"><a href="#屬性" class="headerlink" title="屬性"></a>屬性</h3><ul>
+<li>建立用於計算的屬性<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@property</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">methodname</span>(<span class="params">self</span>):</span><br><span class="line">    block</span><br></pre></td></tr></table></figure></li>
+<li>實際運用<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Reat</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, width, height</span>):</span><br><span class="line">        self.width = width</span><br><span class="line">        self.height = height</span><br><span class="line">    </span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">area</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.width * self.height</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(Reat(<span class="number">100</span>, <span class="number">200</span>).area)</span><br><span class="line"><span class="comment"># 2000</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>轉化成屬性後，就可以直接透過方法名來訪問方法，就不需要添加小括號</p>
+<ul>
+<li>添加安全保護機制<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 想要建立可以讀取但不能相改的屬性可以用@property實踐</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TVshow</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, show</span>) :</span><br><span class="line">        self.__show = show</span><br><span class="line">    </span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">show</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.__show</span><br><span class="line">    </span><br><span class="line">tsShow = TVshow(<span class="string">&quot;正在播放&lt;&lt;8964&gt;&gt;&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;默認: &quot;</span>, tsShow.show)</span><br><span class="line"><span class="comment"># 默認:  正在播放&lt;&lt;8964&gt;&gt;</span></span><br><span class="line"><span class="comment"># 那如果改成...</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># tsShow = &quot;正在播放&lt;&lt;爆打粉紅&gt;&gt;&quot; 修改屬性值</span></span><br><span class="line"><span class="comment"># print(&quot;修改後: &quot;, tsShow.show) 獲取屬性值</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># AttributeError: &#x27;str&#x27; object has no attribute &#x27;show&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="繼承"><a href="#繼承" class="headerlink" title="繼承"></a>繼承</h3><ul>
+<li><p>簡單明瞭，就是繼承父類</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class className(baseclasslist):</span><br><span class="line">    Statement</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>比如說….</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">fruit</span>:</span><br><span class="line">    color = <span class="string">&quot;green&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">fruitcolor</span>(<span class="params">self, color</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;水果顏色是: &quot;</span>, color)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;-----------&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;原本的顏色是: &quot;</span>, fruit.color)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Apple</span>(<span class="title class_ inherited__">fruit</span>):</span><br><span class="line">    color = <span class="string">&quot;red&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;我是蘋果&quot;</span>)</span><br><span class="line"></span><br><span class="line">Apple().fruitcolor(Apple.color)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 我是蘋果</span></span><br><span class="line"><span class="comment"># 水果顏色是:  red</span></span><br><span class="line"><span class="comment"># -----------</span></span><br><span class="line"><span class="comment"># 原本的顏色是:  green</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="方法重寫"><a href="#方法重寫" class="headerlink" title="方法重寫"></a>方法重寫</h3><p>在自身認為不適用的情況下，對def內部的函式內容作改寫。</p>
+<h3 id="使用super-呼叫父類"><a href="#使用super-呼叫父類" class="headerlink" title="使用super()呼叫父類"></a>使用super()呼叫父類</h3><p>如果要在子類中引用父類的方法，但是又需要新增一些子類所特有的內容，可通過類名.方法()和super()來呼叫父類的方法，再個性化子類的對應函式。<br>直接使用類名.方法()來呼叫時，還是需要傳入self為第一個引數，而使用super()呼叫則python自動將self傳入，因此使用super()比較簡潔。</p>
+<ul>
+<li>好處</li>
+</ul>
+<ol>
+<li>簡化程式碼</li>
+<li>如果父類名稱修改，對其他呼叫父類函式的類來說也沒有影響，而如果直接使用父類的名稱來呼叫，父類名稱修改會影響其他所有的類。</li>
+</ol>
+<ul>
+<li>舉例<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">drive</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getname</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">displayVehicle</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;廠牌: &quot;</span>, self.name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">car</span>(<span class="title class_ inherited__">drive</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, mod</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__(name) <span class="comment"># 呼叫父類建構函式</span></span><br><span class="line">        self.mod = mod</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">display</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(self.getname())</span><br><span class="line">        <span class="built_in">print</span>(self.mod)</span><br><span class="line"></span><br><span class="line">drive(<span class="string">&quot;BMV&quot;</span>).displayVehicle()</span><br><span class="line">car(<span class="string">&quot;totya&quot;</span>, <span class="string">&quot;GH333&quot;</span>).display()</span><br><span class="line"><span class="comment"># 廠牌:  BMV</span></span><br><span class="line"><span class="comment"># totya</span></span><br><span class="line"><span class="comment"># GH333</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2021iT%E9%90%B5%E4%BA%BA%E8%B3%BD/" rel="tag"># 2021iT鐵人賽</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-9/" rel="prev" title="python-Discord-bot，從0開始到做出一個機器人系列-9">
+      <i class="fa fa-chevron-left"></i> python-Discord-bot，從0開始到做出一個機器人系列-9
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-11/" rel="next" title="python-Discord-bot，從0開始到做出一個機器人系列-11">
+      python-Discord-bot，從0開始到做出一個機器人系列-11 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%8C%E6%B5%AA%E6%8E%A8%E5%89%8D%E6%B5%AA%E2%80%93%E5%89%8D%E6%B5%AA%E6%AD%BB%E5%9C%A8%E6%B2%99%E7%81%98%E4%B8%8A%EF%BC%8C%E6%B7%BA%E8%AB%87class"><span class="nav-number">1.</span> <span class="nav-text">後浪推前浪–前浪死在沙灘上，淺談class</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">物件導向概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8D%E8%B1%A1"><span class="nav-number">1.2.</span> <span class="nav-text">對象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%9E"><span class="nav-number">1.3.</span> <span class="nav-text">類</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OOP%E8%A8%AD%E8%A8%88%E7%89%B9%E9%BB%9E"><span class="nav-number">1.4.</span> <span class="nav-text">OOP設計特點</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9%E9%A1%9E"><span class="nav-number">1.5.</span> <span class="nav-text">定義類</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%B5%E5%BB%BA%E9%A1%9E%E7%9A%84%E5%AF%A6%E4%BE%8B"><span class="nav-number">1.6.</span> <span class="nav-text">創建類的實例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-init-%E6%96%B9%E6%B3%95"><span class="nav-number">1.7.</span> <span class="nav-text">建立__init__方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%B5%E5%BB%BA%E9%A1%9E%E7%9A%84%E6%88%90%E5%93%A1%E4%B8%A6%E4%BD%BF%E7%94%A8"><span class="nav-number">1.8.</span> <span class="nav-text">創建類的成員並使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AA%E5%95%8F%E9%99%90%E5%88%B6"><span class="nav-number">1.9.</span> <span class="nav-text">訪問限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%AC%E6%80%A7"><span class="nav-number">1.10.</span> <span class="nav-text">屬性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B9%BC%E6%89%BF"><span class="nav-number">1.11.</span> <span class="nav-text">繼承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E5%AF%AB"><span class="nav-number">1.12.</span> <span class="nav-text">方法重寫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8super-%E5%91%BC%E5%8F%AB%E7%88%B6%E9%A1%9E"><span class="nav-number">1.13.</span> <span class="nav-text">使用super()呼叫父類</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaLotus"
+      src="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xiaLotus</p>
+  <div class="site-description" itemprop="description">xia的小窩</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaLotus</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">8k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">28 分鐘</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

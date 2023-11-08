@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="使用bot.py建立起你的第一個機器人行前作業">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-Discord-bot，從0開始到做出一個機器人系列-12">
+<meta property="og:url" content="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-12/index.html">
+<meta property="og:site_name" content="xia的小窩">
+<meta property="og:description" content="使用bot.py建立起你的第一個機器人行前作業">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/7y1nEAN.png">
+<meta property="og:image" content="https://i.imgur.com/9gFQ3Ar.png">
+<meta property="og:image" content="https://i.imgur.com/z0flyFR.png">
+<meta property="og:image" content="https://i.imgur.com/IqSv8og.png">
+<meta property="og:image" content="https://i.imgur.com/5XSFyTg.png">
+<meta property="og:image" content="https://i.imgur.com/57GEwzN.png">
+<meta property="og:image" content="https://i.imgur.com/8m1SdNY.png">
+<meta property="og:image" content="https://i.imgur.com/p7Cod15.png">
+<meta property="og:image" content="https://i.imgur.com/lP0koSA.png">
+<meta property="article:published_time" content="2023-11-08T02:47:59.000Z">
+<meta property="article:modified_time" content="2023-11-08T03:12:41.218Z">
+<meta property="article:author" content="xiaLotus">
+<meta property="article:tag" content="2021iT鐵人賽,discord bot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/7y1nEAN.png">
+
+<link rel="canonical" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-12/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>python-Discord-bot，從0開始到做出一個機器人系列-12 | xia的小窩</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xia的小窩</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一起來coding和碼字吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+      <meta itemprop="name" content="xiaLotus">
+      <meta itemprop="description" content="xia的小窩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xia的小窩">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python-Discord-bot，從0開始到做出一個機器人系列-12
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-11-08 10:47:59 / 修改時間：11:12:41" itemprop="dateCreated datePublished" datetime="2023-11-08T10:47:59+08:00">2023-11-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>461</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>2 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="使用bot-py建立起你的第一個機器人"><a href="#使用bot-py建立起你的第一個機器人" class="headerlink" title="使用bot.py建立起你的第一個機器人"></a>使用bot.py建立起你的第一個機器人</h2><h3 id="行前作業"><a href="#行前作業" class="headerlink" title="行前作業"></a>行前作業</h3><span id="more"></span>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://discord.com/">註冊帳號</a></li>
+<li>需要有自己的伺服器或是相應的權限<br><img src="https://i.imgur.com/7y1nEAN.png"></li>
+</ul>
+<h3 id="開始後續作業"><a href="#開始後續作業" class="headerlink" title="開始後續作業"></a>開始後續作業</h3><ul>
+<li><p>搜尋<a target="_blank" rel="noopener" href="https://discord.com/developers/applications">discord developer portal</a></p>
+</li>
+<li><p>點擊New Application<br><img src="https://i.imgur.com/9gFQ3Ar.png"></p>
+</li>
+<li><p>輸入名字，點擊create<br><img src="https://i.imgur.com/z0flyFR.png"></p>
+</li>
+<li><p>點擊Bot(Add Bot)<br><img src="https://i.imgur.com/IqSv8og.png"></p>
+</li>
+<li><p>勾選Administrator<br><img src="https://i.imgur.com/5XSFyTg.png"></p>
+</li>
+<li><p>點擊OAuth2，點選Bot，下方將出現一個網址，那是邀請碼，按下Copy後，複製到網址列<br><img src="https://i.imgur.com/57GEwzN.png"></p>
+</li>
+<li><p>最後授權即可<br><img src="https://i.imgur.com/8m1SdNY.png"></p>
+</li>
+</ul>
+<h3 id="取得token"><a href="#取得token" class="headerlink" title="取得token"></a>取得token</h3><ul>
+<li><p>回到剛才的Bot畫面<br><img src="https://i.imgur.com/p7Cod15.png"></p>
+</li>
+<li><p>裡面有一個token，copy點下去</p>
+</li>
+</ul>
+<h3 id="開始撰寫"><a href="#開始撰寫" class="headerlink" title="開始撰寫"></a>開始撰寫</h3><ul>
+<li><p>建立資料夾，並將資料夾拖曳進vscode，在裡面建立一個bot的python檔案，以及items的json檔案</p>
+</li>
+<li><p>先點擊json檔，並輸入</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;token&quot;</span><span class="punctuation">:</span><span class="string">&quot;Your token&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接著，使用在下方的終端機，輸入……以使用discord延伸模組</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install discord.py</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>點開bot檔案，並輸入</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 引用包</span></span><br><span class="line"><span class="keyword">from</span> discord.ext <span class="keyword">import</span> commands </span><br><span class="line"><span class="keyword">import</span> discord</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加前綴字符</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bot = commands.Bot(command_prefix=<span class="string">&quot;!&quot;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>添加事件</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@bot.event</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">on_ready</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Bot in ready&quot;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>這樣就可以給他跑了嗎??還沒喔，因為我們剛剛把token寫入了json檔，所以我們需要把它拿出來~~</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;items.json&#x27;</span>, <span class="string">&quot;r&quot;</span>, encoding = <span class="string">&quot;utf8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    data = json.load(file)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最後添加上keyword</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bot.run(data[<span class="string">&#x27;token&#x27;</span>]) </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="確認機器人是否能啟動"><a href="#確認機器人是否能啟動" class="headerlink" title="確認機器人是否能啟動"></a>確認機器人是否能啟動</h2><ul>
+<li><p>在終端機輸入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python bot.py</span><br></pre></td></tr></table></figure></li>
+<li><p>確認是否能啟動<br><img src="https://i.imgur.com/lP0koSA.png"></p>
+</li>
+<li><p>本次的程式碼如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> discord.ext <span class="keyword">import</span> commands </span><br><span class="line"><span class="keyword">import</span> discord</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">bot = commands.Bot(command_prefix=<span class="string">&quot;!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;items.json&#x27;</span>, <span class="string">&quot;r&quot;</span>, encoding = <span class="string">&quot;utf8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    data = json.load(file)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="meta">@bot.event</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">on_ready</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Bot in ready&quot;</span>)</span><br><span class="line">    </span><br><span class="line">bot.run(data[<span class="string">&#x27;token&#x27;</span>]) </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="重大更新"><a href="#重大更新" class="headerlink" title="重大更新"></a>重大更新</h3><p>自從discord.py 2.0 發布後，這些文章有些地方不能用，更改後的程式碼如下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> discord.ext <span class="keyword">import</span> commands </span><br><span class="line"><span class="keyword">import</span> discord</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line">bot = commands.Bot(command_prefix=<span class="string">&quot;!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;items.json&#x27;</span>, <span class="string">&quot;r&quot;</span>, encoding = <span class="string">&quot;utf8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    data = json.load(file)</span><br><span class="line">    </span><br><span class="line">token = data[<span class="string">&quot;token&quot;</span>] <span class="comment"># python3.12強制更動為雙引</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@bot.event</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">on_ready</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Bot in ready&quot;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> bot:</span><br><span class="line">        <span class="keyword">await</span> load_extensions()</span><br><span class="line">        <span class="keyword">await</span> bot.start(token)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    asyncio.run(main())</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/2021iT%E9%90%B5%E4%BA%BA%E8%B3%BD-discord-bot/" rel="tag"># 2021iT鐵人賽,discord bot</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-11/" rel="prev" title="python-Discord-bot，從0開始到做出一個機器人系列-11">
+      <i class="fa fa-chevron-left"></i> python-Discord-bot，從0開始到做出一個機器人系列-11
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8bot-py%E5%BB%BA%E7%AB%8B%E8%B5%B7%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA"><span class="nav-number">1.</span> <span class="nav-text">使用bot.py建立起你的第一個機器人</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E5%89%8D%E4%BD%9C%E6%A5%AD"><span class="nav-number">1.1.</span> <span class="nav-text">行前作業</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%96%8B%E5%A7%8B%E5%BE%8C%E7%BA%8C%E4%BD%9C%E6%A5%AD"><span class="nav-number">1.2.</span> <span class="nav-text">開始後續作業</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%BE%97token"><span class="nav-number">1.3.</span> <span class="nav-text">取得token</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%96%8B%E5%A7%8B%E6%92%B0%E5%AF%AB"><span class="nav-number">1.4.</span> <span class="nav-text">開始撰寫</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A2%BA%E8%AA%8D%E6%A9%9F%E5%99%A8%E4%BA%BA%E6%98%AF%E5%90%A6%E8%83%BD%E5%95%9F%E5%8B%95"><span class="nav-number">2.</span> <span class="nav-text">確認機器人是否能啟動</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%A4%A7%E6%9B%B4%E6%96%B0"><span class="nav-number">2.1.</span> <span class="nav-text">重大更新</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaLotus"
+      src="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xiaLotus</p>
+  <div class="site-description" itemprop="description">xia的小窩</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaLotus</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">8k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">28 分鐘</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
