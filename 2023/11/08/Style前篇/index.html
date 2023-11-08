@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Reflex可以使用css的功能設計定樣式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Style前篇">
+<meta property="og:url" content="https://xialotus.github.io/2023/11/08/Style%E5%89%8D%E7%AF%87/index.html">
+<meta property="og:site_name" content="xia的小窩">
+<meta property="og:description" content="Reflex可以使用css的功能設計定樣式。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://xialotus.github.io/2023/11/08/Style%E5%89%8D%E7%AF%87/image.png">
+<meta property="og:image" content="https://xialotus.github.io/2023/11/08/Style%E5%89%8D%E7%AF%87/image-1.png">
+<meta property="og:image" content="https://xialotus.github.io/2023/11/08/Style%E5%89%8D%E7%AF%87/image-2.png">
+<meta property="article:published_time" content="2023-11-08T12:45:17.000Z">
+<meta property="article:modified_time" content="2023-11-08T13:57:28.879Z">
+<meta property="article:author" content="xiaLotus">
+<meta property="article:tag" content="Reflex">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xialotus.github.io/2023/11/08/Style%E5%89%8D%E7%AF%87/image.png">
+
+<link rel="canonical" href="https://xialotus.github.io/2023/11/08/Style%E5%89%8D%E7%AF%87/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Style前篇 | xia的小窩</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xia的小窩</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一起來coding和碼字吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/08/Style%E5%89%8D%E7%AF%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+      <meta itemprop="name" content="xiaLotus">
+      <meta itemprop="description" content="xia的小窩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xia的小窩">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Style前篇
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-11-08 20:45:17 / 修改時間：21:57:28" itemprop="dateCreated datePublished" datetime="2023-11-08T20:45:17+08:00">2023-11-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/2023iT%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023iT鐵人賽</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>807</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>3 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Reflex可以使用css的功能設計定樣式。</p>
+<span id="more"></span>
+<ol>
+<li>內嵌：用於單一元件實例樣式。</li>
+<li>組件：用於特定類型。</li>
+<li>全域：套用所有元素。</li>
+</ol>
+<p>為了與python的標準保持一致，可以使用snake_case(蛇形命名法)。</p>
+<h3 id="全域版本"><a href="#全域版本" class="headerlink" title="全域版本"></a>全域版本</h3><p>先寫一個範例。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SytleState</span>(rx.State):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.center(</span><br><span class="line">        rx.heading(</span><br><span class="line">            <span class="string">&#x27;早安啊&#x27;</span></span><br><span class="line">        )</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<p>接下來更改app的地方</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># def index(): </span></span><br><span class="line"><span class="comment">#     ...</span></span><br><span class="line"></span><br><span class="line">style = &#123;</span><br><span class="line">    <span class="string">&#x27;font_family&#x27;</span>: <span class="string">&#x27;Comic Sans MS&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;font_size&#x27;</span>: <span class="string">&#x27;16px&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app = rx.App(style = style)</span><br><span class="line"><span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
+
+<p>這是global寫法，使用字典的形式把基本樣式套用到所有的元件內，這樣的好處是不用對每個元件進行設定。</p>
+<h3 id="元件樣式"><a href="#元件樣式" class="headerlink" title="元件樣式"></a>元件樣式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.center(</span><br><span class="line">        rx.heading(</span><br><span class="line">            <span class="string">&#x27;早安啊&#x27;</span></span><br><span class="line">        ),</span><br><span class="line">        rx.text(</span><br><span class="line">            <span class="string">&#x27;我是文字&#x27;</span></span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">style = &#123;</span><br><span class="line">    rx.Heading: &#123;</span><br><span class="line">        <span class="string">&#x27;font_weight&#x27;</span>: <span class="string">&#x27;500&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    rx.Text: &#123;</span><br><span class="line">        <span class="string">&#x27;color&#x27;</span>: <span class="string">&#x27;green.500&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>結果圖如下</p>
+<img src="/2023/11/08/Style%E5%89%8D%E7%AF%87/image.png" class="" title="圖片">
+
+<p>在這個寫法裡一樣可以寫出相同的結果，不過不同的是指定。</p>
+<ol>
+<li>要注意的是寫的時候不是小寫而是大寫，我們要把類別指定成鍵，而不是建構子。</li>
+<li>注意類別名稱和ID中的底線，reflex會自動將底線轉為格式，如果說嫌麻煩的話，那就另外拉出一個css檔寫。</li>
+</ol>
+<h3 id="內嵌"><a href="#內嵌" class="headerlink" title="內嵌"></a>內嵌</h3><p>我們保留上面的<code>style</code>，更改一下內容。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.center(</span><br><span class="line">        rx.heading(</span><br><span class="line">            <span class="string">&#x27;早安啊&#x27;</span></span><br><span class="line">        ),</span><br><span class="line">        rx.text(</span><br><span class="line">            <span class="string">&#x27;我是文字&#x27;</span>,</span><br><span class="line">            <span class="comment"># 透明度</span></span><br><span class="line">            background_image = <span class="string">&#x27;linear-gradient(135deg, orange 60%, cyan)&#x27;</span>,</span><br><span class="line">            background_clip = <span class="string">&#x27;text&#x27;</span>,</span><br><span class="line">            font_weight = <span class="string">&quot;bold&quot;</span>,</span><br><span class="line">            font_size = <span class="string">&quot;2em&quot;</span>,</span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">sytel = &#123;</span><br><span class="line">    <span class="comment"># ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候會發現上面的<code>heading</code>會照著style的樣式進行處理，而底下的<code>text</code>則是依照底下寫的style來制定文字樣式。<br>子元件會覆蓋掉底下的style(global)。<br>如下圖。</p>
+<img src="/2023/11/08/Style%E5%89%8D%E7%AF%87/image-1.png" class="" title="圖片">
+<h3 id="Tailwind"><a href="#Tailwind" class="headerlink" title="Tailwind"></a>Tailwind</h3><p>reflex也支援 <a target="_blank" rel="noopener" href="https://tailwindcss.com/docs/installation/play-cdn">Tailwind CSS</a>，不過要啟用它之前，要先更改一下<code>rxcongig.py</code>的參數</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> reflex <span class="keyword">as</span> rx</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyreflexappConfig</span>(rx.Config):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">config = MyreflexappConfig(</span><br><span class="line">    app_name=<span class="string">&quot;my_reflex_app&quot;</span>,</span><br><span class="line">    env = rx.Env.DEV,</span><br><span class="line">    tailwind = &#123;&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>一樣支援tailwind配置選項，插件和預設自動包含在<code>require()</code>內部。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">config = MyreflexappConfig(</span><br><span class="line">    app_name=<span class="string">&quot;my_reflex_app&quot;</span>,</span><br><span class="line">    env = rx.Env.DEV,</span><br><span class="line">    tailwind = &#123;</span><br><span class="line">        <span class="string">&quot;theme&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;extend&quot;</span>: &#123;&#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">&quot;plugins&quot;</span>: [<span class="string">&quot;@tailwindcss/typography&quot;</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="停用tailwind-css"><a href="#停用tailwind-css" class="headerlink" title="停用tailwind css"></a>停用tailwind css</h3><p>可以使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config = rx.Config(app_name = <span class="string">&quot;app&quot;</span>, tailwind = <span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="特殊款式"><a href="#特殊款式" class="headerlink" title="特殊款式"></a>特殊款式</h3><p>支援所有 Chakra UI 的偽樣式，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.center(</span><br><span class="line">        rx.box(</span><br><span class="line">            rx.text(</span><br><span class="line">                <span class="string">&quot;Hover Me&quot;</span>, </span><br><span class="line">                _hover = &#123;</span><br><span class="line">                    <span class="string">&quot;color&quot;</span>: <span class="string">&quot;green&quot;</span></span><br><span class="line">                &#125;</span><br><span class="line">            ),</span><br><span class="line">        )</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<p>滑鼠滑過去就會顯示綠色。</p>
+<h3 id="內嵌也可以使用style"><a href="#內嵌也可以使用style" class="headerlink" title="內嵌也可以使用style"></a>內嵌也可以使用style</h3><p>一個style可以共用，比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">style = &#123;</span><br><span class="line">    <span class="string">&#x27;font_family&#x27;</span>: <span class="string">&#x27;Comic Sans MS&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;font_size&#x27;</span>: <span class="string">&#x27;16px&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;color&#x27;</span>: <span class="string">&#x27;green.500&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SytleState</span>(rx.State):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.center(</span><br><span class="line">        rx.text(<span class="string">&#x27;1&#x27;</span>, style = style),</span><br><span class="line">        rx.text(<span class="string">&#x27;500&#x27;</span>, style = style)</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<p>這邊一樣依照style的方式去帶入text裡面轉換。<br>也可以使用多個字典組合起來…那就先拆分吧。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">style = &#123;</span><br><span class="line">    <span class="string">&#x27;font_family&#x27;</span>: <span class="string">&#x27;Comic Sans MS&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;font_size&#x27;</span>: <span class="string">&#x27;16px&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">style1 = &#123;</span><br><span class="line">    <span class="string">&#x27;color&#x27;</span>: <span class="string">&#x27;green.500&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># class </span></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.center(</span><br><span class="line">        rx.text(<span class="string">&#x27;1&#x27;</span>, style = style),</span><br><span class="line">        rx.text(<span class="string">&#x27;500&#x27;</span>, style = [style, style1])</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<p>可以依照結果知道第二個text才會變色，再來要注意第二點，後面定義的樣式會覆蓋掉前面設定的樣式。</p>
+<hr>
+<p>我這邊tailwind css 不知道為甚麼不能用，我就先拿官網的範例上來貼了，我找人問問看，如果我這邊有結果就再補上來…</p>
+<hr>
+<p>找到問題了，這是reflex的bug，tailwind css 在0.2.8版本之後可用，如果你的reflex 是在0.2.8版本之前的，請使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry remove reflex</span><br></pre></td></tr></table></figure>
+<p>接著</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add reflex</span><br></pre></td></tr></table></figure>
+<p>最後初始化一次</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reflex init</span><br></pre></td></tr></table></figure>
+
+<p>運行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reflex run --loglevel debug</span><br></pre></td></tr></table></figure>
+
+<p>就可以看見上面的範例圖囉。</p>
+<img src="/2023/11/08/Style%E5%89%8D%E7%AF%87/image-2.png" class="" title="圖片">
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Reflex/" rel="tag"># Reflex</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/08/%E4%BA%8B%E4%BB%B6%E8%A7%B8%E7%99%BC%E3%80%81%E7%8B%80%E6%85%8B/" rel="prev" title="事件觸發、狀態">
+      <i class="fa fa-chevron-left"></i> 事件觸發、狀態
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/08/Style%E5%BE%8C%E7%AF%87/" rel="next" title="Style後篇">
+      Style後篇 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%9F%9F%E7%89%88%E6%9C%AC"><span class="nav-number">1.</span> <span class="nav-text">全域版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E4%BB%B6%E6%A8%A3%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">元件樣式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A7%E5%B5%8C"><span class="nav-number">3.</span> <span class="nav-text">內嵌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tailwind"><span class="nav-number">4.</span> <span class="nav-text">Tailwind</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%9C%E7%94%A8tailwind-css"><span class="nav-number">5.</span> <span class="nav-text">停用tailwind css</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E6%AC%BE%E5%BC%8F"><span class="nav-number">6.</span> <span class="nav-text">特殊款式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A7%E5%B5%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8style"><span class="nav-number">7.</span> <span class="nav-text">內嵌也可以使用style</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaLotus"
+      src="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xiaLotus</p>
+  <div class="site-description" itemprop="description">xia的小窩</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaLotus</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">33k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">2:01</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

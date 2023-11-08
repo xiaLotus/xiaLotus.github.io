@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="響應式reflex應用程式反應迅速，在各項產品中看起來都不錯。可以將值傳遞給任何樣式屬性，指定在不同螢幕尺寸的值。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Style後篇">
+<meta property="og:url" content="https://xialotus.github.io/2023/11/08/Style%E5%BE%8C%E7%AF%87/index.html">
+<meta property="og:site_name" content="xia的小窩">
+<meta property="og:description" content="響應式reflex應用程式反應迅速，在各項產品中看起來都不錯。可以將值傳遞給任何樣式屬性，指定在不同螢幕尺寸的值。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://xialotus.github.io/2023/11/08/Style%E5%BE%8C%E7%AF%87/image.png">
+<meta property="og:image" content="https://xialotus.github.io/2023/11/08/Style%E5%BE%8C%E7%AF%87/image-1.png">
+<meta property="og:image" content="https://xialotus.github.io/2023/11/08/Style%E5%BE%8C%E7%AF%87/image-2.png">
+<meta property="article:published_time" content="2023-11-08T12:46:24.913Z">
+<meta property="article:modified_time" content="2023-11-08T13:58:17.311Z">
+<meta property="article:author" content="xiaLotus">
+<meta property="article:tag" content="Reflex">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xialotus.github.io/2023/11/08/Style%E5%BE%8C%E7%AF%87/image.png">
+
+<link rel="canonical" href="https://xialotus.github.io/2023/11/08/Style%E5%BE%8C%E7%AF%87/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Style後篇 | xia的小窩</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xia的小窩</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一起來coding和碼字吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/08/Style%E5%BE%8C%E7%AF%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+      <meta itemprop="name" content="xiaLotus">
+      <meta itemprop="description" content="xia的小窩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xia的小窩">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Style後篇
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-11-08 20:46:24 / 修改時間：21:58:17" itemprop="dateCreated datePublished" datetime="2023-11-08T20:46:24+08:00">2023-11-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/2023iT%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023iT鐵人賽</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>626</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>2 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="響應式"><a href="#響應式" class="headerlink" title="響應式"></a>響應式</h3><p>reflex應用程式反應迅速，在各項產品中看起來都不錯。<br>可以將值傳遞給任何樣式屬性，指定在不同螢幕尺寸的值。</p>
+<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.text(</span><br><span class="line">    <span class="string">&quot;我會變色喔&quot;</span>,</span><br><span class="line">    color = [<span class="string">&quot;orange&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;purple&quot;</span>, <span class="string">&quot;blue&quot;</span>, <span class="string">&quot;green&quot;</span>],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>當頁面是螢幕的一半時會是紫色，全螢幕時會是綠色。<br>可以自己試試看。</p>
+<h3 id="根據螢幕顯示不同的組件。"><a href="#根據螢幕顯示不同的組件。" class="headerlink" title="根據螢幕顯示不同的組件。"></a>根據螢幕顯示不同的組件。</h3><p>reflex有提供這種組件。<br>這邊就照官網的貼過來囉。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.vstack(</span><br><span class="line">        rx.desktop_only(</span><br><span class="line">            rx.text(<span class="string">&quot;Desktop View&quot;</span>),</span><br><span class="line">        ),</span><br><span class="line">        rx.tablet_only(</span><br><span class="line">            rx.text(<span class="string">&quot;Tablet View&quot;</span>),</span><br><span class="line">        ),</span><br><span class="line">        rx.mobile_only(</span><br><span class="line">            rx.text(<span class="string">&quot;Mobile View&quot;</span>),</span><br><span class="line">        ),</span><br><span class="line">        rx.mobile_and_tablet(</span><br><span class="line">            rx.text(<span class="string">&quot;Visible on Mobile and Tablet&quot;</span>),</span><br><span class="line">        ),</span><br><span class="line">        rx.tablet_and_desktop(</span><br><span class="line">            rx.text(<span class="string">&quot;Visible on Desktop and Tablet&quot;</span>),</span><br><span class="line">        ),</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<p>用筆電或是家用電腦的應該是只看的到3行。</p>
+<h3 id="指定顯示斷點。"><a href="#指定顯示斷點。" class="headerlink" title="指定顯示斷點。"></a>指定顯示斷點。</h3><p>style屬性指定用於響應式元件的斷點display。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.vstack(</span><br><span class="line">        rx.text(</span><br><span class="line">            <span class="string">&quot;Hello World&quot;</span>,</span><br><span class="line">            color=<span class="string">&quot;green&quot;</span>,</span><br><span class="line">            display=[<span class="string">&quot;none&quot;</span>, <span class="string">&quot;none&quot;</span>, <span class="string">&quot;none&quot;</span>, <span class="string">&quot;none&quot;</span>, <span class="string">&quot;flex&quot;</span>],</span><br><span class="line">        ),</span><br><span class="line">        rx.text(</span><br><span class="line">            <span class="string">&quot;Hello World&quot;</span>,</span><br><span class="line">            color=<span class="string">&quot;blue&quot;</span>,</span><br><span class="line">            display=[<span class="string">&quot;none&quot;</span>, <span class="string">&quot;none&quot;</span>, <span class="string">&quot;none&quot;</span>, <span class="string">&quot;flex&quot;</span>, <span class="string">&quot;flex&quot;</span>],</span><br><span class="line">        ),</span><br><span class="line">        rx.text(</span><br><span class="line">            <span class="string">&quot;Hello World&quot;</span>,</span><br><span class="line">            color=<span class="string">&quot;red&quot;</span>,</span><br><span class="line">            display=[<span class="string">&quot;none&quot;</span>, <span class="string">&quot;none&quot;</span>, <span class="string">&quot;flex&quot;</span>, <span class="string">&quot;flex&quot;</span>, <span class="string">&quot;flex&quot;</span>],</span><br><span class="line">        ),</span><br><span class="line">        rx.text(</span><br><span class="line">            <span class="string">&quot;Hello World&quot;</span>,</span><br><span class="line">            color=<span class="string">&quot;orange&quot;</span>,</span><br><span class="line">            display=[<span class="string">&quot;none&quot;</span>, <span class="string">&quot;flex&quot;</span>, <span class="string">&quot;flex&quot;</span>, <span class="string">&quot;flex&quot;</span>, <span class="string">&quot;flex&quot;</span>],</span><br><span class="line">        ),</span><br><span class="line">        rx.text(</span><br><span class="line">            <span class="string">&quot;Hello World&quot;</span>,</span><br><span class="line">            color=<span class="string">&quot;yellow&quot;</span>,</span><br><span class="line">            display=[<span class="string">&quot;flex&quot;</span>, <span class="string">&quot;flex&quot;</span>, <span class="string">&quot;flex&quot;</span>, <span class="string">&quot;flex&quot;</span>, <span class="string">&quot;flex&quot;</span>],</span><br><span class="line">        ),</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<p>這邊一樣是官網的範例，如果要看完全部，記得將頁面放大到全螢幕！</p>
+<h3 id="自訂css"><a href="#自訂css" class="headerlink" title="自訂css"></a>自訂css</h3><p>昨天有說過自訂，那現在我們來看一下css的部分。</p>
+<h4 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app = rx.App(</span><br><span class="line">    stylesheets=[</span><br><span class="line">        <span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css&quot;</span>,</span><br><span class="line">    ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="本地端"><a href="#本地端" class="headerlink" title="本地端"></a>本地端</h4><p>直接拿官網的搞吧。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app = rx.App(</span><br><span class="line">    stylesheets=[</span><br><span class="line">        <span class="string">&quot;styles.css&quot;</span>,  <span class="comment"># This path is relative to assets/</span></span><br><span class="line">    ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>放在資料夾如下</p>
+<img src="/2023/11/08/Style%E5%BE%8C%E7%AF%87/image.png" class="" title="圖片">
+
+<p>可我現在有點不明白的是如果我按照css的規範寫…好吧，我再改成</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">assets/styles.css </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">text &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: Comic Sans MS;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>這樣結果依然不變，這時候打開F12…</p>
+<img src="/2023/11/08/Style%E5%BE%8C%E7%AF%87/image-1.png" class="" title="圖片">
+
+<p>這裡寫的是<code>p</code>，那就改成<code>p</code>吧。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">assets/styles.css </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: Comic Sans MS;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>總覺得繞了大彎，改成<code>p</code>就可以出現結果了。<br>在使用上來說個人會不太建議使用額外拉出的css，你寫在同個檔案看還比較方便，不過還是得看個人啦。</p>
+<p>結果圖如下</p>
+<img src="/2023/11/08/Style%E5%BE%8C%E7%AF%87/image-2.png" class="" title="圖片">
+
+<h3 id="字體"><a href="#字體" class="headerlink" title="字體"></a>字體</h3><p>使用伺服器上託管的字體…</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">assets/YourCss.css // assets/fonts/YourCss.css</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: MyFont;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&quot;MyFont.otf&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;opentype&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: MyFont;</span><br><span class="line">    <span class="attribute">font-weight</span>: bold;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&quot;MyFont.otf&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;opentype&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這時候要在原始py檔內加上…</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app = rx.App(</span><br><span class="line">    stylesheets = [</span><br><span class="line">        <span class="string">&quot;styles.css&quot;</span>,</span><br><span class="line">        <span class="string">&quot;fonts/myfont.css&quot;</span>,</span><br><span class="line">    ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="主題"><a href="#主題" class="headerlink" title="主題"></a>主題</h3><p>有提供深色模式的按鈕~</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.center(</span><br><span class="line">        rx.button(</span><br><span class="line">            rx.icon(tag = <span class="string">&quot;moon&quot;</span>),</span><br><span class="line">            on_click = rx.toggle_color_mode,</span><br><span class="line">        )</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<p>自訂的顏色不會被深色模式切換覆蓋！</p>
+<hr>
+<p>剩下兩天，加油加油…只希望別碰上bug</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Reflex/" rel="tag"># Reflex</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/08/Style%E5%89%8D%E7%AF%87/" rel="prev" title="Style前篇">
+      <i class="fa fa-chevron-left"></i> Style前篇
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/08/%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E5%BA%AB/" rel="next" title="基本資料庫">
+      基本資料庫 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9F%BF%E6%87%89%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">響應式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E6%93%9A%E8%9E%A2%E5%B9%95%E9%A1%AF%E7%A4%BA%E4%B8%8D%E5%90%8C%E7%9A%84%E7%B5%84%E4%BB%B6%E3%80%82"><span class="nav-number">2.</span> <span class="nav-text">根據螢幕顯示不同的組件。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E9%A1%AF%E7%A4%BA%E6%96%B7%E9%BB%9E%E3%80%82"><span class="nav-number">3.</span> <span class="nav-text">指定顯示斷點。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E8%A8%82css"><span class="nav-number">4.</span> <span class="nav-text">自訂css</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#URL"><span class="nav-number">4.1.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E7%AB%AF"><span class="nav-number">4.2.</span> <span class="nav-text">本地端</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E9%AB%94"><span class="nav-number">5.</span> <span class="nav-text">字體</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E9%A1%8C"><span class="nav-number">6.</span> <span class="nav-text">主題</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaLotus"
+      src="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xiaLotus</p>
+  <div class="site-description" itemprop="description">xia的小窩</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaLotus</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">33k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">2:01</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="部署(？)我們這次就用 Vercel 進行部署吧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部署不成以及感言">
+<meta property="og:url" content="https://xialotus.github.io/2023/11/08/%E9%83%A8%E7%BD%B2%E4%B8%8D%E6%88%90%E4%BB%A5%E5%8F%8A%E6%84%9F%E8%A8%80/index.html">
+<meta property="og:site_name" content="xia的小窩">
+<meta property="og:description" content="部署(？)我們這次就用 Vercel 進行部署吧。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://xialotus.github.io/2023/11/08/%E9%83%A8%E7%BD%B2%E4%B8%8D%E6%88%90%E4%BB%A5%E5%8F%8A%E6%84%9F%E8%A8%80/image.png">
+<meta property="og:image" content="https://xialotus.github.io/2023/11/08/%E9%83%A8%E7%BD%B2%E4%B8%8D%E6%88%90%E4%BB%A5%E5%8F%8A%E6%84%9F%E8%A8%80/image-1.png">
+<meta property="og:image" content="https://xialotus.github.io/2023/11/08/%E9%83%A8%E7%BD%B2%E4%B8%8D%E6%88%90%E4%BB%A5%E5%8F%8A%E6%84%9F%E8%A8%80/image-2.png">
+<meta property="article:published_time" content="2023-11-08T12:48:16.000Z">
+<meta property="article:modified_time" content="2023-11-08T14:01:55.940Z">
+<meta property="article:author" content="xiaLotus">
+<meta property="article:tag" content="Reflex">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xialotus.github.io/2023/11/08/%E9%83%A8%E7%BD%B2%E4%B8%8D%E6%88%90%E4%BB%A5%E5%8F%8A%E6%84%9F%E8%A8%80/image.png">
+
+<link rel="canonical" href="https://xialotus.github.io/2023/11/08/%E9%83%A8%E7%BD%B2%E4%B8%8D%E6%88%90%E4%BB%A5%E5%8F%8A%E6%84%9F%E8%A8%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>部署不成以及感言 | xia的小窩</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xia的小窩</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一起來coding和碼字吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/08/%E9%83%A8%E7%BD%B2%E4%B8%8D%E6%88%90%E4%BB%A5%E5%8F%8A%E6%84%9F%E8%A8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+      <meta itemprop="name" content="xiaLotus">
+      <meta itemprop="description" content="xia的小窩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xia的小窩">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          部署不成以及感言
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-11-08 20:48:16 / 修改時間：22:01:55" itemprop="dateCreated datePublished" datetime="2023-11-08T20:48:16+08:00">2023-11-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/2023iT%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023iT鐵人賽</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>664</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>2 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="部署-？"><a href="#部署-？" class="headerlink" title="部署(？)"></a>部署(？)</h3><p>我們這次就用 <a target="_blank" rel="noopener" href="https://vercel.com/">Vercel</a> 進行部署吧。</p>
+<span id="more"></span>
+<h4 id="why-Vercel"><a href="#why-Vercel" class="headerlink" title="why Vercel?"></a>why Vercel?</h4><p>因為不想用github pages，況且 Vercel 還有和 github 連動。<br>對於免費仔來說，Vercle 絕對是夠用的，網站pr是單獨部署的，速度也快，有免費的serverless。</p>
+<p>缺點就是…沒辦法用<a target="_blank" rel="noopener" href="https://vercel.com/guides/is-sqlite-supported-in-vercel"><code>SQLite</code></a>，自己在測試的時候一直說找不到後端，這才找了下資料。</p>
+<p>相對的，可以使用<a target="_blank" rel="noopener" href="https://vercel.com/storage/postgres">Vercel Postgres</a>，這是一個基於 PostgreSQL 建構的無伺服器、完全託管的關聯式資料庫，旨在與任何前端框架配合使用。</p>
+<p>今天沒有要用到這麼高級的東西，我們只要可以部署，確定網站可以上線，那之後怎麼改都可以對吧？</p>
+<p>不過….有點問題啊，我是自己有開一個 <a target="_blank" rel="noopener" href="https://github.com/xiaLotus/sample_reflex_website/tree/main/my_app_name">repo</a></p>
+<p>使用<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=5RiNm3Ucea0&list=PLDHA4931gtc7wHBDGQOYlmcpZm7qyici7&index=18&ab_channel=LineIndent">YouTube</a>的這個教學，後端的部分一直卡在</p>
+<img src="/2023/11/08/%E9%83%A8%E7%BD%B2%E4%B8%8D%E6%88%90%E4%BB%A5%E5%8F%8A%E6%84%9F%E8%A8%80/image.png" class="" title="圖片">
+
+<p>於是我又找了個<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=JzbxtiZQvDg&ab_channel=CodingJQ">nginx</a>的教學，很遺憾的是我這邊就算弄了開起來是…</p>
+<img src="/2023/11/08/%E9%83%A8%E7%BD%B2%E4%B8%8D%E6%88%90%E4%BB%A5%E5%8F%8A%E6%84%9F%E8%A8%80/image-1.png" class="" title="圖片">
+<p>於是，我打算先去看看別人怎麼處理這個，貌似都是用docker或是其他人自己的網域，目前問到的是可能要等到下個版本…</p>
+<p>docker的部分我還沒研究，可就目前的時間來說有點來不及…怕是一研究，預計要做好的事情都不用做了，先這樣吧。</p>
+<p>官網有給出<a target="_blank" rel="noopener" href="https://reflex.dev/docs/hosting/self-hosting/">docker</a>的寫法</p>
+<img src="/2023/11/08/%E9%83%A8%E7%BD%B2%E4%B8%8D%E6%88%90%E4%BB%A5%E5%8F%8A%E6%84%9F%E8%A8%80/image-2.png" class="" title="圖片">
+<p>我的vercel的話…<a target="_blank" rel="noopener" href="https://xia-sample-reflex-website-r7xmltzwq-xias-projects.vercel.app/">點我</a></p>
+<p>這個問題解決的話我會整理好並放在留言區，先這樣…吧。</p>
+<h3 id="感言"><a href="#感言" class="headerlink" title="感言"></a>感言</h3><p>30天就這麼過了，感覺兩頭燒，不過慶幸的是至少每天還有幾個小時花在學習上面，否則真的感覺會腦子像是一坨拉庫…說到底，雖說有完賽，可就是差在最後一天，但相比於上一次參加鐵人賽又感覺好多了。</p>
+<p>學得越多遇到的問題果然越多…還是從就近的問題開始處理吧，比如docker部署之類的，努力吧。</p>
+<h4 id="感謝"><a href="#感謝" class="headerlink" title="感謝"></a>感謝</h4><p>感謝<code>discord</code>群組的大大們支援…十分感謝<br>還有感謝願意閱讀我的文章的讀者，願意花時間一起學習新的框架。<br>最後感謝我自己沒有忘記要連續發文30天，上次就是有是睡覺睡過頭…忘記發文…哈。</p>
+<h4 id="期許"><a href="#期許" class="headerlink" title="期許"></a>期許</h4><p>最後謝謝大家的閱讀，儘管最後差了點……如果可以的話我弄好會放在底下留言區，希望未來可以更進步吧。<br>大概，就這樣…希望明年再見。</p>
+<p>這裡放製文章md檔<br><a target="_blank" rel="noopener" href="https://github.com/xiaLotus/2023_It-home">https://github.com/xiaLotus/2023_It-home</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Reflex/" rel="tag"># Reflex</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/08/%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99%E5%BA%AB/" rel="prev" title="基本資料庫">
+      <i class="fa fa-chevron-left"></i> 基本資料庫
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2-%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">部署(？)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#why-Vercel"><span class="nav-number">1.1.</span> <span class="nav-text">why Vercel?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%84%9F%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">感言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%84%9F%E8%AC%9D"><span class="nav-number">2.1.</span> <span class="nav-text">感謝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%9F%E8%A8%B1"><span class="nav-number">2.2.</span> <span class="nav-text">期許</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaLotus"
+      src="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xiaLotus</p>
+  <div class="site-description" itemprop="description">xia的小窩</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaLotus</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">33k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">2:01</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="在官網有特別拉出一篇來說這個部分。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vars">
+<meta property="og:url" content="https://xialotus.github.io/2023/11/08/Vars/index.html">
+<meta property="og:site_name" content="xia的小窩">
+<meta property="og:description" content="在官網有特別拉出一篇來說這個部分。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://xialotus.github.io/2023/11/08/Vars/image.png">
+<meta property="og:image" content="https://xialotus.github.io/2023/11/08/Vars/image-1.png">
+<meta property="article:published_time" content="2023-11-08T12:44:00.000Z">
+<meta property="article:modified_time" content="2023-11-08T13:55:29.022Z">
+<meta property="article:author" content="xiaLotus">
+<meta property="article:tag" content="Reflex">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xialotus.github.io/2023/11/08/Vars/image.png">
+
+<link rel="canonical" href="https://xialotus.github.io/2023/11/08/Vars/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Vars | xia的小窩</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xia的小窩</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一起來coding和碼字吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/08/Vars/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+      <meta itemprop="name" content="xiaLotus">
+      <meta itemprop="description" content="xia的小窩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xia的小窩">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vars
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-11-08 20:44:00 / 修改時間：21:55:29" itemprop="dateCreated datePublished" datetime="2023-11-08T20:44:00+08:00">2023-11-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/2023iT%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2023iT鐵人賽</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>976</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>4 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在官網有特別拉出一篇來說這個部分。</p>
+<span id="more"></span>
+<h3 id="Vars"><a href="#Vars" class="headerlink" title="Vars"></a>Vars</h3><p>變數是在應用程式裡隨著時間變化的任何欄位。</p>
+<h4 id="基本變數"><a href="#基本變數" class="headerlink" title="基本變數"></a>基本變數</h4><p>我們定義一個<code>class</code>來設定一個預設值，這邊建議給它一個類別。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">VarState</span>(rx.State):</span><br><span class="line">    nums1: <span class="built_in">str</span> = <span class="string">&quot;100&quot;</span></span><br><span class="line">    nums2: <span class="built_in">str</span> = <span class="string">&#x27;200&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.button_group(</span><br><span class="line">        rx.button(</span><br><span class="line">            VarState.nums1,</span><br><span class="line">            color_scheme = <span class="string">&#x27;twitter&#x27;</span></span><br><span class="line">        ),</span><br><span class="line">        rx.button(</span><br><span class="line">            VarState.nums2,</span><br><span class="line">            color_scheme = <span class="string">&#x27;twitter&#x27;</span></span><br><span class="line">        ),</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<p>在這個範例裡面，<code>nums1</code>和<code>nums2</code>是基本變數，只可以在程式碼上進行修改。</p>
+<p>變數必須是json可序列化的，可以想成就是一般的json檔進去程式裡面運行，主要用於前後端的聯繫，官網有說必須要是python類型、plotly圖形、pandas資料框…等。</p>
+<p>不過基本上資料不外乎就是<code>txt</code>、<code>csv</code>、<code>json</code>…</p>
+<h4 id="計算變數"><a href="#計算變數" class="headerlink" title="計算變數"></a>計算變數</h4><p>計算變數是根據其他屬性計算的變數。它們透過裝飾器定義為 State 類別中的方法@rx.var。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">InputState</span>(rx.State):</span><br><span class="line">    text: <span class="built_in">str</span> = <span class="string">&quot;Type something...&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.vstack(</span><br><span class="line">        rx.text(InputState.text, color_scheme = <span class="string">&quot;green&quot;</span>),</span><br><span class="line">        rx.<span class="built_in">input</span>(</span><br><span class="line">            value = InputState.text,</span><br><span class="line">            on_change = InputState.set_text,</span><br><span class="line">        ),</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<p>上面這段程式碼是我們之前有用過的，現在進行修改如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">InputState</span>(rx.State):</span><br><span class="line">    text: <span class="built_in">str</span> = <span class="string">&quot;Type something...&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @rx.var</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">upper_text</span>(<span class="params">self</span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">        <span class="keyword">return</span> self.text.upper()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.vstack(</span><br><span class="line">        rx.text(InputState.text, color_scheme = <span class="string">&quot;green&quot;</span>),</span><br><span class="line">        rx.<span class="built_in">input</span>(</span><br><span class="line">            on_blur = InputState.set_text,</span><br><span class="line">            placeholder = <span class="string">&quot;從這裡輸入&quot;</span>,</span><br><span class="line">        ),</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<p>這邊的<code>upper_text</code>是一個計算變量，接收回傳的<code>text</code>。</p>
+<h4 id="Var-Operations"><a href="#Var-Operations" class="headerlink" title="Var Operations"></a>Var Operations</h4><p>如果你一開始定義的是<code>int</code>，輸出卻要是<code>float</code>就會出錯。<br>因為前端是<code>js</code>，值的部分如果設定在<code>class</code>裡的話必須要遵守規則。</p>
+<p>一般元件的基本操作如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">animals = [<span class="string">&#x27;cat&#x27;</span>, <span class="string">&#x27;dog&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">VarState</span>(rx.State):</span><br><span class="line">    selected: <span class="built_in">str</span> = <span class="string">&#x27;你是狗&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.center(</span><br><span class="line">        rx.vstack(</span><br><span class="line">            rx.heading(</span><br><span class="line">                <span class="string">&#x27;你是甚麼？&#x27;</span> + VarState.selected</span><br><span class="line">            ),</span><br><span class="line">            rx.select(</span><br><span class="line">                animals,</span><br><span class="line">                value = VarState.selected,</span><br><span class="line">                on_change = VarState.set_selected</span><br><span class="line">            )</span><br><span class="line">        )</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<p>示意圖如下</p>
+<img src="/2023/11/08/Vars/image.png" class="" title="圖片">
+
+
+<h4 id="後端變數"><a href="#後端變數" class="headerlink" title="後端變數"></a>後端變數</h4><p>後端變數僅儲存在後端，不會傳送到客戶端。它們的優點是不需要 JSON 可序列化。這意味著您只能在事件處理程序中使用它們，而不能在前端元件中使用它們。(來自官網)</p>
+<p>後端變數以<code>底線</code>為前綴。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BackendState</span>(rx.State):</span><br><span class="line">    text: <span class="built_in">str</span> = <span class="string">&quot;大家好啊&quot;</span></span><br><span class="line">    _backend: np.ndarray = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="meta">    @rx.var</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sum</span>(<span class="params">self</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">int</span>(self._backend.<span class="built_in">sum</span>())</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">click</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># Add the next number to the array.</span></span><br><span class="line">        self._backend = np.append(</span><br><span class="line">            self._backend, [<span class="built_in">len</span>(self._backend)]</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.center(</span><br><span class="line">        rx.vstack(</span><br><span class="line">            rx.text(<span class="string">f&quot;Sum: <span class="subst">&#123;BackendState.<span class="built_in">sum</span>&#125;</span>&quot;</span>),</span><br><span class="line">            rx.button(<span class="string">&quot;Click Me&quot;</span>, on_click = BackendState.click),</span><br><span class="line">        )</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<p><code>Reflex 依賴類型註解來決定編譯過程中狀態變數的類型。</code></p>
+<h4 id="底線？"><a href="#底線？" class="headerlink" title="底線？"></a>底線？</h4><p><code>_backend</code>的寫法代表內部使用，或是不建議使用，但還是可以取得這個值。</p>
+<p>不過，在<code>import</code>中會定義成私人的而無法載入喔。</p>
+<p>舉個例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span>:</span><br><span class="line">    _pri: <span class="built_in">int</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_private</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(_pri)</span><br><span class="line">        <span class="built_in">print</span>(private)</span><br></pre></td></tr></table></figure>
+<p>在python tutor 運行結果如下</p>
+<img src="/2023/11/08/Vars/image-1.png" class="" title="圖片">
+<p>看 function 的部分就很清楚了。</p>
+<p>如果還是覺得不夠清楚…那可以看看<a target="_blank" rel="noopener" href="https://lennychen.com/python-style-guide-pep8/">這裡</a></p>
+<h4 id="客戶儲存端。"><a href="#客戶儲存端。" class="headerlink" title="客戶儲存端。"></a>客戶儲存端。</h4><p>您可以使用瀏覽器的本機儲存空間來保留會話之間的狀態。這允許將使用者首選項、身份驗證 cookie 和其他資訊儲存在客戶端上並從不同的瀏覽器標籤存取。</p>
+<p>客戶端儲存變數的外觀和行為與普通變數類似，str只不過它根據值的儲存位置使用或進行註解。預設情況下，鍵名稱將與 var 名稱相同，但這可以被覆蓋。rx.Cookierx.LocalStorage</p>
+<p>嘗試在下面的文字方塊中輸入一些值，然後在單獨的標籤中載入頁面，或檢查瀏覽器開發工具的儲存部分以查看瀏覽器中儲存的值。(這邊是google直接翻譯官網上的)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClientStorageState</span>(rx.State):</span><br><span class="line">    my_cookie: rx.Cookie = <span class="string">&quot;&quot;</span></span><br><span class="line">    my_local_storage: rx.LocalStorage = <span class="string">&quot;&quot;</span></span><br><span class="line">    custom_cookie: rx.Cookie = rx.Cookie(</span><br><span class="line">        name=<span class="string">&quot;CustomNamedCookie&quot;</span>, max_age=<span class="number">3600</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.vstack(</span><br><span class="line">        rx.hstack(</span><br><span class="line">            rx.text(<span class="string">&quot;my_cookie&quot;</span>),</span><br><span class="line">            rx.<span class="built_in">input</span>(</span><br><span class="line">                value=ClientStorageState.my_cookie,</span><br><span class="line">                on_change=ClientStorageState.set_my_cookie,</span><br><span class="line">            ),</span><br><span class="line">        ),</span><br><span class="line">        rx.hstack(</span><br><span class="line">            rx.text(<span class="string">&quot;my_local_storage&quot;</span>),</span><br><span class="line">            rx.<span class="built_in">input</span>(</span><br><span class="line">                value=ClientStorageState.my_local_storage,</span><br><span class="line">                on_change=ClientStorageState.set_my_local_storage,</span><br><span class="line">            ),</span><br><span class="line">        ),</span><br><span class="line">        rx.hstack(</span><br><span class="line">            rx.text(<span class="string">&quot;custom_cookie&quot;</span>),</span><br><span class="line">            rx.<span class="built_in">input</span>(</span><br><span class="line">                value=ClientStorageState.custom_cookie,</span><br><span class="line">                on_change=ClientStorageState.set_custom_cookie,</span><br><span class="line">            ),</span><br><span class="line">        ),</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<p>這邊我還沒去研究，不過應該都是大同小異，就是儲存你的身分是否存在資料庫，如果是的話就通行這樣</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Reflex/" rel="tag"># Reflex</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/08/Assets%E5%92%8CState/" rel="prev" title="Assets和State">
+      <i class="fa fa-chevron-left"></i> Assets和State
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/08/%E4%BA%8B%E4%BB%B6%E8%A7%B8%E7%99%BC%E3%80%81%E7%8B%80%E6%85%8B/" rel="next" title="事件觸發、狀態">
+      事件觸發、狀態 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vars"><span class="nav-number">1.</span> <span class="nav-text">Vars</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AE%8A%E6%95%B8"><span class="nav-number">1.1.</span> <span class="nav-text">基本變數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A8%88%E7%AE%97%E8%AE%8A%E6%95%B8"><span class="nav-number">1.2.</span> <span class="nav-text">計算變數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Var-Operations"><span class="nav-number">1.3.</span> <span class="nav-text">Var Operations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%8C%E7%AB%AF%E8%AE%8A%E6%95%B8"><span class="nav-number">1.4.</span> <span class="nav-text">後端變數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%95%E7%B7%9A%EF%BC%9F"><span class="nav-number">1.5.</span> <span class="nav-text">底線？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%A2%E6%88%B6%E5%84%B2%E5%AD%98%E7%AB%AF%E3%80%82"><span class="nav-number">1.6.</span> <span class="nav-text">客戶儲存端。</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaLotus"
+      src="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xiaLotus</p>
+  <div class="site-description" itemprop="description">xia的小窩</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaLotus</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">33k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">2:01</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>-->
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
