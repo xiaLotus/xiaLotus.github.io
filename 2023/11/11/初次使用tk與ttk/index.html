@@ -22,20 +22,24 @@
     var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="統整先前的小缺漏">
+  <meta name="description" content="ttkbootstrap是tkinter的進化版，混合了bootstrap的版本。進而美觀。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python-Discord-bot，從0開始到做出一個機器人系列-27">
-<meta property="og:url" content="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-27/index.html">
+<meta property="og:title" content="初次使用tk與ttk">
+<meta property="og:url" content="https://xialotus.github.io/2023/11/11/%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8tk%E8%88%87ttk/index.html">
 <meta property="og:site_name" content="xia的小窩">
-<meta property="og:description" content="統整先前的小缺漏">
+<meta property="og:description" content="ttkbootstrap是tkinter的進化版，混合了bootstrap的版本。進而美觀。">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2023-11-08T07:59:45.000Z">
-<meta property="article:modified_time" content="2023-11-08T13:06:59.949Z">
+<meta property="og:image" content="https://i.imgur.com/JbiNlTT.png">
+<meta property="og:image" content="https://i.imgur.com/g0PDurj.png">
+<meta property="og:image" content="https://i.imgur.com/rUizrum.png">
+<meta property="article:published_time" content="2023-11-11T08:17:07.000Z">
+<meta property="article:modified_time" content="2023-11-11T08:22:04.195Z">
 <meta property="article:author" content="xiaLotus">
-<meta property="article:tag" content="discord.py">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/JbiNlTT.png">
 
-<link rel="canonical" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-27/">
+<link rel="canonical" href="https://xialotus.github.io/2023/11/11/%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8tk%E8%88%87ttk/">
 
 
 <script id="page-configurations">
@@ -48,7 +52,7 @@
   };
 </script>
 
-  <title>python-Discord-bot，從0開始到做出一個機器人系列-27 | xia的小窩</title>
+  <title>初次使用tk與ttk | xia的小窩</title>
   
 
 
@@ -172,7 +176,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-27/">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/11/%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8tk%E8%88%87ttk/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
@@ -185,7 +189,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          python-Discord-bot，從0開始到做出一個機器人系列-27
+          初次使用tk與ttk
         </h1>
 
         <div class="post-meta">
@@ -196,7 +200,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2023-11-08 15:59:45 / 修改時間：21:06:59" itemprop="dateCreated datePublished" datetime="2023-11-08T15:59:45+08:00">2023-11-08</time>
+              <time title="創建時間：2023-11-11 16:17:07 / 修改時間：16:22:04" itemprop="dateCreated datePublished" datetime="2023-11-11T16:17:07+08:00">2023-11-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -204,7 +208,7 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2021iT%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2021iT鐵人賽</span></a>
+                  <a href="/categories/thinker/" itemprop="url" rel="index"><span itemprop="name">thinker</span></a>
                 </span>
             </span>
 
@@ -221,7 +225,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>309</span>
+              <span>224</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -240,16 +244,37 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="統整先前的小缺漏"><a href="#統整先前的小缺漏" class="headerlink" title="統整先前的小缺漏"></a>統整先前的小缺漏</h2><span id="more"></span>
-
-<h3 id="補上缺漏和元素"><a href="#補上缺漏和元素" class="headerlink" title="補上缺漏和元素"></a>補上缺漏和元素</h3><ul>
-<li>games, economy之類的先補上<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@commands.command()</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">sms</span>(<span class="params">self, ctx</span>):</span><br><span class="line">    sms = discord.Embed(title = <span class="string">&quot;指令&quot;</span>, </span><br><span class="line">        description = <span class="string">&quot;忘記了嗎? 來看一下吧~~&quot;</span>, color = <span class="number">0x4599</span>)</span><br><span class="line">    sms.add_field(name = <span class="string">&quot;!ahoy&quot;</span>, value = <span class="string">&quot;Ahoy.gif&quot;</span>, inline = <span class="literal">True</span>)</span><br><span class="line">    sms.add_field(name = <span class="string">&quot;!clear&quot;</span>, value = <span class="string">&quot;用 !clear + 數字刪訊息&quot;</span>, inline = <span class="literal">True</span>)</span><br><span class="line">    sms.add_field(name = <span class="string">&quot;!sms&quot;</span>, value = <span class="string">&quot;等於 == !help&quot;</span>, inline = <span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># 補</span></span><br><span class="line">    sms.add_field(name = <span class="string">&quot;!games&quot;</span>, value = <span class="string">&quot;使用!games獲取更多訊息&quot;</span>, inline = <span class="literal">True</span>)</span><br><span class="line">    sms.add_field(name = <span class="string">&quot;!economy&quot;</span>, value = <span class="string">&quot;使用!economy獲取更多訊息&quot;</span>, inline = <span class="literal">True</span>)</span><br><span class="line">    sms.add_field(name = <span class="string">&quot;!plus&quot;</span>, value = <span class="string">&quot;訂單增加&quot;</span>, inline = <span class="literal">True</span>)</span><br><span class="line">    sms.set_thumbnail(url = <span class="string">&quot;https://www.formula-ai.com/wp-content/uploads/2020/09/python_or_java_meme.jpg&quot;</span>)</span><br><span class="line">    <span class="keyword">await</span> ctx.send(embed = sms) </span><br></pre></td></tr></table></figure></li>
-<li>補上各自的添加訊息 – games<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># games</span></span><br><span class="line"><span class="meta">@commands.command()</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">games</span>(<span class="params">self, ctx</span>):</span><br><span class="line">    sms = discord.Embed(title = <span class="string">&quot;games&quot;</span>, </span><br><span class="line">        description = <span class="string">&quot;playing games&quot;</span>, color = <span class="number">0x4599</span>)</span><br><span class="line">    sms.add_field(name = <span class="string">&quot;!guess&quot;</span>, value = <span class="string">&quot;玩終極密碼，賭注最高可下達至240&quot;</span>, inline = <span class="literal">True</span>)</span><br><span class="line">    sms.set_thumbnail(url = <span class="string">&quot;https://www.formula-ai.com/wp-content/uploads/2020/09/python_or_java_meme.jpg&quot;</span>)</span><br><span class="line">    <span class="keyword">await</span> ctx.send(embed = sms) </span><br></pre></td></tr></table></figure></li>
-<li>補上各自的添加訊息 – economy<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># economy</span></span><br><span class="line"><span class="meta">@commands.command()</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">economy</span>(<span class="params">self, ctx</span>):</span><br><span class="line">    sms = discord.Embed(title = <span class="string">&quot;economy&quot;</span>, </span><br><span class="line">        description = <span class="string">&quot;command統整&quot;</span>, color = <span class="number">0x4599</span>)</span><br><span class="line">    sms.add_field(name = <span class="string">&quot;!bag&quot;</span>, value = <span class="string">&quot;查看包包&quot;</span>, inline = <span class="literal">True</span>)</span><br><span class="line">    sms.add_field(name = <span class="string">&quot;!beg&quot;</span>, value = <span class="string">&quot;討錢&quot;</span>, inline = <span class="literal">True</span>)</span><br><span class="line">    sms.add_field(name = <span class="string">&quot;!buy&quot;</span>, value = <span class="string">&quot;買東西&quot;</span>, inline = <span class="literal">True</span>)</span><br><span class="line">    sms.add_field(name = <span class="string">&quot;!slots&quot;</span>, value = <span class="string">&quot;賭博&quot;</span>, inline = <span class="literal">True</span>)</span><br><span class="line">    sms.add_field(name = <span class="string">&quot;!money&quot;</span>, value = <span class="string">&quot;查看自己的戶頭&quot;</span>, inline = <span class="literal">True</span>)</span><br><span class="line">    sms.add_field(name = <span class="string">&quot;!market&quot;</span>, value = <span class="string">&quot;查看市場&quot;</span>, inline = <span class="literal">True</span>)</span><br><span class="line">    sms.set_thumbnail(url = <span class="string">&quot;https://www.formula-ai.com/wp-content/uploads/2020/09/python_or_java_meme.jpg&quot;</span>)</span><br><span class="line">    <span class="keyword">await</span> ctx.send(embed = sms) </span><br></pre></td></tr></table></figure></li>
+        <p>ttkbootstrap是tkinter的進化版，混合了bootstrap的版本。<br>進而美觀。</p>
+<span id="more"></span>
+<p>回到一開始的tk。</p>
+<h3 id="認識tkinter"><a href="#認識tkinter" class="headerlink" title="認識tkinter"></a>認識tkinter</h3><ul>
+<li>TK是開放原始碼的圖形介面的開發工具</li>
+<li>在安裝python時，就已經同時安裝好這個模組了</li>
 </ul>
-<h3 id="接下來……"><a href="#接下來……" class="headerlink" title="接下來……"></a>接下來……</h3><ul>
-<li>我們先使用MongoDB來取代Json……</li>
+<h3 id="建立視窗"><a href="#建立視窗" class="headerlink" title="建立視窗"></a>建立視窗</h3><ul>
+<li><p>使用下述方法建立起第一個視窗</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">root = Tk()</span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>這個叫做根視窗，結果如下圖<br><img src="https://i.imgur.com/JbiNlTT.png"></p>
+</li>
+<li><p>註:在GUI裡面，視窗(windows)也被稱做容器(container)</p>
+</li>
 </ul>
+<h3 id="視窗屬性的設定"><a href="#視窗屬性的設定" class="headerlink" title="視窗屬性的設定"></a>視窗屬性的設定</h3><ul>
+<li>設定視窗出現的位置、背景、高度等</li>
+<li>範例<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">root = Tk()</span><br><span class="line">root.title(<span class="string">&quot;python-tkinter&quot;</span>)   </span><br><span class="line"><span class="comment"># 標頭</span></span><br><span class="line">root.geometry(<span class="string">&quot;300x400&quot;</span>)</span><br><span class="line"><span class="comment"># 視窗大小</span></span><br><span class="line">root.configure(bg = <span class="string">&quot;green&quot;</span>)</span><br><span class="line"><span class="comment"># 背景</span></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure></li>
+<li>結果<br><img src="https://i.imgur.com/g0PDurj.png"></li>
+</ul>
+<h3 id="視窗位置的設定"><a href="#視窗位置的設定" class="headerlink" title="視窗位置的設定"></a>視窗位置的設定</h3><ul>
+<li><p>使用geometry()函數</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root.geometry(<span class="string">&quot;300x200+100+100&quot;</span>)</span><br><span class="line"><span class="comment"># 距離左邊100，距離頂部200</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>結果<br><img src="https://i.imgur.com/rUizrum.png"></p>
+</li>
+<li><p>也能使用別的方法</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">winfo_screenwidth()</span><br><span class="line">winfo_screenheight()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>ttk的部分主要是在美化，這個可以放在後面比對。</p>
 
     </div>
 
@@ -265,7 +290,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>文章連結：</strong>
-    <a href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-27/" title="python-Discord-bot，從0開始到做出一個機器人系列-27">https://xialotus.github.io/2023/11/08/python-Discord-bot，從0開始到做出一個機器人系列-27/</a>
+    <a href="https://xialotus.github.io/2023/11/11/%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8tk%E8%88%87ttk/" title="初次使用tk與ttk">https://xialotus.github.io/2023/11/11/初次使用tk與ttk/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-TW" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
@@ -276,7 +301,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/discord-py/" rel="tag"># discord.py</a>
+              <a href="/tags/python/" rel="tag"># python</a>
           </div>
 
         
@@ -285,13 +310,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-26/" rel="prev" title="python-Discord-bot，從0開始到做出一個機器人系列-26">
-      <i class="fa fa-chevron-left"></i> python-Discord-bot，從0開始到做出一個機器人系列-26
+    <a href="/2023/11/08/%E9%83%A8%E7%BD%B2%E4%B8%8D%E6%88%90%E4%BB%A5%E5%8F%8A%E6%84%9F%E8%A8%80/" rel="prev" title="部署不成以及感言">
+      <i class="fa fa-chevron-left"></i> 部署不成以及感言
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-28/" rel="next" title="python-Discord-bot，從0開始到做出一個機器人系列-28">
-      python-Discord-bot，從0開始到做出一個機器人系列-28 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -350,7 +372,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%B1%E6%95%B4%E5%85%88%E5%89%8D%E7%9A%84%E5%B0%8F%E7%BC%BA%E6%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">統整先前的小缺漏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A3%9C%E4%B8%8A%E7%BC%BA%E6%BC%8F%E5%92%8C%E5%85%83%E7%B4%A0"><span class="nav-number">1.1.</span> <span class="nav-text">補上缺漏和元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A5%E4%B8%8B%E4%BE%86%E2%80%A6%E2%80%A6"><span class="nav-number">1.2.</span> <span class="nav-text">接下來……</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AA%8D%E8%AD%98tkinter"><span class="nav-number">1.</span> <span class="nav-text">認識tkinter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E8%A6%96%E7%AA%97"><span class="nav-number">2.</span> <span class="nav-text">建立視窗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%96%E7%AA%97%E5%B1%AC%E6%80%A7%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.</span> <span class="nav-text">視窗屬性的設定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%96%E7%AA%97%E4%BD%8D%E7%BD%AE%E7%9A%84%E8%A8%AD%E5%AE%9A"><span class="nav-number">4.</span> <span class="nav-text">視窗位置的設定</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
