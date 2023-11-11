@@ -193,7 +193,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2023-11-11 16:23:42 / 修改時間：16:29:17" itemprop="dateCreated datePublished" datetime="2023-11-11T16:23:42+08:00">2023-11-11</time>
+              <time title="創建時間：2023-11-11 16:23:42 / 修改時間：16:30:04" itemprop="dateCreated datePublished" datetime="2023-11-11T16:23:42+08:00">2023-11-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -211,7 +211,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>774</span>
+              <span>775</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -232,103 +232,14 @@
       
           <h3 id="基本應用"><a href="#基本應用" class="headerlink" title="基本應用"></a>基本應用</h3><ul>
 <li><p>建立第一個標籤</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">root = Tk()</span><br><span class="line">root.title(<span class="string">&quot;python-tkinter&quot;</span>)</span><br><span class="line">root.geometry(<span class="string">&quot;500x300&quot;</span>)</span><br><span class="line">label = Label(root, text = <span class="string">&quot;男人的嘴，騙人的鬼&quot;</span>)</span><br><span class="line">label.pack()</span><br><span class="line"><span class="comment"># 包裝與定位</span></span><br><span class="line">root.configure(bg = <span class="string">&quot;green&quot;</span>)</span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>結果<br><img src="https://i.imgur.com/g92y0lt.png"></p>
-</li>
-</ul>
-<h3 id="Widget共通屬性-Color顏色"><a href="#Widget共通屬性-Color顏色" class="headerlink" title="Widget共通屬性 - Color顏色"></a>Widget共通屬性 - Color顏色</h3><ul>
-<li><p>將文字背景色調整，文字的部分也跟著調整</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label = Label(root, text = <span class="string">&quot;男人的嘴，騙人的鬼&quot;</span>, fg = <span class="string">&quot;blue&quot;</span>, bg = <span class="string">&quot;yellow&quot;</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>結果<br><img src="https://i.imgur.com/iKgNlYK.png"></p>
-</li>
-</ul>
-<h3 id="Widget共通屬性-Dimensions大小"><a href="#Widget共通屬性-Dimensions大小" class="headerlink" title="Widget共通屬性 - Dimensions大小"></a>Widget共通屬性 - Dimensions大小</h3><ul>
-<li><p>內部擴充</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">label = Label(root, text = <span class="string">&quot;男人的嘴，騙人的鬼&quot;</span>, fg = <span class="string">&quot;blue&quot;</span>, bg = <span class="string">&quot;yellow&quot;</span>, </span><br><span class="line">        height = <span class="number">5</span>, width = <span class="number">15</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>結果<br><img src="https://i.imgur.com/h1dM9YJ.png"></p>
-</li>
-</ul>
-<h3 id="Widget共通屬性-Anchor錨"><a href="#Widget共通屬性-Anchor錨" class="headerlink" title="Widget共通屬性 - Anchor錨"></a>Widget共通屬性 - Anchor錨</h3><ul>
-<li><p>上下左右對齊，使用(nw, n, ne)…..等</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">label = Label(root, text = <span class="string">&quot;男人的嘴，騙人的鬼&quot;</span>, fg = <span class="string">&quot;blue&quot;</span>, bg = <span class="string">&quot;yellow&quot;</span>, </span><br><span class="line">              height = <span class="number">5</span>, width = <span class="number">15</span>, anchor = <span class="string">&quot;s&quot;</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>結果<br><img src="https://i.imgur.com/qHQJQ3g.png"></p>
-</li>
-</ul>
-<h3 id="Label文字輸出換行-–-wraplength"><a href="#Label文字輸出換行-–-wraplength" class="headerlink" title="Label文字輸出換行 – wraplength"></a>Label文字輸出換行 – wraplength</h3><ul>
-<li><p>在40像素後自動換行</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">label = Label(root, text = <span class="string">&quot;男人的嘴，騙人的鬼&quot;</span>, fg = <span class="string">&quot;blue&quot;</span>, bg = <span class="string">&quot;yellow&quot;</span>, </span><br><span class="line">              height = <span class="number">5</span>, width = <span class="number">15</span>, anchor = <span class="string">&quot;s&quot;</span>,</span><br><span class="line">              wraplength = <span class="number">40</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>結果<br><img src="https://i.imgur.com/7Ni5DyM.png"></p>
-</li>
-</ul>
-<h3 id="Widget共通屬性-–-Font字型"><a href="#Widget共通屬性-–-Font字型" class="headerlink" title="Widget共通屬性 – Font字型"></a>Widget共通屬性 – Font字型</h3><ul>
-<li>調整字體大小，字型等…….<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">label = Label(root, text = <span class="string">&quot;男人的嘴，騙人的鬼&quot;</span>, fg = <span class="string">&quot;blue&quot;</span>, bg = <span class="string">&quot;yellow&quot;</span>, </span><br><span class="line">              height = <span class="number">5</span>, width = <span class="number">15</span>, anchor = <span class="string">&quot;s&quot;</span>,</span><br><span class="line">              font = <span class="string">&quot;Helvetica 20 bold&quot;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>結果<br><img src="https://i.imgur.com/P9HIkFu.png"></li>
-</ul>
-<h3 id="Label的justify參數"><a href="#Label的justify參數" class="headerlink" title="Label的justify參數"></a>Label的justify參數</h3><ul>
-<li><p>靠左靠右置中</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 靠左</span></span><br><span class="line">label = Label(root, text = <span class="string">&quot;abcdefghijklmnop&quot;</span>, fg = <span class="string">&quot;blue&quot;</span>, bg = <span class="string">&quot;yellow&quot;</span>, </span><br><span class="line">              wraplength = <span class="number">80</span>,</span><br><span class="line">              justify = <span class="string">&quot;left&quot;</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>結果<br><img src="https://i.imgur.com/OlhQBy2.png"></p>
-</li>
-</ul>
-<h3 id="Widget共通屬性-–-Bitmaps"><a href="#Widget共通屬性-–-Bitmaps" class="headerlink" title="Widget共通屬性 – Bitmaps"></a>Widget共通屬性 – Bitmaps</h3><ul>
-<li>使用內建位元圖<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label = Label(root, bitmap = <span class="string">&quot;error&quot;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>結果<br><img src="https://i.imgur.com/zVisSuD.png"></li>
-</ul>
-<h3 id="compound參數"><a href="#compound參數" class="headerlink" title="compound參數"></a>compound參數</h3><ul>
-<li>圖像位置 :point_down: <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">label = Label(root, text = <span class="string">&quot;男人的嘴，騙人的鬼&quot;</span> , bitmap = <span class="string">&quot;error&quot;</span></span><br><span class="line">              , compound = <span class="string">&quot;right&quot;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>結果<br><img src="https://i.imgur.com/F7gwMXF.png"></li>
-</ul>
-<h3 id="Widget共通屬性-–-Relief-style"><a href="#Widget共通屬性-–-Relief-style" class="headerlink" title="Widget共通屬性 – Relief style"></a>Widget共通屬性 – Relief style</h3><ul>
-<li>管控邊框<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label = Label(root, text = <span class="string">&quot;男人的嘴，騙人的鬼&quot;</span>, relief = <span class="string">&quot;raised&quot;</span>)</span><br></pre></td></tr></table></figure></li>
-<li>結果<br><img src="https://i.imgur.com/GllAtcm.png"></li>
-</ul>
-<h2 id="標籤與文字的區間"><a href="#標籤與文字的區間" class="headerlink" title="標籤與文字的區間"></a>標籤與文字的區間</h2><ul>
-<li>指的是剛才所用的……內部文字的邊框的距離<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">label = Label(root, text = <span class="string">&quot;男人的嘴，騙人的鬼&quot;</span>, relief = <span class="string">&quot;raised&quot;</span></span><br><span class="line">              , padx = <span class="number">5</span>, pady = <span class="number">10</span>)</span><br></pre></td></tr></table></figure></li>
-<li>結果<br><img src="https://i.imgur.com/v8zWISd.png"></li>
-</ul>
-<p>padx指的是左右間距，pady指的是上下間距</p>
-<h3 id="影像"><a href="#影像" class="headerlink" title="影像"></a>影像</h3><ul>
-<li><p>我們這邊就寫成同時出現文字和圖片吧~~</p>
-</li>
-<li><p>先安裝模組</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pillow</span><br></pre></td></tr></table></figure></li>
-<li><p>然後開始作業</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageTk</span><br><span class="line"></span><br><span class="line">image = Image.<span class="built_in">open</span>(<span class="string">&quot;ball.jpg&quot;</span>)</span><br><span class="line">Ball = ImageTk.PhotoImage(image)</span><br><span class="line"></span><br><span class="line">label = Label(root, text = <span class="string">&quot;男人的嘴，騙人的鬼&quot;</span>, image = Ball, justify = <span class="string">&quot;left&quot;</span>, compound = <span class="string">&quot;right&quot;</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>結果<br><img src="https://i.imgur.com/yRjimP5.png"></p>
-</li>
-</ul>
-<h3 id="Widget共通方法-–-config"><a href="#Widget共通方法-–-config" class="headerlink" title="Widget共通方法 – config()"></a>Widget共通方法 – config()</h3><ul>
-<li><p>可以直接設定物件屬性，如果部分屬性未設定，後面想要更改屬性可以使用config()方法</p>
-</li>
-<li><p>計時器 :point_down: </p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">counter = <span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">run_counter</span>(<span class="params">label</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">counting</span>():</span><br><span class="line">        <span class="keyword">global</span> counter</span><br><span class="line">        counter += <span class="number">1</span></span><br><span class="line">        label.config(text = <span class="built_in">str</span>(counter))</span><br><span class="line">        label.after(<span class="number">1000</span>, counting)</span><br><span class="line">    counting()</span><br><span class="line"></span><br><span class="line">root = Tk()</span><br><span class="line">root.title(<span class="string">&quot;python-tkinter&quot;</span>)</span><br><span class="line">root.geometry(<span class="string">&quot;300x300&quot;</span>)</span><br><span class="line">root.configure(bg = <span class="string">&quot;green&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">label = Label(root, height = <span class="number">30</span>, width = <span class="number">50</span>,justify = <span class="string">&quot;left&quot;</span>, compound = <span class="string">&quot;right&quot;</span>)</span><br><span class="line">label.pack()</span><br><span class="line">run_counter(label)</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>結果<br><img src="https://i.imgur.com/TqZnEHG.png"></p>
-</li>
-</ul>
-<h3 id="Widget共通屬性-–-Cursors"><a href="#Widget共通屬性-–-Cursors" class="headerlink" title="Widget共通屬性 – Cursors"></a>Widget共通屬性 – Cursors</h3><ul>
-<li>cursors是滑鼠外形<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">label = Label(root, text = <span class="string">&quot;男人的嘴，騙人的鬼&quot;</span>, height = <span class="number">30</span>, width = <span class="number">30</span>, </span><br><span class="line">              justify = <span class="string">&quot;left&quot;</span>, compound = <span class="string">&quot;right&quot;</span>, cursor = <span class="string">&quot;heart&quot;</span>)</span><br></pre></td></tr></table></figure>
-無法截圖，所以自己先確認是否出現了愛心滑鼠~</li>
-</ul>
-<h2 id="Widget共通方法-–-keys"><a href="#Widget共通方法-–-keys" class="headerlink" title="Widget共通方法 – keys()"></a>Widget共通方法 – keys()</h2><ul>
-<li>列出所有label參數<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paint(label.keys())</span><br></pre></td></tr></table></figure></li>
-<li>結果<br><img src="https://i.imgur.com/1kcaOJH.png"></li>
-</ul>
-<h3 id="分割線-–-Separator"><a href="#分割線-–-Separator" class="headerlink" title="分割線 – Separator"></a>分割線 – Separator</h3><ul>
-<li>整體視覺<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tkinter.ttk <span class="keyword">import</span> Separator</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">label_1 = Label(root, text = <span class="string">&quot;For the test&quot;</span>, </span><br><span class="line">              justify = <span class="string">&quot;left&quot;</span>, compound = <span class="string">&quot;right&quot;</span>, cursor = <span class="string">&quot;heart&quot;</span>)</span><br><span class="line">label_1.pack(padx = <span class="number">10</span>, pady = <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">sep = Separator(root, orient = HORIZONTAL)</span><br><span class="line">sep.pack(fill = X, padx = <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">label_2 = Label(root, text = <span class="string">&quot;男人的嘴，騙人的鬼&quot;</span>,</span><br><span class="line">              justify = <span class="string">&quot;left&quot;</span>, compound = <span class="string">&quot;right&quot;</span>, cursor = <span class="string">&quot;heart&quot;</span>)</span><br><span class="line">label_2.pack(padx = <span class="number">10</span>, pady = <span class="number">10</span>)</span><br></pre></td></tr></table></figure></li>
-<li>結果<br><img src="https://i.imgur.com/9xtpjt0.png"></li>
-</ul>
-<h2 id="ttk"><a href="#ttk" class="headerlink" title="ttk"></a>ttk</h2><p>其實主要差別還在在於美觀上。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ttkbootstrap.constants <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> ttkbootstrap <span class="keyword">as</span> ttk</span><br><span class="line"><span class="keyword">import</span> tkinter <span class="keyword">as</span> tk</span><br><span class="line"></span><br><span class="line">root = tk.Tk()</span><br><span class="line">root.title(<span class="string">&#x27;tk + ttk&#x27;</span>)</span><br><span class="line">root.configure(bg = <span class="string">&quot;green&quot;</span>)</span><br><span class="line">root.geometry(<span class="string">&quot;300x200+100+100&quot;</span>)</span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure>
-<p>這是示意圖。<br><img src="https://hackmd.io/_uploads/r1h052hQp.png" alt="image"></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/11/11/%E6%A8%99%E7%B1%A4label/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
