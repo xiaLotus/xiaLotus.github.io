@@ -30,7 +30,7 @@
 <meta property="og:description" content="未定義元素">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-11-12T14:18:57.000Z">
-<meta property="article:modified_time" content="2023-11-12T14:34:22.971Z">
+<meta property="article:modified_time" content="2023-11-13T12:27:07.179Z">
 <meta property="article:author" content="xiaLotus">
 <meta property="article:tag" content="js">
 <meta name="twitter:card" content="summary">
@@ -194,10 +194,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-11-12 22:18:57 / 修改時間：22:34:22" itemprop="dateCreated datePublished" datetime="2023-11-12T22:18:57+08:00">2023-11-12</time>
+              <time title="創建時間：2023-11-12 22:18:57" itemprop="dateCreated datePublished" datetime="2023-11-12T22:18:57+08:00">2023-11-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-11-13 20:27:07" itemprop="dateModified" datetime="2023-11-13T20:27:07+08:00">2023-11-13</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -240,7 +246,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="未定義元素"><a href="#未定義元素" class="headerlink" title="未定義元素"></a>未定義元素</h2><span id="more"></span>
+        <p>未定義元素</p>
+<span id="more"></span>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ar = [<span class="number">1</span>,,,,<span class="number">58</span>];               <span class="comment">//[ 1, &lt;3 empty items&gt;, 58 ]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ar);</span><br></pre></td></tr></table></figure>
 
 <h2 id="函式定義運算式"><a href="#函式定義運算式" class="headerlink" title="函式定義運算式"></a>函式定義運算式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> square = <span class="keyword">function</span>(<span class="params">x</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> x * x</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">square</span>(<span class="number">5</span>))            <span class="comment">//25</span></span><br><span class="line"><span class="string">``</span><span class="string">`                </span></span><br><span class="line"><span class="string">--------------------------------------</span></span><br><span class="line"><span class="string">## 述句</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line"><span class="comment">//if......else (else if) and switch</span></span><br><span class="line"><span class="keyword">let</span> x = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">if</span> (x == <span class="number">3</span>)&#123;</span><br><span class="line">    x = <span class="number">2</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x)</span><br><span class="line"><span class="comment">// ------------------------------------------------------------------------</span></span><br><span class="line"><span class="keyword">let</span> x = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">switch</span>(x)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">6</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">555</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -352,7 +359,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E5%AE%9A%E7%BE%A9%E5%85%83%E7%B4%A0"><span class="nav-number">1.</span> <span class="nav-text">未定義元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E5%BC%8F%E5%AE%9A%E7%BE%A9%E9%81%8B%E7%AE%97%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">函式定義運算式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%B4%E5%9C%88"><span class="nav-number">3.</span> <span class="nav-text">迴圈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">函式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E6%95%B8"><span class="nav-number">5.</span> <span class="nav-text">引數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%AD%E9%A0%AD%E5%87%BD%E5%BC%8F"><span class="nav-number">6.</span> <span class="nav-text">箭頭函式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%A3%E5%88%97"><span class="nav-number">7.</span> <span class="nav-text">陣列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6"><span class="nav-number">8.</span> <span class="nav-text">物件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%A1%E5%96%AE%E9%81%9E%E8%BF%B4"><span class="nav-number">9.</span> <span class="nav-text">簡單遞迴</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E5%BC%8F%E5%AE%9A%E7%BE%A9%E9%81%8B%E7%AE%97%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">函式定義運算式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%B4%E5%9C%88"><span class="nav-number">2.</span> <span class="nav-text">迴圈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">函式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E6%95%B8"><span class="nav-number">4.</span> <span class="nav-text">引數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%AD%E9%A0%AD%E5%87%BD%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">箭頭函式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%A3%E5%88%97"><span class="nav-number">6.</span> <span class="nav-text">陣列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">物件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%A1%E5%96%AE%E9%81%9E%E8%BF%B4"><span class="nav-number">8.</span> <span class="nav-text">簡單遞迴</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -368,20 +375,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-count">108</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -428,12 +435,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="總字數">41k</span>
+    <span title="總字數">48k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">2:30</span>
+    <span title="所需總閱讀時間">2:55</span>
 </div>
 
 <!--
