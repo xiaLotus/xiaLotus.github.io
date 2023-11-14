@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="函式是一個多樣化的集合體，它會被視為一個單位去做執行。可以把它想程式一個副程式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js-函式">
+<meta property="og:url" content="https://xialotus.github.io/2023/11/14/js-%E5%87%BD%E5%BC%8F/index.html">
+<meta property="og:site_name" content="xia的小窩">
+<meta property="og:description" content="函式是一個多樣化的集合體，它會被視為一個單位去做執行。可以把它想程式一個副程式。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-11-14T01:59:18.000Z">
+<meta property="article:modified_time" content="2023-11-14T02:25:36.462Z">
+<meta property="article:author" content="xiaLotus">
+<meta property="article:tag" content="javascript">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xialotus.github.io/2023/11/14/js-%E5%87%BD%E5%BC%8F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>js-函式 | xia的小窩</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xia的小窩</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一起來coding和碼字吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/xiaLotus" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/14/js-%E5%87%BD%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+      <meta itemprop="name" content="xiaLotus">
+      <meta itemprop="description" content="xia的小窩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xia的小窩">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          js-函式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-11-14 09:59:18 / 修改時間：10:25:36" itemprop="dateCreated datePublished" datetime="2023-11-14T09:59:18+08:00">2023-11-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript%E5%AD%B8%E7%BF%92%E7%B4%80%E9%8C%84/" itemprop="url" rel="index"><span itemprop="name">JavaScript學習紀錄</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>5 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>函式是一個多樣化的集合體，它會被視為一個單位去做執行。可以把它想程式一個副程式。</p>
+<span id="more"></span>
+
+<p>傳入值 → 函式 → 回傳值 ( 結果 ) </p>
+<h3 id="首先是回傳值"><a href="#首先是回傳值" class="headerlink" title="首先是回傳值"></a>首先是回傳值</h3><p>呼叫函式是一種運算式，那現在我們撰寫一個簡單的函式</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hello</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> [<span class="string">&quot;hello&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hello</span>())</span><br></pre></td></tr></table></figure>
+
+<p>如果沒有回傳值將會出現 undefined</p>
+<h3 id="呼叫-vs-參考"><a href="#呼叫-vs-參考" class="headerlink" title="呼叫 vs 參考"></a>呼叫 vs 參考</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hello</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> [<span class="string">&quot;hello&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">hello</span>())</span><br></pre></td></tr></table></figure>
+
+<p>現在我們知道執行這個程式的回傳值是 <code>[ &#39;hello&#39; ]</code></p>
+<p>如果我們沒有加上括號……</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hello)</span><br><span class="line"><span class="comment">// [Function: hello]</span></span><br></pre></td></tr></table></figure>
+
+<p>這個東西它在說明它只是在<code>參考</code>函式，和其他任何值一樣，不會被<code>呼叫</code></p>
+<p>現在我們使用別的方法呼叫函式</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = hello;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">test</span>())</span><br><span class="line"><span class="comment">// [ &#x27;hello&#x27; ]</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以指派給物件</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">test.<span class="property">cat</span> = hello;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(test.<span class="title function_">cat</span>());</span><br><span class="line"><span class="comment">// [ &#x27;hello&#x27; ]</span></span><br></pre></td></tr></table></figure>
+
+<p>放進陣列…….</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hello</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="string">&#x27;hello&#x27;</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">arr[<span class="number">1</span>] = hello;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr[<span class="number">1</span>]());</span><br><span class="line"><span class="comment">// [&#x27;hello&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="引數"><a href="#引數" class="headerlink" title="引數"></a>引數</h3><p>也就是參數，我們直接來看一個例子</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">a, b</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> [b, a * b]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">test</span>(<span class="number">2</span>, <span class="number">5</span>))</span><br></pre></td></tr></table></figure>
+
+<p>括號裡面的 a, b 就是參數，這個參數只會在函式裡運作，而且只會在函式裡生存。</p>
+<p>我們可以用下面這個例子證明</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params">x</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`在裡面 : x = <span class="subst">$&#123;x&#125;</span>`</span>);</span><br><span class="line">    x = <span class="number">5</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`傳值後: x = <span class="subst">$&#123;x&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> x = <span class="number">3</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`傳值前: x = <span class="subst">$&#123;x&#125;</span>`</span>);</span><br><span class="line"><span class="title function_">main</span>(x);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`傳值結束 : x = <span class="subst">$&#123;x&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 傳值前 : x = 3</span></span><br><span class="line"><span class="comment">// 在裡面 : x = 3</span></span><br><span class="line"><span class="comment">// 傳值後 : x = 5</span></span><br><span class="line"><span class="comment">// 傳值結束 : x = 3</span></span><br></pre></td></tr></table></figure>
+
+<p>如果我們使用這種方式來修改函式內的物件型態</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params">o</span>)&#123;</span><br><span class="line">    o.<span class="property">msg</span> = <span class="string">`test in func`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> o = &#123;</span><br><span class="line">    msg : <span class="string">&quot;msg&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`呼叫前的 o.msg : <span class="subst">$&#123;o.msg&#125;</span>`</span>)</span><br><span class="line"><span class="title function_">main</span>(o)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`呼叫後的 o.msg : <span class="subst">$&#123;o.msg&#125;</span>`</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 呼叫前的 o.msg : msg</span></span><br><span class="line"><span class="comment">// 呼叫後的 o.msg : test in func</span></span><br></pre></td></tr></table></figure>
+
+<p>這邊你就必須了解<code>基本物件和值本身的差異</code>~~</p>
+<h4 id="引數構成函式"><a href="#引數構成函式" class="headerlink" title="引數構成函式 ??"></a>引數構成函式 ??</h4><p>我們可以知道 <code>f ( )</code> 跟 <code>f ( x )</code> 是不同的函式，但是在 JavaScript 沒有這種區別….</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params">x</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`my word is <span class="subst">$&#123;x&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">main</span>());</span><br><span class="line"><span class="comment">// my word is undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>這告訴我們可以用眾多數量的引數去呼叫任何函式，如果沒有提供的話電腦會自動生出 <code>undefined</code></p>
+<h4 id="解構引數"><a href="#解構引數" class="headerlink" title="解構引數"></a>解構引數</h4><p>我們可以解構賦值，也可以解構引數</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params">&#123; sub, ver, obj, eas &#125;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;sub&#125;</span> <span class="subst">$&#123;ver&#125;</span> <span class="subst">$&#123;obj&#125;</span> <span class="subst">$&#123;eas&#125;</span>`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> test = &#123;</span><br><span class="line">    sub : <span class="string">&quot;t&quot;</span>,</span><br><span class="line">    ver : <span class="string">&quot;e&quot;</span>,</span><br><span class="line">    obj : <span class="string">&quot;s&quot;</span>,</span><br><span class="line">    eas : <span class="string">&quot;t&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">main</span>(test));</span><br><span class="line"><span class="comment">// t e s t</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的範例是物件，當然也可以使用陣列……</p>
+<p>我們可以使用 擴張運算子 ，但是必須放在最後面……</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">add, ...nums</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> test = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.<span class="property">length</span>; i++)&#123;</span><br><span class="line">        test[i] = add + nums[i];;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> test;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">add</span>(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>));</span><br><span class="line"><span class="comment">// [&#x27;12&#x27;, &#x27;13&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="將函式當成物件"><a href="#將函式當成物件" class="headerlink" title="將函式當成物件"></a>將函式當成物件</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = &#123;</span><br><span class="line">	name : <span class="string">&quot;rex&quot;</span>,</span><br><span class="line">	myFunc : <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&#x27;myFunc is loaded&#x27;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">// or ......</span></span><br><span class="line">	<span class="title function_">myFuncA</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&#x27;myFunc is loaded&#x27;</span></span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面那種是新的簡寫語法，跟上面的原始版本的共用相同</p>
+<h3 id="this-關鍵字"><a href="#this-關鍵字" class="headerlink" title="this 關鍵字"></a>this 關鍵字</h3><p>當我們呼叫方法時，this 就代表呼叫的方法所屬物件的值</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = &#123;</span><br><span class="line">    name : <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">    <span class="title function_">great</span>(<span class="params"></span>) &#123; </span><br><span class="line">        <span class="keyword">return</span> <span class="string">`my name is <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(test.<span class="title function_">great</span>())</span><br><span class="line"><span class="comment">// my name is rex</span></span><br></pre></td></tr></table></figure>
+
+<p> 當我們呼叫 test.great() 時，this 關鍵字會綁定 test</p>
+<p>重點在於，這種綁定是根據 <code>呼叫函式的方式</code> ，而不是宣告函式的地方 。</p>
+<p>this 會綁定 test 不是因為 great 是 test 的特性，而是因為我們用 test 呼叫它。</p>
+<p>如果我們將同一個函式指派給一個變數時……</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = &#123;</span><br><span class="line">    name : <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">    <span class="title function_">great</span>(<span class="params"></span>) &#123; </span><br><span class="line">        <span class="keyword">return</span> <span class="string">`my name is <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cat = test.<span class="property">great</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(cat === test.<span class="property">great</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">cat</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// true</span></span><br><span class="line"><span class="comment">// my name is undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>因為我們的呼叫方式改變了，JavaScript 不知道函式是在 test 裡宣告的，所以才會有 undefined 出現</p>
+<h3 id="function-裡的-function"><a href="#function-裡的-function" class="headerlink" title="function 裡的 function"></a>function 裡的 function</h3><p>使用 <code>嵌套</code> 的函式</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = &#123;</span><br><span class="line">    name : <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">    great : <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">const</span> x = <span class="number">50</span></span><br><span class="line">        <span class="keyword">function</span> <span class="title function_">crap</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`cost <span class="subst">$&#123; crap(x) &#125;</span>`</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(test.<span class="title function_">great</span>());</span><br><span class="line"><span class="comment">// cost 50</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="箭頭標記法"><a href="#箭頭標記法" class="headerlink" title="箭頭標記法"></a>箭頭標記法</h3><p>大家應該都看過類似的寫法，比如…..</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">test1</span> = (<span class="params"></span>) =&gt; <span class="string">&quot;hello world&quot;</span> </span><br></pre></td></tr></table></figure>
+
+<p>這是在 <code>ES6</code> 才加入的<code>語法糖</code></p>
+<ul>
+<li>可以省略 function 這個字</li>
+<li>如果只有一個引數可以省略括號</li>
+<li>如果只有一個運算式，可以省略 大括號 與 return 陳述式</li>
+</ul>
+<p><code>箭頭函式</code> 跟 <code>一般函式</code> 之間有兩個細微差異 : </p>
+<ol>
+<li>都不能當成物件建構式來使用</li>
+<li>箭頭函式不能使用 arguments 變數</li>
+</ol>
+<h3 id="call、apply-與-bind"><a href="#call、apply-與-bind" class="headerlink" title="call、apply 與 bind"></a>call、apply 與 bind</h3><p>我們使用 <code>call</code> 開始看</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = &#123;</span><br><span class="line">    name : <span class="string">&#x27;test&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> great = &#123;</span><br><span class="line">    name : <span class="string">&#x27;great&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">com</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`for the test name : <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">com</span>());</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(com.<span class="title function_">call</span>(test));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(com.<span class="title function_">call</span>(great));</span><br><span class="line"></span><br><span class="line"><span class="comment">// for the test name : undefined</span></span><br><span class="line"><span class="comment">// for the test name : test</span></span><br><span class="line"><span class="comment">// for the test name : great</span></span><br></pre></td></tr></table></figure>
+
+<p>在這邊可以看到藉由提供綁定一個 this 物件， <code>call 可讓我們呼叫一個函式</code>，注意， call 的第一個引數式你想要綁定的 this 值。</p>
+<p>再舉個例子</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Day</span>(<span class="params">dir, tue</span>) &#123; </span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">dir</span> = dir;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tue</span> = tue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cat = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Day</span>.<span class="title function_">call</span>(cat, <span class="number">1505</span>, <span class="string">&#x27;dig&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(cat)</span><br><span class="line"></span><br><span class="line"><span class="comment">//&#123; name: &#x27;rex&#x27;, dir: 1505, tue: &#x27;dig&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="現在換-apply-的部分"><a href="#現在換-apply-的部分" class="headerlink" title="現在換 apply 的部分"></a>現在換 <code>apply</code> 的部分</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Day</span>.<span class="title function_">apply</span>(cat, [<span class="number">1505</span>, <span class="string">&#x27;dig&#x27;</span>]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(cat)</span><br></pre></td></tr></table></figure>
+
+<p>apply 跟 call 不同的地方在於它處理函式引數的方式不一樣。call 會直接處理引數， apply 則會使用陣列的方式。</p>
+<h3 id="至於-bind-的部分"><a href="#至於-bind-的部分" class="headerlink" title="至於 bind 的部分"></a>至於 <code>bind</code> 的部分</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> testbind = <span class="title class_">Day</span>.<span class="title function_">bind</span>(cat);</span><br><span class="line"><span class="title function_">testbind</span>(<span class="number">1501</span>, <span class="string">&#x27;5566&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(cat);</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; name: &#x27;rex&#x27;, dir: 1501, tue: &#x27;5566&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>bind 可以讓你 <code>永遠</code> 將一個函式指派給 this 。所以會產生很難發現的 bug ……</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>作者： </strong>xiaLotus
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章連結：</strong>
+    <a href="https://xialotus.github.io/2023/11/14/js-%E5%87%BD%E5%BC%8F/" title="js-函式">https://xialotus.github.io/2023/11/14/js-函式/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-TW" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javascript/" rel="tag"># javascript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/14/js-%E9%99%A3%E5%88%97%E8%88%87%E9%99%A3%E5%88%97%E8%99%95%E7%90%86/" rel="prev" title="js-陣列與陣列處理">
+      <i class="fa fa-chevron-left"></i> js-陣列與陣列處理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/14/js-%E6%92%B0%E5%AF%AB%E5%8F%8A%E5%8C%AF%E5%85%A5JavaScript%E6%A8%A1%E7%B5%84/" rel="next" title="js-撰寫及匯入JavaScript模組">
+      js-撰寫及匯入JavaScript模組 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%96%E5%85%88%E6%98%AF%E5%9B%9E%E5%82%B3%E5%80%BC"><span class="nav-number">1.</span> <span class="nav-text">首先是回傳值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BC%E5%8F%AB-vs-%E5%8F%83%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">呼叫 vs 參考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E6%95%B8"><span class="nav-number">3.</span> <span class="nav-text">引數</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E6%95%B8%E6%A7%8B%E6%88%90%E5%87%BD%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">引數構成函式 ??</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%A7%8B%E5%BC%95%E6%95%B8"><span class="nav-number">3.2.</span> <span class="nav-text">解構引數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%87%E5%87%BD%E5%BC%8F%E7%95%B6%E6%88%90%E7%89%A9%E4%BB%B6"><span class="nav-number">3.3.</span> <span class="nav-text">將函式當成物件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this-%E9%97%9C%E9%8D%B5%E5%AD%97"><span class="nav-number">4.</span> <span class="nav-text">this 關鍵字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#function-%E8%A3%A1%E7%9A%84-function"><span class="nav-number">5.</span> <span class="nav-text">function 裡的 function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%AD%E9%A0%AD%E6%A8%99%E8%A8%98%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">箭頭標記法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call%E3%80%81apply-%E8%88%87-bind"><span class="nav-number">7.</span> <span class="nav-text">call、apply 與 bind</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8F%BE%E5%9C%A8%E6%8F%9B-apply-%E7%9A%84%E9%83%A8%E5%88%86"><span class="nav-number">8.</span> <span class="nav-text">現在換 apply 的部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%B3%E6%96%BC-bind-%E7%9A%84%E9%83%A8%E5%88%86"><span class="nav-number">9.</span> <span class="nav-text">至於 bind 的部分</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaLotus"
+      src="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xiaLotus</p>
+  <div class="site-description" itemprop="description">xia的小窩</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xiaLotus" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xiaLotus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:a91321987@gmail.com" title="E-Mail → mailto:a91321987@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-TW" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaLotus</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">62k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">3:45</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

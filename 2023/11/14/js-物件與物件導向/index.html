@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="下面是一個物件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js-物件與物件導向">
+<meta property="og:url" content="https://xialotus.github.io/2023/11/14/js-%E7%89%A9%E4%BB%B6%E8%88%87%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91/index.html">
+<meta property="og:site_name" content="xia的小窩">
+<meta property="og:description" content="下面是一個物件">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-11-14T02:35:55.000Z">
+<meta property="article:modified_time" content="2023-11-14T02:55:48.124Z">
+<meta property="article:author" content="xiaLotus">
+<meta property="article:tag" content="javascript">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xialotus.github.io/2023/11/14/js-%E7%89%A9%E4%BB%B6%E8%88%87%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>js-物件與物件導向 | xia的小窩</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xia的小窩</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一起來coding和碼字吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/xiaLotus" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/14/js-%E7%89%A9%E4%BB%B6%E8%88%87%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+      <meta itemprop="name" content="xiaLotus">
+      <meta itemprop="description" content="xia的小窩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xia的小窩">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          js-物件與物件導向
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-11-14 10:35:55 / 修改時間：10:55:48" itemprop="dateCreated datePublished" datetime="2023-11-14T10:35:55+08:00">2023-11-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript%E5%AD%B8%E7%BF%92%E7%B4%80%E9%8C%84/" itemprop="url" rel="index"><span itemprop="name">JavaScript學習紀錄</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>6.4k</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>23 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>下面是一個物件</p>
+<span id="more"></span>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="對於物件"><a href="#對於物件" class="headerlink" title="對於物件"></a>對於物件</h2><p>我們知道物件跟陣列一樣是一個容器 ( 也稱為聚合 ( aggregate ) 或複合資料型態 ( complex data types ) )。物件跟陣列值主要有兩種差異 : </p>
+<ol>
+<li>陣列儲存值、用數字索引，物件儲存特性，用字串或符號索引。</li>
+<li>陣列有序，物件無序</li>
+</ol>
+<h3 id="物件導向程式設計-oop"><a href="#物件導向程式設計-oop" class="headerlink" title="物件導向程式設計 ( oop )"></a>物件導向程式設計 ( oop )</h3><p>類別 → 統稱</p>
+<p>實例 → 代表特定的東西</p>
+<p>功能 → 方法</p>
+<h4 id="物件字面值-Object-Literal"><a href="#物件字面值-Object-Literal" class="headerlink" title="物件字面值 (Object Literal)"></a>物件字面值 (Object Literal)</h4><p>我們只需要用到 <code>&#123;&#125;</code>，就能夠快速創造一個物件。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title class_">Test</span>_obj = &#123;</span><br><span class="line">	name1 : value1,</span><br><span class="line">	name2 : value2,</span><br><span class="line">	<span class="comment">// ... </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="存取物件內容"><a href="#存取物件內容" class="headerlink" title="存取物件內容"></a>存取物件內容</h4><p>移個物件可以存放不同內容，而這些內容被存放在不同的地方，而透過物件的屬性名稱我們可以找到這個物件的各個內容</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	name : <span class="string">&#x27;tom&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">name</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// tom</span></span><br></pre></td></tr></table></figure>
+
+<p>存取物件的方式有兩種 :</p>
+<ol>
+<li>使用 <code>.</code> 符號</li>
+<li>使用 <code>[]</code> 符號</li>
+</ol>
+<p>一般來說，<code>.</code>符號是用來存取物件屬性 ( property )，<code>[]</code> 符號式來存取物件的鍵值 (key)</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	<span class="number">1</span> : <span class="string">&#x27;tom&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> testValue = obj<span class="number">.1</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(testValue);</span><br><span class="line"></span><br><span class="line"><span class="comment">// SyntaxError: Unexpected number</span></span><br></pre></td></tr></table></figure>
+
+<p>以上面的例子，如果用小數點，就不能存取數字開頭的屬性，這時候我們就可以利用 <code>[]</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="keyword">const</span> testValue = obj[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// tom</span></span><br></pre></td></tr></table></figure>
+
+<p>我們也可以使用變數的形式</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	name : <span class="string">&#x27;rex.&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> test = <span class="string">&#x27;name&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Val</span> = obj[test];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Val</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// rex.</span></span><br></pre></td></tr></table></figure>
+
+<p><code>[]</code>搭配字串有機會可以動態存取地取出不同屬性對應的值</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;test&#x27;</span></span><br><span class="line"><span class="keyword">let</span> b = &#123;</span><br><span class="line">	[a] : <span class="string">&#x27;Test&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b)</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; test: &#x27;Test&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="建立類別與實例"><a href="#建立類別與實例" class="headerlink" title="建立類別與實例"></a>建立類別與實例</h4><p>在 ES6 裡有加入一些方便的類別建立語法</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>&#123;</span><br><span class="line">	<span class="title function_">constructor</span>(<span class="params"></span>)&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我們可以使用 new 去建立一個類別</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">C_Test</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">test</span> = <span class="string">&#x27;test&#x27;</span>,</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">home</span> = <span class="string">&#x27;home&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="title class_">Test</span> = <span class="keyword">new</span> <span class="title function_">C_Test</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Test</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// C_Test &#123; test: &#x27;test&#x27;, home: &#x27;home&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>new is what?</code></p>
+<p>new 這個關鍵字跟 JavaScript 的發展歷史有關，先不說這個，我們先來看看上面程式碼……</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> emptyObject = <span class="keyword">new</span> <span class="title class_">Object</span>()</span><br></pre></td></tr></table></figure>
+
+<p>上述方式就是透過 <code>new</code> 語法創造出一個空物件，然後用函式 <code>Object()</code> 呼叫，而這個 <code>Object</code> 本身也是個物件 <code>(函式也是物件)</code>。而且 JS 預設提供的都是全域物件……</p>
+<p><code>why?</code></p>
+<p>為甚麼要用 <code>new</code> 關鍵字搭配函式的呼叫來創造物件 ? 如果不使用 <code>new</code> 這個關鍵字又會如何?</p>
+<p>恩…..如果說 <code>let Test = new C_Test();</code> 這邊不使用 <code>new</code> 的話也會收到一個空物件，但是在一般情況下部加上還是會出錯……</p>
+<p><code>new</code> 這個字本身是一個運算子，而一個運算子在被執行後會產生一個新的值，而這個值就是物件。</p>
+<p>然後在 new 後面的函式也就是我們一般說的 <code>建構函式(Constructor) 或是 函式建構式(Function Constructor)</code>，這個函式的目的只是跟著 new 來創造物件，而不會當成一般函式使用。</p>
+<p>我們擷取了上面的範例</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">C_Test</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">test</span> = <span class="string">&#x27;test&#x27;</span>,</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">home</span> = <span class="string">&#x27;home&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>物件的內容可以按照自己想怎麼訂就怎麼訂，不過前面必須加上一個 <code>this</code> (如上)</p>
+<p>我們可以從上面看到我們在建構函式裡使用到了 <code>this</code> 這個關鍵字，我們把它當成物件來使用，在上面<code>動態</code>地新增了物件屬性……</p>
+<p>我們使用 new 時會有這幾件事情 : </p>
+<ol>
+<li>有一個全新的物件被創造出來</li>
+<li>這個新物件帶有 <code>prototype</code> 連結</li>
+<li>在跟 <code>new</code> 搭配一起被呼叫地建構函式內創造一個名為 <code>this</code> 的特殊變數，並把 <code>this</code> 與第一步所創造的物件做連結，所以當我們在建構函式內使用 this 並對這個 <code>this</code> 做新增或修改屬性，其實是在對那個被創造的物件做變更。 <code>this</code> 這個變數在很多地方都能被取用，不過根據不同規則它所代表的值很有可能不同……</li>
+<li>除非該函式提供了自己的替代物件來回傳，不然以 new 呼叫的函式會自回傳這個新建構的物件。</li>
+</ol>
+<p><code>如果沒有加上 new 運算子呢 ？</code></p>
+<p>這邊有一個很明顯的缺點，因為在建構函式時在一般的使用方法下不會回傳任何數值。我們來看看例子</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title class_">Test</span> = <span class="title function_">C_Test</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Test</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>喔，這邊還有一個小地方要注意，就是一個函式建構子所命名的傳統 — <code>首字母大寫</code>，以方便開發人員辨識</p>
+<h4 id="物件的常用操作"><a href="#物件的常用操作" class="headerlink" title="物件的常用操作"></a>物件的常用操作</h4><p>我們也同時整理了常用的幾個操作。</p>
+<p>第一，檢查物件是否存在某屬性</p>
+<p>一般常見的情況是我們想要拿物件的某個值去做運算，但是在運算之前我們必須要確定這個物件身上是否有對應的屬性。</p>
+<h5 id="使用-hasOwnProperty"><a href="#使用-hasOwnProperty" class="headerlink" title="使用 hasOwnProperty"></a>使用 hasOwnProperty</h5><p>我們直接來看一段程式碼</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = &#123;</span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> testhasname = test.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;name&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(testhasname)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> testhasname_false = test.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;false&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(testhasname_false)</span><br><span class="line"></span><br><span class="line"><span class="comment">// trye</span></span><br><span class="line"><span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>上面這段程式碼裡面，因為 test 物件裡面存放著 name 這個屬性，所以 <code>test.hasOwnProperty(&#39;name&#39;)</code>，會得到 true 的結果，反之則 false 。</p>
+<p>如果 <code>test</code> 物件可以使用 <code>hasOwnProperty</code>方法，那 <code>hasOwnProperty</code> 也可以算是這個物件的屬性嗎?這個可以說算，也可以說不算。因為在 <code>test</code> 裡確實可以找到這個屬性，知道它是一個函式，但是這個物件卻不是存在於 <code>test</code> 上。</p>
+<p>可以想成 <code>test 物件是在某個基礎上被創造的，而 hasOwnProperty 這個函式就源自於這個基礎</code>。有沒有很熟悉~~ 就是<code>繼承</code>啦。也就是說 test 物件本身沒有定義這個方法，但透過這個物件所來自的基礎，這我們在這樣的情況下也能夠讀取到它。</p>
+<h5 id="使用-in-運算子"><a href="#使用-in-運算子" class="headerlink" title="使用 in 運算子"></a>使用 in 運算子</h5><p>我們也可以使用 <code>in</code> 運算子達到相同目標</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = &#123;</span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;name&#x27;</span> <span class="keyword">in</span> test)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;name1&#x27;</span> <span class="keyword">in</span> test)</span><br><span class="line"></span><br><span class="line"><span class="comment">// true</span></span><br><span class="line"><span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>使用 in 運算子可能比起前一個方法要簡短許多，不過它與 <code>hasOwnProperty</code> 的最大一個差異是 : <code>能不能檢查到物件上的那些繼承來的方法</code>，<code>hasOwnProperty</code> 只能檢查到物件裡面明確。</p>
+<p>其實要用哪一種方法是看自己的需求而定。如果只是想要確認一個物件內的方法能不能被使用，那就可以使用 <code>in</code> ，因為某些時候物件的方法能透過繼承的關係被取得。若想要確定一個意見內是否存在開法者主動定義的屬性，那就限定一點使用 <code>hasOwnProperty</code> 。</p>
+<h5 id="直接存取開物件屬性來判斷"><a href="#直接存取開物件屬性來判斷" class="headerlink" title="直接存取開物件屬性來判斷"></a>直接存取開物件屬性來判斷</h5><p>這個方法就很直接了。因為去存取一個不存在的物件就會得到 <code>undefined</code> 的結果。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> test = a.<span class="property">Nonename</span> === <span class="literal">undefined</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(test)</span><br><span class="line"></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>不過這個方法有一個缺點，就是如果 a 裡面其實有這個屬性，只不過它的值被設成 <code>undefined</code> ，那麼用這個方法很可能被誤判，所以通常這樣子的用法只會用在 <code>想要確定物件裡面某個屬性有沒有內容的情況下</code> ，而在這種情況下我們可以利用強制轉型來做我們想要的判斷。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = [</span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (!! a.<span class="property">name</span>)&#123;</span><br><span class="line">	<span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這裡使用了<code>!!</code>反向運算子，將其值轉換成布林值來看看 <code>a</code> 裡面的 <code>name</code> 屬性是不是有內容可以給後面的邏輯使用。</p>
+<h4 id="尋訪物件"><a href="#尋訪物件" class="headerlink" title="尋訪物件"></a>尋訪物件</h4><p>我們都用過陣列的 <code>indexOf</code> ，不過在物件裡我們需要 <code>預設物件Object</code> 的幫助</p>
+<h5 id="Object-keys"><a href="#Object-keys" class="headerlink" title="Object.keys"></a>Object.keys</h5><p><code>object</code> 物件上有很多相關好用的方法</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">	pro : <span class="string">&#x27;property&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">keys</span>(a))</span><br><span class="line"></span><br><span class="line"><span class="comment">// [ &#x27;name&#x27;, &#x27;pro&#x27; ]</span></span><br></pre></td></tr></table></figure>
+
+<p>這個函式會把物件裡面自有的 <code>(非繼承而來的)</code> 屬性抽出來，放到一個字串陣列內。</p>
+<p>那既然知道回傳的是陣列型態，那我們可以使用 <code>forEach</code>，去取得該物件裡面的屬性。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">	pro : <span class="string">&#x27;property&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ob = <span class="title class_">Object</span>.<span class="title function_">keys</span>(a)</span><br><span class="line">ob.<span class="title function_">forEach</span>(<span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> (key === <span class="string">&#x27;name&#x27;</span>) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;pass&#x27;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(key)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// pass</span></span><br><span class="line"><span class="comment">// pro</span></span><br></pre></td></tr></table></figure>
+<h5 id="Object-values"><a href="#Object-values" class="headerlink" title="Object.values"></a>Object.values</h5><p>相對於前面的 <code>Object.keys</code> ，取得的是物件裡面每個屬性的數值內容，並放進陣列回傳。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">	pro : <span class="string">&#x27;property&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ob = <span class="title class_">Object</span>.<span class="title function_">values</span>(a);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ob);</span><br><span class="line"></span><br><span class="line"><span class="comment">// [ &#x27;rex&#x27;, &#x27;property&#x27; ]</span></span><br></pre></td></tr></table></figure>
+
+<p>其實遇到陣列就有很多東西可以運用……</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">checkNumber</span>(<span class="params">nums</span>)&#123;</span><br><span class="line">	<span class="keyword">let</span> i = <span class="title class_">Object</span>.<span class="title function_">values</span>(a);</span><br><span class="line">	<span class="keyword">let</span> F = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (i.<span class="title function_">indexOf</span>(nums) &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">		F = <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> F;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">	<span class="number">1</span> : <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">	<span class="number">2</span> : <span class="string">&#x27;property&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ans = <span class="title function_">checkNumber</span>(<span class="string">&quot;property&quot;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ans)</span><br><span class="line"></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>在這裡配了 <code>indexOf</code> 去找 <code>value 值</code></p>
+<h5 id="Object-entries"><a href="#Object-entries" class="headerlink" title="Object.entries"></a>Object.entries</h5><p>前兩章的集合體，回傳一個二維陣列，分別代表 <code>物件的每個屬性</code> 和 <code>對應的數值</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123;</span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">	pro : <span class="string">&#x27;property&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ob = <span class="title class_">Object</span>.<span class="title function_">entries</span>(a);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ob);</span><br><span class="line"></span><br><span class="line"><span class="comment">// **[ [ &#x27;name&#x27;, &#x27;rex&#x27; ], [ &#x27;pro&#x27;, &#x27;property&#x27; ] ]**</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="解構賦值"><a href="#解構賦值" class="headerlink" title="解構賦值"></a>解構賦值</h4><p>解構賦值 ( Destructuring )，他是講到物件一定要提到的用法之一。ES6 版本才出現的使用方式，可以讓我們在取出物件某屬性資料時，非常快速的宣告出新的變數。</p>
+<h5 id="物件的解構賦值"><a href="#物件的解構賦值" class="headerlink" title="物件的解構賦值"></a>物件的解構賦值</h5><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user = &#123; </span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span>, </span><br><span class="line">	test : <span class="string">&#x27;mid&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> testuser = user.<span class="property">name</span>;</span><br><span class="line"><span class="comment">// let &#123; name &#125; = user;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// rex</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的兩個方法的結果都是一樣的。在這邊我們用到了最簡單的解構賦值，它的用法很像是 <code>在創造物件時使用的物件字面值</code> ，只不過它的使用位置是完全相反的，在等號的左邊宣告變數的位置。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user = &#123; </span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span>, </span><br><span class="line">	test : <span class="string">&#x27;mid&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; name, test &#125; = user</span><br></pre></td></tr></table></figure>
+
+<p>在之前我們要取出物件的多筆資料並依據數件的屬性名稱來宣告變數，就需要一個一個指派。但現在可以用解構賦值來取出物件屬性並宣告，就可以根據物件裡面的多個屬性宣告多組變數。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user = &#123; </span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span>, </span><br><span class="line">	test : <span class="string">&#x27;mid&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; name, test, age &#125; = user</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(age)</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>記住，如果要解構賦值的話，該變數一定要存在物件裡面，否則就像是為宣告的變數一樣，得到 <code>undefined</code>的結果。</p>
+<p>但是我們可以有預設值</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; name, test, age = <span class="number">20</span> &#125; = user</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(age) </span><br><span class="line"><span class="comment">// 20</span></span><br></pre></td></tr></table></figure>
+
+<p>如果 JS 看到屬性對應的數值是 <code>undefined</code> ，就會拿我們給定的預設值作為宣告結果。</p>
+<p>如果說我們有很多組相似資料呢?</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> usera = &#123;</span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">	test : <span class="string">&#x27;mid&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> userb = &#123;</span><br><span class="line">	name : <span class="string">&#x27;cat&#x27;</span>,</span><br><span class="line">	test : <span class="string">&#x27;def&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; name : usernameA &#125; = usera        <span class="comment">// usernameA 就是別名，中間用 : 隔開</span></span><br><span class="line"><span class="keyword">let</span> &#123; name : usernameB &#125; = userb</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(usernameA)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(usernameB)</span><br><span class="line"></span><br><span class="line"><span class="comment">// rex</span></span><br><span class="line"><span class="comment">// cat</span></span><br></pre></td></tr></table></figure>
+
+<p>我們為了避免變數名稱互相衝突，我們可以<code>為解構賦值的內容宣告一個別名</code>，這樣就可以避免重複情況發生。</p>
+<h5 id="陣列的解構賦值"><a href="#陣列的解構賦值" class="headerlink" title="陣列的解構賦值"></a>陣列的解構賦值</h5><p>有物件的就有陣列的，雖然都算物件，不過因為存放的方式不一樣，使用的方式自然也不一樣。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> test = [<span class="string">&#x27;rex&#x27;</span>, <span class="string">&#x27;cat&#x27;</span>]</span><br><span class="line"><span class="keyword">let</span> [fitst, second] = test;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(first)</span><br><span class="line"></span><br><span class="line"><span class="comment">// rex</span></span><br></pre></td></tr></table></figure>
+
+<p>陣列相對於物件而言，沒有屬性查找相對應的內容，只有索引而已，這時在做解構賦值的時候，變數的對應位置就很重要。</p>
+<h4 id="複製物件"><a href="#複製物件" class="headerlink" title="複製物件"></a>複製物件</h4><p>複製物件是一個在實際開發中的常見行為，我們常常為了避免一個物件因為錯誤的參考而被依外修改，而需要創造一個與某物件具有完全相同屬性的全新物件。</p>
+<h5 id="展開物件"><a href="#展開物件" class="headerlink" title="展開物件"></a>展開物件</h5><p>使用 <code>... (Spread Operator)</code> 展開運算子</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">	test : <span class="string">&#x27;mid&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = &#123;</span><br><span class="line">	height : <span class="number">500</span>,</span><br><span class="line">	...a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b)</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; height: 500, name: &#x27;rex&#x27;, test: &#x27;mid&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>搭配展開運算子來展開物件時，如果我將一個物件在另一個空的物件裡做展開，這兩個物件的屬性內容可能會一樣，但是這兩個物件已經是<code>個別被宣告</code>的不同資料，這個情況下你就等於是<code>複製</code>了一份具有相同屬性的物件。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">	test : <span class="string">&#x27;mid&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = &#123;</span><br><span class="line">	...a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b.<span class="property">name</span> = <span class="string">&#x27;b&#x27;</span></span><br><span class="line">b.<span class="property">test</span> = <span class="string">&#x27;fin&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b)</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; name: &#x27;rex&#x27;, test: &#x27;mid&#x27; &#125;</span></span><br><span class="line"><span class="comment">// &#123; name: &#x27;b&#x27;, test: &#x27;fin&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>這邊的情況應該是…..</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &#123; ... a &#125;</span></span><br><span class="line"><span class="comment">// &#123; name : &#x27;rex&#x27;, test : &#x27;mid&#x27;&#125;</span></span><br><span class="line"><span class="comment">// &#123; name : &#x27;rex&#x27;, test : &#x27;mid&#x27;, name : &#x27;b&#x27;, test : &#x27;fin&#x27;&#125; 後面來的會蓋掉前向相同屬性的內容值，所以最後結果應該是</span></span><br><span class="line"><span class="comment">// &#123; name: &#x27;b&#x27;, test: &#x27;fin&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>當然，也可以用在陣列上</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"><span class="keyword">let</span> c = [...a, ...b]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c)</span><br><span class="line"></span><br><span class="line"><span class="comment">// [1, 2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign"></a>Object.assign</h5><p>使用 JS 預設的 <code>全域物件</code> Object 上的 <code>Object.assign</code> 方法也可以達到複製物件的目的，這個方法接收2個參數，前是目標物件，後是來源物件，記住，<code>是複製而不是繼承</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">	test : <span class="string">&#x27;mid&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = &#123;</span><br><span class="line">	age : <span class="number">10</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ans = <span class="title class_">Object</span>.<span class="title function_">assign</span>(a, b)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ans)</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; name: &#x27;rex&#x27;, test: &#x27;mid&#x27;, age: 10 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>複製到目標物件上，然後回傳這個目標物件。</p>
+<p>其實不局限於只有一個，也可以加上第二個、第三個……</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">	test : <span class="string">&#x27;mid&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = &#123;</span><br><span class="line">	age : <span class="number">10</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = &#123;</span><br><span class="line">	<span class="keyword">case</span> : <span class="number">50</span>, </span><br><span class="line">	age : <span class="number">50</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ans = <span class="title class_">Object</span>.<span class="title function_">assign</span>(a, b, c)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ans)</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; name: &#x27;rex&#x27;, test: &#x27;mid&#x27;, age: 50, case: 50 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>不過要考慮的是撰寫時的順序而被覆蓋的情況。</p>
+<h5 id="淺拷貝"><a href="#淺拷貝" class="headerlink" title="淺拷貝"></a>淺拷貝</h5><p>在複製物件的時候，不管使用哪個方式，都必須注意一個現象，一般我們在複製物件的時候，通常是為了創造一個與另一個物件具有相同屬性的物件，不過因為 JS 的物件裡面基本上想儲存任何資料型別都可以，所以在一個物件裡面也有可能會是存放另一個物件。</p>
+<p>若是在這個狀況下，透過被複製而創造出來的新物件，並不會一併複製原來物件屬性底下存放的物件，而是會透過物件參考的形式，所以複製後，乍看之下是一個全新的物件，不過事實上他們處於一個藕斷絲連的關係，這個特殊的複製現象我們稱為 <code>淺拷貝 ( Shallow Copy )</code>，它的意思有點像 <code>只有物件表層真的被複製而已</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> originalObj = &#123;</span><br><span class="line">	<span class="attr">valuea</span>: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">	innerObj : &#123;</span><br><span class="line">		<span class="attr">valueb</span>: <span class="string">&#x27;b&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> newObj = &#123; ...originalObj &#125;</span><br><span class="line">newObj.<span class="property">innerObj</span>.<span class="property">valueb</span> = <span class="string">&#x27;example b&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(originalObj.<span class="property">innerObj</span>.<span class="property">valueb</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newObj.<span class="property">innerObj</span>.<span class="property">valueb</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(originalObj.<span class="property">innerObj</span> === newObj.<span class="property">innerObj</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// example b</span></span><br><span class="line"><span class="comment">// example b</span></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>我們使用了全相等來觀察到了這兩個內層物件是完全相等的，也就表示<code>這兩個看起來不同的物件其實是來自同一記憶體</code>。也就是說原來的 originalObj  透過展開運算子被複製，並且我們去修改 newObj 的內容物件 innerObj 的內容後，會發現  originalObj 裡的 innerObj 也一併被複製了。</p>
+<h5 id="深拷貝"><a href="#深拷貝" class="headerlink" title="深拷貝"></a>深拷貝</h5><p>相對於淺拷貝，深拷貝就是完全複製整個物件內容了。但是要在 Js 裡面實現深拷貝就相對困難，因為使用一般的複製行為就是淺拷貝，如果說想要自己做出兩個完全隔離的物件的複製，這就需要手動處理了。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123; fir : <span class="string">&#x27;a&#x27;</span> &#125;</span><br><span class="line"><span class="keyword">let</span> b = &#123; ...a &#125; </span><br><span class="line"></span><br><span class="line">a.<span class="property">fir</span> = b</span><br><span class="line"><span class="keyword">let</span> c = &#123; ...b &#125;</span><br></pre></td></tr></table></figure>
+
+<p>這看起來就是沒完沒了的複製迴圈……</p>
+<p>如果說要真正達到深拷貝，可以透過另一個常見的資料格式稱為 Json 來將一個物件轉為類似純文字的內容，再轉回 JS 物件，或是購過 JS 在新版本提供的 <code>Object.create</code> 。</p>
+<p>不過我們基本上不會這麼做……</p>
+<h3 id="物件的屬性描述器"><a href="#物件的屬性描述器" class="headerlink" title="物件的屬性描述器"></a>物件的屬性描述器</h3><p>基本上我們創造物件實不用太多的設定，都是直接指派數值。而在物件的屬性上，其實還有一些附加的資訊，讓我們能控制每個屬性的行為，這些資訊一般我們都不會看見，必須透過 <code>屬性描述器 ( Property Descriptor )</code> 才有辦法得到或修改。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	a : <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> des = <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptor</span>(obj, <span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(des)</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; </span></span><br><span class="line"><span class="comment">// 	value: &#x27;a&#x27;, </span></span><br><span class="line"><span class="comment">// 	writable: true, </span></span><br><span class="line"><span class="comment">// 	enumerable: true, </span></span><br><span class="line"><span class="comment">// 	configurable: true </span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>getOwnPropertyDescriptor</code>這個方法接受三個參數，<code>第一個是要新增的屬性目標物件，第二個是屬性名稱，第三個是這個屬性的描述器設定</code>。</p>
+<ul>
+<li>value : 屬性的值，就是一般我們指派給物件屬性的內容</li>
+<li>writable : 定義這個屬性可以被變更，如果維 true 就代表這個屬性可以透過如 <code>obj.a = &#39;new value&#39;</code> 被更新</li>
+<li>enumerable : 定義屬性再透過物件上尋訪的方法 ( 如 : Object、 Keys)。</li>
+<li>configurable : 定義這個物件的描述器這定是否能被修改，如 :  <code>writable</code> 、<code>enumerable</code>，以及自身 <code>configurable</code></li>
+<li>get : 物件屬性上的 getter 函式，定義取用物件屬性時的行為</li>
+<li>ser :  物件屬性上的 setter 函式，定義取用物件屬性時的行為</li>
+</ul>
+<h4 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty"></a>Object.defineProperty</h4><p>從前一章可以看到如果直接創造物件的話，預設就會跟描述的一樣。但是我們可以做更動~</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj, <span class="string">&quot;a&quot;</span>, &#123;</span><br><span class="line">	<span class="attr">configurable</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">enumerable</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">value</span>: <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">100</span></span><br><span class="line">	&#125;(),</span><br><span class="line">	<span class="attr">writable</span>: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 100</span></span><br></pre></td></tr></table></figure>
+
+<p>其實一般來說是不需要做更動的……除非你有特殊的需求，接下來我們可以一個一個更動看看情況究竟會如何</p>
+<h5 id="writable"><a href="#writable" class="headerlink" title="writable"></a>writable</h5><p>物件描述屬性 writable 決定了一個物件屬性，決定物件屬性是否能變更</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj, <span class="string">&quot;a&quot;</span>, &#123;</span><br><span class="line">	<span class="attr">configurable</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">enumerable</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">value</span>: <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">100</span></span><br><span class="line">	&#125;(),</span><br><span class="line">	<span class="attr">writable</span>: <span class="literal">false</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">obj.<span class="property">a</span> = <span class="number">50</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 100</span></span><br></pre></td></tr></table></figure>
+
+<p>如果將其改成 false 就無法進行變更。</p>
+<h5 id="enumerable"><a href="#enumerable" class="headerlink" title="enumerable"></a>enumerable</h5><p>這個東西決定了一個屬性能不能在物件的屬性尋訪中被取得，預設是 true。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj, <span class="string">&quot;a&quot;</span>, &#123;</span><br><span class="line">	<span class="attr">enumerable</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">value</span>: <span class="string">&quot;rex&quot;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj, <span class="string">&quot;b&quot;</span>, &#123;</span><br><span class="line">	<span class="attr">enumerable</span>: <span class="literal">false</span>,</span><br><span class="line">	<span class="attr">value</span>: <span class="string">&quot;jam&quot;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">keys</span>(obj))</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;a&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; a: &#x27;rex&#x27; &#125;</span></span><br><span class="line"><span class="comment">// [ &#x27;a&#x27; ]</span></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>從以上例子可以看出如果 <code>enumerable</code> 被設為 <code>false</code> ，那在我們透過 <code>Object.keys()</code> 來取用屬性時就無法取得，但是它還算是我們自己定義的屬性，所以我們用 <code>Object.hasOwnProperty()</code> 來檢查會是 <code>true</code> 的結果~</p>
+<p>那如果要取得自己的全部屬性……</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> anyoneinObj = <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(obj)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(anyoneinObj)</span><br><span class="line"></span><br><span class="line"><span class="comment">// [ &#x27;a&#x27;, &#x27;b&#x27; ]</span></span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>Object.getOwnPropertyNames(obj)就可以達到效果。</code></p>
+<h5 id="Configurable"><a href="#Configurable" class="headerlink" title="Configurable"></a>Configurable</h5><p>這個東西他負責一個物件是否能被修改。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj, <span class="string">&#x27;name&#x27;</span>, &#123;</span><br><span class="line">	<span class="attr">value</span>: <span class="string">&#x27;rex&#x27;</span>,</span><br><span class="line">	<span class="attr">writable</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">configurable</span>: <span class="literal">false</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">obj.<span class="property">name</span> = <span class="string">&#x27;cat&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">name</span>)</span><br><span class="line"></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj, <span class="string">&#x27;name&#x27;</span>, &#123;</span><br><span class="line">	<span class="attr">configurable</span>: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// cat</span></span><br><span class="line"><span class="comment">// Object.defineProperty(obj, &#x27;name&#x27;, &#123;</span></span><br><span class="line"><span class="comment">//        ^</span></span><br><span class="line"><span class="comment">// TypeError: Cannot redefine property: name</span></span><br></pre></td></tr></table></figure>
+
+<p>如果被認定為 <code>false</code> 後，在嘗試修改就會出現 <code>TypeError</code> 的狀況。</p>
+<h5 id="Get-、-Set"><a href="#Get-、-Set" class="headerlink" title="Get 、 Set"></a>Get 、 Set</h5><p>屬性描述器裡的 get 、 set 是屬性描述上的兩個隱藏函式，<code>分別決定了物件屬性被取用時以及被賦值時的行為</code>。如果這兩個值沒有被設定的話，預設值就會是 <code>undefined</code> ，那這個時候就跟一般使用時沒什麼差別，如果有更動……</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj, <span class="string">&#x27;name&#x27;</span>, &#123;</span><br><span class="line">	<span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&#x27;This is getting called&#x27;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="title function_">set</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">_name</span> =<span class="string">&#x27;this is setting&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">name</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// This is getting called</span></span><br></pre></td></tr></table></figure>
+
+<p>get 跟 set 在屬性描述器的設定與前面幾個描述器有一個細微的差異，描述起可以分為兩種 : 若在定義屬性時，描述器上有 <code>Get</code> 或 <code>Set</code> 的設定的話，這個描述器就會被稱做 <code>存取描述器 ( Accessor Descriptor )</code>，反之，則被稱做 <code>資訊描述器 ( Data Descriptor )</code>。而對存取描述器而言，它的 <code>value</code> 與 <code>writable</code> 值會被忽略，而會以被設定的 <code>get</code> 跟 <code>set</code> 函式內容為主</p>
+<h3 id="This"><a href="#This" class="headerlink" title="This"></a>This</h3><p>This 這個東西很像 python 裡的 self ，但又差了一點……</p>
+<p>我們來看一下在 JS 裡面的 This ，<code>this</code> 是一個特殊的關鍵字，讓我們可以很方便的從執行環境裡取得外部的物件，用另一種說法就是， <code>this</code> 可以讓我們在呼叫函式時，透過不同方式決定它要指向哪一個新物件。 <code>this</code> 會在每個<code>執行環境堆疊</code>裡面出現，不過沒有足夠了解的話，就會出現 <code>this</code> 指向錯誤的物件之類等不如預期的狀況，所以我們在使用前一定要弄清楚 <code>this</code> 在檯面下的運作方式。</p>
+<p>注意 : <code>如何呼叫</code> 跟 <code>在哪裡呼叫</code> 這兩件事情都會造成 this 的指向不同。</p>
+<p>而this有四種綁定方式，所謂的 <code>this 綁定 ( Binding )</code> ，或稱 <code>繫結</code>，指的是指向哪一個物件，而 this 大致上有四種綁定形式……</p>
+<h4 id="預設的綁定"><a href="#預設的綁定" class="headerlink" title="預設的綁定"></a>預設的綁定</h4><p>前面有說過 this 的指向，攸關於一個函式是怎麼被呼叫的。我們來看看一般類型的函式</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">a</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;rex&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>之前有說過在函式裡的 this 涉及到全域，但感覺並不然，除了全域物件 window ，<code>另一個指向 window 的這個物件的 this 也會跟著產生。</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">a</span>)&#123;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">a</span> = a</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">a</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;rex&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(a);</span><br></pre></td></tr></table></figure>
+
+<p>所以還是要把 <code>a</code> 指回去給函式裡喔</p>
+<h4 id="隱含的綁定"><a href="#隱含的綁定" class="headerlink" title="隱含的綁定"></a>隱含的綁定</h4><p>從字面上來看就是不太確定的綁定。當我們呼叫一個函式時，如果不是直接呼叫，而是透過物件裡面的一個屬性，那麼就等於是在給這個函式一個背景資訊， JS 就會知道你呼叫的是該物件裡的函式，於是就會把 this 指向你所用的這個函式。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">msg</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	msg : <span class="string">&#x27;a message&#x27;</span>,</span><br><span class="line">	test : test,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.<span class="title function_">test</span>()</span><br><span class="line"><span class="title function_">test</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// a message</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>這邊我們先宣告了 <code>test</code> ，然後再把這個函式指派給了<code>物件 obj 裡的 test 屬性</code>，之後再呼叫了 <code>obj</code> 裡面的這個 <code>test</code> ，透過 <code>this</code> 我們也拿到了 <code>obj</code> 裡面的 <code>msg</code> 內容了。</p>
+<p>而相對的，當我們在全域時使用 <code>test</code> 函式，所使用的就會跟 <code>預設的this</code> 綁定，但因為全域物件，也就是 <code>window</code> 底下並沒有 <code>msg</code> 這個變數，所以會出現 <code>undefined</code> 的結果。</p>
+<h4 id="明確的綁定"><a href="#明確的綁定" class="headerlink" title="明確的綁定"></a>明確的綁定</h4><p>在 JS 裡面所有的函式都有 <code>call</code> 跟 <code>apply</code> 可以使用，他們用來指定綁住物件的 <code>this 。</code></p>
+<p>他們的第一個參數都是指定 <code>this</code> 所指向的物件，而第二個以後的參數則是要傳入該函式的參數，<code>apply</code> 是以陣列方式決定傳入函式的參數順序， <code>call</code> 則是直接以第二個參數後的數量及順序來決定，不過不管使用哪一個方式都能明確的綁定。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> user = &#123;</span><br><span class="line">	name : <span class="string">&#x27;rex&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>()</span><br><span class="line">test.<span class="title function_">call</span>(user)</span><br><span class="line">test.<span class="title function_">apply</span>(user)</span><br><span class="line"></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"><span class="comment">// rex</span></span><br><span class="line"><span class="comment">// rex</span></span><br></pre></td></tr></table></figure>
+
+<p>透過 <code>call</code> 跟 <code>apply</code> 就可以透過 <code>this</code> 來抓到 <code>user</code> 裡的屬性值了</p>
+<h4 id="硬綁定"><a href="#硬綁定" class="headerlink" title="硬綁定"></a>硬綁定</h4><p>硬綁定 ( Hard Binding )其實是明確綁定的一種變化，用來確保某個函式的 this 每次被呼叫的時候都與目標物件綁定，而不會因為利用 call 或 apply 錯誤地修改了一個函式地 this 而發生了預期之外的結果。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">say</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">msg</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;this is test = &quot;</span>, <span class="variable language_">this</span>);</span><br><span class="line">	say.<span class="title function_">call</span>(user);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> user = &#123;</span><br><span class="line">	msg : <span class="string">&#x27;I am a message&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">test</span>())</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(test.<span class="title function_">call</span>(&#123;&#125;));</span><br><span class="line"></span><br><span class="line"><span class="comment">// this is test =  &lt;ref *1&gt; Object [global] &#123;</span></span><br><span class="line"><span class="comment">//   global: [Circular *1],</span></span><br><span class="line"><span class="comment">//   clearInterval: [Function: clearInterval],</span></span><br><span class="line"><span class="comment">//   clearTimeout: [Function: clearTimeout],</span></span><br><span class="line"><span class="comment">//   setInterval: [Function: setInterval],</span></span><br><span class="line"><span class="comment">//   setTimeout: [Function: setTimeout] &#123;</span></span><br><span class="line"><span class="comment">//     [Symbol(nodejs.util.promisify.custom)]: [Function (anonymous)]</span></span><br><span class="line"><span class="comment">//   &#125;,</span></span><br><span class="line"><span class="comment">//   queueMicrotask: [Function: queueMicrotask],</span></span><br><span class="line"><span class="comment">//   clearImmediate: [Function: clearImmediate],</span></span><br><span class="line"><span class="comment">//   setImmediate: [Function: setImmediate] &#123;</span></span><br><span class="line"><span class="comment">//     [Symbol(nodejs.util.promisify.custom)]: [Function (anonymous)]</span></span><br><span class="line"><span class="comment">//   &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// I am a message</span></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"><span class="comment">// this is test =  &#123;&#125;</span></span><br><span class="line"><span class="comment">// I am a message</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>從註解地這一大串我們可以看到 <code>test</code> 函式達成了硬綁定的目的。可以看到因為真正取用物件屬性的  <code>name</code> 函式 <code>say</code> 外面其實多包了一層 <code>test</code> ，並固定使用 <code>call</code> 來將 <code>say</code> 函式的 <code>this</code> 直接綁定成 <code>user</code> 這個物件，<code>所以即使外層函式 test 再怎麼用 call 來綁定 this ，裡面的主要函式，也就是 say 被呼叫時取用的 this 值，也不會到影響，這就是硬綁定的概念。</code></p>
+<p>我們可以看到上面那個連結的 <code>bind</code> </p>
+<p>嘿，關於硬綁定其實不需要自己處理，使用 bind 可以確保這個函式的 this 不會因為任何其他的 call 或 apply 而被修改。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obja = &#123;</span><br><span class="line">	a : <span class="string">&#x27;testa&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> bindTest = test.<span class="title function_">bind</span>(obja)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(bindTest)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(bindTest.<span class="title function_">call</span>(obja, <span class="string">&#x27;test&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// [Function: bound test]</span></span><br><span class="line"><span class="comment">// &#123; a: &#x27;testa&#x27; &#125;</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<h4 id="new-與建構函式的綁定"><a href="#new-與建構函式的綁定" class="headerlink" title="new 與建構函式的綁定"></a>new 與建構函式的綁定</h4><p>前面有講過建構函式，在這裡面的 <code>this</code> 與前面幾種 <code>this</code> 的行為相比又更特殊。且比較沒有關聯。</p>
+<p>一般來說 new 建構子搭配呼叫時，會有以下神奇的事情發生 : </p>
+<ul>
+<li>會有一個全新的物件被創建出來</li>
+<li>這個新建構的物件帶有 prototype 連結</li>
+<li>這個新建構的物件會被設為那個函式呼叫的 <code>this</code></li>
+<li>除非該函式提供了自己的替代物件，不然這個以 <code>new</code> 呼叫的函式呼叫會自動回傳這個新建構的物件。</li>
+</ul>
+<p>目前的主流是 <code>class</code> ，幾乎沒有人會直接用 new 了吧….大概 ?</p>
+<h4 id="箭頭函式裡的-this"><a href="#箭頭函式裡的-this" class="headerlink" title="箭頭函式裡的 this"></a>箭頭函式裡的 this</h4><p>現在我們回過頭來看箭頭函式，與一般函式上的 this 綁定行為不太一樣。當我們使用一般的函式呼叫時， this 的綁定規則都會根據前面講過的幾種綁定方式來進行綁定，不過在箭頭函式哩，沿用官方的說法，它是 <code>沒有 this 綁定的</code></p>
+<p>為甚麼 ? 一個簡單的解釋是，在箭頭函式裡的 this ，與箭頭函式外面的 this 綁定是相同的，也就是說<code>箭頭函式裡的 this 綁定會根據這個箭頭函式的程式碼實際位置，亦依語彙環境而變</code>。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	func : <span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;this is normal function.&quot;</span>, <span class="variable language_">this</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	arrowFunc : <span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;this is arrow function.&quot;</span>, <span class="variable language_">this</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">func</span>());</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">arrowFunc</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// this is normal function. &#123;&#125;</span></span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"><span class="comment">// this is arrow function. &#123;&#125;</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>當我們呼叫 obj 物件上的一般函式時，所使用的 this 綁定是透過隱含綁定的方式來達成，不過同樣的事情可能就不會發生在箭頭函式內…..</p>
+<p>如果我們執行了上面這段程式碼，<code>你會發現這個箭頭函式內的 this 在呼叫時不會綁定到 obj 物件本身，而是全域物件......</code>，這就是因為箭頭函式沒有 this 綁定的關係造成的。 </p>
+<p>這個現象很適合用在防止 <code>this</code> 綁定會隱含失去的現象發生。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>作者： </strong>xiaLotus
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章連結：</strong>
+    <a href="https://xialotus.github.io/2023/11/14/js-%E7%89%A9%E4%BB%B6%E8%88%87%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91/" title="js-物件與物件導向">https://xialotus.github.io/2023/11/14/js-物件與物件導向/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-TW" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javascript/" rel="tag"># javascript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/14/js-%E7%AF%84%E5%9C%8D/" rel="prev" title="js-範圍">
+      <i class="fa fa-chevron-left"></i> js-範圍
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/11/14/js-%E7%89%A9%E4%BB%B6%E8%88%87%E5%8E%9F%E5%9E%8B/" rel="next" title="js-物件與原型">
+      js-物件與原型 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8D%E6%96%BC%E7%89%A9%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">對於物件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88-oop"><span class="nav-number">1.1.</span> <span class="nav-text">物件導向程式設計 ( oop )</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E5%AD%97%E9%9D%A2%E5%80%BC-Object-Literal"><span class="nav-number">1.1.1.</span> <span class="nav-text">物件字面值 (Object Literal)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%8F%96%E7%89%A9%E4%BB%B6%E5%85%A7%E5%AE%B9"><span class="nav-number">1.1.2.</span> <span class="nav-text">存取物件內容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E9%A1%9E%E5%88%A5%E8%88%87%E5%AF%A6%E4%BE%8B"><span class="nav-number">1.1.3.</span> <span class="nav-text">建立類別與實例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E7%9A%84%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.4.</span> <span class="nav-text">物件的常用操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-hasOwnProperty"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">使用 hasOwnProperty</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-in-%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">使用 in 運算子</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%AD%98%E5%8F%96%E9%96%8B%E7%89%A9%E4%BB%B6%E5%B1%AC%E6%80%A7%E4%BE%86%E5%88%A4%E6%96%B7"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">直接存取開物件屬性來判斷</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8B%E8%A8%AA%E7%89%A9%E4%BB%B6"><span class="nav-number">1.1.5.</span> <span class="nav-text">尋訪物件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Object-keys"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">Object.keys</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Object-values"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">Object.values</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Object-entries"><span class="nav-number">1.1.5.3.</span> <span class="nav-text">Object.entries</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC"><span class="nav-number">1.1.6.</span> <span class="nav-text">解構賦值</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E7%9A%84%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC"><span class="nav-number">1.1.6.1.</span> <span class="nav-text">物件的解構賦值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%99%A3%E5%88%97%E7%9A%84%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC"><span class="nav-number">1.1.6.2.</span> <span class="nav-text">陣列的解構賦值</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A4%87%E8%A3%BD%E7%89%A9%E4%BB%B6"><span class="nav-number">1.1.7.</span> <span class="nav-text">複製物件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B1%95%E9%96%8B%E7%89%A9%E4%BB%B6"><span class="nav-number">1.1.7.1.</span> <span class="nav-text">展開物件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Object-assign"><span class="nav-number">1.1.7.2.</span> <span class="nav-text">Object.assign</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BA%E6%8B%B7%E8%B2%9D"><span class="nav-number">1.1.7.3.</span> <span class="nav-text">淺拷貝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%B1%E6%8B%B7%E8%B2%9D"><span class="nav-number">1.1.7.4.</span> <span class="nav-text">深拷貝</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E7%9A%84%E5%B1%AC%E6%80%A7%E6%8F%8F%E8%BF%B0%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">物件的屬性描述器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-defineProperty"><span class="nav-number">1.2.1.</span> <span class="nav-text">Object.defineProperty</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#writable"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">writable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#enumerable"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">enumerable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Configurable"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">Configurable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Get-%E3%80%81-Set"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">Get 、 Set</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#This"><span class="nav-number">1.3.</span> <span class="nav-text">This</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A0%90%E8%A8%AD%E7%9A%84%E7%B6%81%E5%AE%9A"><span class="nav-number">1.3.1.</span> <span class="nav-text">預設的綁定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%B1%E5%90%AB%E7%9A%84%E7%B6%81%E5%AE%9A"><span class="nav-number">1.3.2.</span> <span class="nav-text">隱含的綁定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%8E%E7%A2%BA%E7%9A%84%E7%B6%81%E5%AE%9A"><span class="nav-number">1.3.3.</span> <span class="nav-text">明確的綁定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A1%AC%E7%B6%81%E5%AE%9A"><span class="nav-number">1.3.4.</span> <span class="nav-text">硬綁定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#new-%E8%88%87%E5%BB%BA%E6%A7%8B%E5%87%BD%E5%BC%8F%E7%9A%84%E7%B6%81%E5%AE%9A"><span class="nav-number">1.3.5.</span> <span class="nav-text">new 與建構函式的綁定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%AD%E9%A0%AD%E5%87%BD%E5%BC%8F%E8%A3%A1%E7%9A%84-this"><span class="nav-number">1.3.6.</span> <span class="nav-text">箭頭函式裡的 this</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaLotus"
+      src="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xiaLotus</p>
+  <div class="site-description" itemprop="description">xia的小窩</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xiaLotus" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xiaLotus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:a91321987@gmail.com" title="E-Mail → mailto:a91321987@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-TW" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaLotus</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">62k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">3:45</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
