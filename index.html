@@ -451,10 +451,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-11-14 10:25:50 / 修改時間：10:52:13" itemprop="dateCreated datePublished" datetime="2023-11-14T10:25:50+08:00">2023-11-14</time>
+              <time title="創建時間：2023-11-14 10:25:50" itemprop="dateCreated datePublished" datetime="2023-11-14T10:25:50+08:00">2023-11-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-11-23 00:00:49" itemprop="dateModified" datetime="2023-11-23T00:00:49+08:00">2023-11-23</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -471,7 +477,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>685</span>
+              <span>686</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -491,48 +497,14 @@
 
       
           <h3 id="範圍-vs-存在"><a href="#範圍-vs-存在" class="headerlink" title="範圍 vs 存在"></a><code>範圍 vs 存在</code></h3><p>如果變數不存在，它就不會在範圍內。</p>
-<p><code>範圍指的是</code> : 目前在執行的程式段落可以看到與操作某個識別碼。另一方面，<code>存在代表</code> 有一個識別碼保存了某些已經分配 ( 保留 ) 給它的記憶體。</p>
-<h3 id="語彙與動態範圍"><a href="#語彙與動態範圍" class="headerlink" title="語彙與動態範圍"></a>語彙與動態範圍</h3><p>我們舉個例子</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test1</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;f1&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test2</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;f2&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">test1</span>();</span><br><span class="line"><span class="title function_">test2</span>();</span><br><span class="line"><span class="title function_">test1</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// f1</span></span><br><span class="line"><span class="comment">// f2</span></span><br><span class="line"><span class="comment">// f1</span></span><br></pre></td></tr></table></figure>
-
-<p>這是一般的程式碼，可以一目瞭然，不過有些時候不一定能<code>明確</code>地看出範圍</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> x = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> y = <span class="number">2</span>;</span><br><span class="line"><span class="title function_">test</span>();</span><br></pre></td></tr></table></figure>
-
-<p>當我們定義 test( ) 的時候，變數 x 是存在的，但 y 不存在，然後我們宣告了  y 並呼叫 test( ) ，你可以看到，當 test 被呼叫時， x 在 test 的本文範圍內，但 y 不在。</p>
-<h4 id="全域變數"><a href="#全域變數" class="headerlink" title="全域變數"></a>全域變數</h4><p>其實全域變數沒有這麼不好，不好的是濫用全域變數的部分。</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">10</span>;          <span class="comment">// 全域</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`a : <span class="subst">$&#123;a&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>這樣是沒有結果的，我們可以再把它放進物件裡</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> test = &#123;</span><br><span class="line">    nums : <span class="number">14</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">f1</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`nums : <span class="subst">$&#123;test.nums&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">f1</span>();</span><br></pre></td></tr></table></figure>
-
-<p>這邊要想一個問題….如果物件裡的鍵超過一定的數量時……</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">f1</span>(<span class="params">test</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`nums : <span class="subst">$&#123;test.nums&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="區塊範圍"><a href="#區塊範圍" class="headerlink" title="區塊範圍"></a>區塊範圍</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="params"><span class="string">&quot;before&quot;</span></span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> x = <span class="number">10</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`inside and x = <span class="subst">$&#123;x&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`outside and x = <span class="subst">$&#123;x&#125;</span>`</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// before</span></span><br><span class="line"><span class="comment">// inside and x = 10</span></span><br><span class="line"><span class="comment">// console.log(`outside and x = $&#123;x&#125;`)</span></span><br><span class="line"><span class="comment">//                          ^</span></span><br><span class="line"><span class="comment">// ReferenceError: x is not defined</span></span><br></pre></td></tr></table></figure>
-
-<p>這邊可以看得出作用範圍了</p>
-<h3 id="變數遮蓋"><a href="#變數遮蓋" class="headerlink" title="變數遮蓋"></a>變數遮蓋</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">const</span> x = <span class="string">&#x27;bread&#x27;</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> x);</span><br><span class="line"></span><br><span class="line"><span class="comment">// bread</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<p>超出範圍會出現 <code>undefined</code></p>
-<p>在撰寫的時候也要考慮 <code>嵌套</code> 的問題</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&#123;</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">// ...</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>類似上面這種的要小心注意</p>
-<h3 id="函式、Closure-閉包-與語彙範圍"><a href="#函式、Closure-閉包-與語彙範圍" class="headerlink" title="函式、Closure( 閉包 )與語彙範圍"></a>函式、Closure( 閉包 )與語彙範圍</h3><p>前面都在討論區域，一目瞭然的是在縮排後只需要看 <code>&#123; &#125;</code> 就可以知道它的範圍</p>
-<p>但是在 modern JavaScript 裡，函式會根據它的需求而定義，他們被指派給變數或物件特性、加到陣列裡面、傳入傳出函式……</p>
-<p>我們來看個 <code>closure</code> 的範例 ( <code>closure 可以想成在函式周圍關閉範圍</code> )</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> test; </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> f1 = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">    test = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(f1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">test</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// a</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="立即呼叫函式運算式"><a href="#立即呼叫函式運算式" class="headerlink" title="立即呼叫函式運算式"></a>立即呼叫函式運算式</h3><p>我們先來看看這個東西長怎樣</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="comment">// 隨意</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-<p>這個東西就是 <code>IIFE ( 立即呼叫函式運算式 )</code>。</p>
-<p>我們直接來看個例子</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> msg = (<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> test = <span class="string">&#x27;Mytest&#x27;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;test.length&#125;</span>`</span></span><br><span class="line">&#125;)();</span><br><span class="line"><span class="comment">// () -&gt; function()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
-
-<p>很明顯的，這個變數 test 在 IIFE 的<code>範圍</code>內是很安全的，我們可以從裡面傳出任何想要的東西。</p>
-<p>雖然 <code>ES6 的區塊範圍變數在某種程度上可以減少對 IIFE 的依賴</code>，但 IIFE 仍然很常見，而且當你想要建立一個 closure 時，並將某個東西傳出去還是很實用的。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/11/14/js-%E7%AF%84%E5%9C%8D/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
