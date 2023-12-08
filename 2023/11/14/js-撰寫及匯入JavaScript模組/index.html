@@ -30,7 +30,7 @@
 <meta property="og:description" content="先隨手建立專案">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-11-14T02:24:15.000Z">
-<meta property="article:modified_time" content="2023-11-14T02:25:12.754Z">
+<meta property="article:modified_time" content="2023-12-08T11:55:33.598Z">
 <meta property="article:author" content="xiaLotus">
 <meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary">
@@ -194,10 +194,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-11-14 10:24:15 / 修改時間：10:25:12" itemprop="dateCreated datePublished" datetime="2023-11-14T10:24:15+08:00">2023-11-14</time>
+              <time title="創建時間：2023-11-14 10:24:15" itemprop="dateCreated datePublished" datetime="2023-11-14T10:24:15+08:00">2023-11-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-12-08 19:55:33" itemprop="dateModified" datetime="2023-12-08T19:55:33+08:00">2023-12-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -221,7 +227,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>215</span>
+              <span>327</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -261,7 +267,18 @@
 <p>最後輸入 ↓，就可以看到答案了。</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node index.<span class="property">js</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="從模組匯出有名稱的功能"><a href="#從模組匯出有名稱的功能" class="headerlink" title="從模組匯出有名稱的功能"></a>從模組匯出有名稱的功能</h3>
+<h3 id="從模組匯出有名稱的功能"><a href="#從模組匯出有名稱的功能" class="headerlink" title="從模組匯出有名稱的功能"></a>從模組匯出有名稱的功能</h3><p>函式作用不變</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">cal</span>(<span class="params">price</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Number</span>(price) * <span class="number">1.2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我們將 <code>default</code> 關鍵字拿掉後改成自己設定的名字，而後再更改 <code>index.js</code> 的函式……</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; cal &#125; <span class="keyword">from</span> <span class="string">&#x27;./tax.js&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Product</span>&#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">name, price</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">id</span> = <span class="title class_">Symbol</span>();</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">price</span> = price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> product = <span class="keyword">new</span> <span class="title class_">Product</span>(<span class="string">&quot;Hat&quot;</span>, <span class="number">1000</span>);</span><br><span class="line"><span class="keyword">let</span> taxedPrice = <span class="title function_">cal</span>(product.<span class="property">price</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`name : <span class="subst">$&#123;product.name&#125;</span>, taxprice : <span class="subst">$&#123;taxedPrice&#125;</span>`</span>)</span><br></pre></td></tr></table></figure>
+
+<p>這樣也可以有相同的結果喔</p>
+<p>不過要注意一個問題</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tax, &#123; cal &#125; <span class="keyword">from</span> <span class="string">&#x27;./tax.js&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>這時候就要注意預設的值~~</p>
+
     </div>
 
     
@@ -384,7 +401,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -442,7 +459,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">3:45</span>
+    <span title="所需總閱讀時間">3:46</span>
 </div>
 
 <!--
