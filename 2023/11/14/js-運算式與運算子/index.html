@@ -30,9 +30,9 @@
 <meta property="og:description" content="一般來說，我們常看到的運算子就是所謂的 + - * &#x2F; 跟 %">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-11-14T01:05:49.000Z">
-<meta property="article:modified_time" content="2023-11-14T01:11:21.148Z">
+<meta property="article:modified_time" content="2023-12-14T11:12:00.586Z">
 <meta property="article:author" content="xiaLotus">
-<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://xialotus.github.io/2023/11/14/js-%E9%81%8B%E7%AE%97%E5%BC%8F%E8%88%87%E9%81%8B%E7%AE%97%E5%AD%90/">
@@ -194,10 +194,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-11-14 09:05:49 / 修改時間：09:11:21" itemprop="dateCreated datePublished" datetime="2023-11-14T09:05:49+08:00">2023-11-14</time>
+              <time title="創建時間：2023-11-14 09:05:49" itemprop="dateCreated datePublished" datetime="2023-11-14T09:05:49+08:00">2023-11-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-12-14 19:12:00" itemprop="dateModified" datetime="2023-12-14T19:12:00+08:00">2023-12-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -247,7 +253,7 @@
 <p>優先順序則是跟我們在算數學的時候一樣，有括號者優先</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="number">10</span>;</span><br><span class="line">x = ( x * <span class="number">10</span> ) - x </span><br></pre></td></tr></table></figure>
 
-<h4 id="比較運算子則有3種"><a href="#比較運算子則有3種" class="headerlink" title="比較運算子則有3種"></a><code>比較運算子則有3種</code></h4><ol>
+<h3 id="比較運算子則有3種"><a href="#比較運算子則有3種" class="headerlink" title="比較運算子則有3種"></a>比較運算子則有3種</h3><ol>
 <li>嚴格相等</li>
 <li>抽象 ( 寬鬆 ) 相等</li>
 <li>與關係當成不同型態</li>
@@ -336,7 +342,7 @@
 </ol>
 <p>上面的方法前者稱為 <code>明確的轉型</code> ，後者稱為 <code>隱含的轉型</code></p>
 <p>如果我們使用 <code>Number(&quot;2&quot;)</code> ，這個動作就被稱為 <code>明確的</code> 轉型，不過因為 JS 是<code>弱型別</code>的語言( 弱型別的語言對數值運算型別的差異容忍度較高 )，所以數值型態能互相轉換，所以就有了 <code>隱含</code> 的轉型現象。</p>
-<h2 id="一般來說強制轉型分為三類。"><a href="#一般來說強制轉型分為三類。" class="headerlink" title="一般來說強制轉型分為三類。"></a>一般來說強制轉型分為三類。</h2><p>我們先來看看第一類。</p>
+<p>一般來說強制轉型分為三類。<br>我們先來看看第一類。</p>
 <h3 id="字串"><a href="#字串" class="headerlink" title="字串"></a>字串</h3><p>明確轉型</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">String</span>(<span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
 
@@ -382,7 +388,7 @@
 <li>在任一其他類型的數值面前使用加法運算子 <code>+</code> 來觸發轉型</li>
 <li>寬鬆的數值比較 ( <code>==</code> 、 <code>!=</code> )</li>
 </ol>
-<h3 id="物件"><a href="#物件" class="headerlink" title="物件"></a>物件</h3><h3 id="物件轉布林"><a href="#物件轉布林" class="headerlink" title="物件轉布林"></a>物件轉布林</h3><p>→ 任何非純值類零的數值，都會被轉型為 <code>true</code></p>
+<h3 id="物件轉布林"><a href="#物件轉布林" class="headerlink" title="物件轉布林"></a>物件轉布林</h3><p>→ 任何非純值類零的數值，都會被轉型為 <code>true</code></p>
 <h3 id="物件轉字串與數值"><a href="#物件轉字串與數值" class="headerlink" title="物件轉字串與數值"></a>物件轉字串與數值</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;&#125;</span><br><span class="line">a.<span class="title function_">toString</span>();</span><br></pre></td></tr></table></figure>
 
 <p>JS 根據 ECMAScript 的規範，使用一個叫做 ToPrimitive 的演算流程，這個流程分別使用 <code>toString</code> 與 <code>ValueOf</code> 兩個方法搭配整個物件當作輸入值來判斷結果。而這兩個方法在所有的物件類型的數值上都可以呼叫，也可以透過複寫來自定。</p>
@@ -417,7 +423,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/javascript/" rel="tag"># javascript</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
           </div>
 
         
@@ -491,7 +497,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%94%E8%BC%83%E9%81%8B%E7%AE%97%E5%AD%90%E5%89%87%E6%9C%893%E7%A8%AE"><span class="nav-number">1.</span> <span class="nav-text">比較運算子則有3種</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%9F-%E7%9B%B8%E7%AD%89%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number"></span> <span class="nav-text">&#x3D;&#x3D; 跟 &#x3D;&#x3D;&#x3D; (相等運算子)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9A%B4%E6%A0%BC%E7%9A%84%E7%9B%B8%E7%AD%89%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number"></span> <span class="nav-text">嚴格的相等運算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%9F"><span class="nav-number"></span> <span class="nav-text">! &#x3D; 跟 ! &#x3D; &#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E9%AD%9A%E5%B0%8F%E9%AD%9A%E7%AD%89%E6%96%BC"><span class="nav-number"></span> <span class="nav-text">大魚小魚等於</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number"></span> <span class="nav-text">邏輯運算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E5%85%83%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number"></span> <span class="nav-text">位元運算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B7%E5%88%B6%E8%BD%89%E5%9E%8B"><span class="nav-number"></span> <span class="nav-text">強制轉型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E4%BE%86%E8%AA%AA%E5%BC%B7%E5%88%B6%E8%BD%89%E5%9E%8B%E5%88%86%E7%82%BA%E4%B8%89%E9%A1%9E%E3%80%82"><span class="nav-number"></span> <span class="nav-text">一般來說強制轉型分為三類。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E4%B8%B2"><span class="nav-number"></span> <span class="nav-text">字串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E6%9E%97%E5%80%BC"><span class="nav-number"></span> <span class="nav-text">布林值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B8%E5%80%BC"><span class="nav-number"></span> <span class="nav-text">數值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6"><span class="nav-number"></span> <span class="nav-text">物件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E8%BD%89%E5%B8%83%E6%9E%97"><span class="nav-number"></span> <span class="nav-text">物件轉布林</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E8%BD%89%E5%AD%97%E4%B8%B2%E8%88%87%E6%95%B8%E5%80%BC"><span class="nav-number"></span> <span class="nav-text">物件轉字串與數值</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E8%BC%83%E9%81%8B%E7%AE%97%E5%AD%90%E5%89%87%E6%9C%893%E7%A8%AE"><span class="nav-number">1.</span> <span class="nav-text">比較運算子則有3種</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%9F-%E7%9B%B8%E7%AD%89%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number">2.</span> <span class="nav-text">&#x3D;&#x3D; 跟 &#x3D;&#x3D;&#x3D; (相等運算子)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9A%B4%E6%A0%BC%E7%9A%84%E7%9B%B8%E7%AD%89%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text">嚴格的相等運算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%9F"><span class="nav-number">4.</span> <span class="nav-text">! &#x3D; 跟 ! &#x3D; &#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E9%AD%9A%E5%B0%8F%E9%AD%9A%E7%AD%89%E6%96%BC"><span class="nav-number">5.</span> <span class="nav-text">大魚小魚等於</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number">6.</span> <span class="nav-text">邏輯運算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E5%85%83%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number">7.</span> <span class="nav-text">位元運算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B7%E5%88%B6%E8%BD%89%E5%9E%8B"><span class="nav-number">8.</span> <span class="nav-text">強制轉型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E4%B8%B2"><span class="nav-number">9.</span> <span class="nav-text">字串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E6%9E%97%E5%80%BC"><span class="nav-number">10.</span> <span class="nav-text">布林值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B8%E5%80%BC"><span class="nav-number">11.</span> <span class="nav-text">數值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E8%BD%89%E5%B8%83%E6%9E%97"><span class="nav-number">12.</span> <span class="nav-text">物件轉布林</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E8%BD%89%E5%AD%97%E4%B8%B2%E8%88%87%E6%95%B8%E5%80%BC"><span class="nav-number">13.</span> <span class="nav-text">物件轉字串與數值</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -514,13 +520,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
