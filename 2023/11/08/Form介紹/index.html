@@ -22,16 +22,16 @@
     var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Forms 的部分比較多。">
+  <meta name="description" content="眾所皆知，表單都會有輸入的地方，或是可以控制點擊的地方，那在reflex裡面也是同樣，型態依舊是str。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Form介紹-1">
+<meta property="og:title" content="Form介紹">
 <meta property="og:url" content="https://xialotus.github.io/2023/11/08/Form%E4%BB%8B%E7%B4%B9/index.html">
 <meta property="og:site_name" content="xia的小窩">
-<meta property="og:description" content="Forms 的部分比較多。">
+<meta property="og:description" content="眾所皆知，表單都會有輸入的地方，或是可以控制點擊的地方，那在reflex裡面也是同樣，型態依舊是str。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://xialotus.github.io/2023/11/08/Form%E4%BB%8B%E7%B4%B9/image.png">
 <meta property="article:published_time" content="2023-11-08T12:14:16.000Z">
-<meta property="article:modified_time" content="2023-11-08T13:23:09.130Z">
+<meta property="article:modified_time" content="2023-12-14T02:52:25.984Z">
 <meta property="article:author" content="xiaLotus">
 <meta property="article:tag" content="Reflex">
 <meta name="twitter:card" content="summary">
@@ -50,7 +50,7 @@
   };
 </script>
 
-  <title>Form介紹-1 | xia的小窩</title>
+  <title>Form介紹 | xia的小窩</title>
   
 
 
@@ -187,7 +187,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Form介紹-1
+          Form介紹
         </h1>
 
         <div class="post-meta">
@@ -196,10 +196,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-11-08 20:14:16 / 修改時間：21:23:09" itemprop="dateCreated datePublished" datetime="2023-11-08T20:14:16+08:00">2023-11-08</time>
+              <time title="創建時間：2023-11-08 20:14:16" itemprop="dateCreated datePublished" datetime="2023-11-08T20:14:16+08:00">2023-11-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-12-14 10:52:25" itemprop="dateModified" datetime="2023-12-14T10:52:25+08:00">2023-12-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -223,7 +229,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>610</span>
+              <span>603</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -242,12 +248,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Forms 的部分比較多。</p>
+        <p>眾所皆知，表單都會有輸入的地方，或是可以控制點擊的地方，那在reflex裡面也是同樣，型態依舊是str。</p>
 <span id="more"></span>
-<ul>
-<li>Form<br>眾所皆知，表單都會有輸入的地方，或是可以控制點擊的地方，那在reflex裡面也是同樣，型態依舊是str。</li>
-</ul>
-<p>這邊要注意的是，一個.py檔裡只能有一個<code>rx.State</code>，接下來也就是和 text那邊一樣，依樣畫葫蘆。</p>
+<h3 id="Forms"><a href="#Forms" class="headerlink" title="Forms"></a>Forms</h3><p>這邊要注意的是，一個.py檔裡只能有一個<code>rx.State</code>，接下來也就是和 text那邊一樣，依樣畫葫蘆。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 參照官網</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FormState</span>(rx.State):</span><br><span class="line"></span><br><span class="line">    form_data: <span class="built_in">dict</span> = &#123;&#125;</span><br><span class="line">    <span class="comment"># 這邊直接把型態定成 dict</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">handle_submit</span>(<span class="params">self, form_data: <span class="built_in">dict</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Handle the form submit.&quot;&quot;&quot;</span></span><br><span class="line">        self.form_data = form_data</span><br></pre></td></tr></table></figure>
 
 <p>接下來就是輸入的格子。</p>
@@ -263,10 +266,11 @@
 <p>當然你按下按鈕，回傳的時候一樣也會顯示</p>
 
 
-<ul>
-<li>Form control<br>先上程式碼的部分。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># def ...</span></span><br><span class="line"><span class="keyword">return</span> rx.form_control(</span><br><span class="line">    rx.form_label(<span class="string">&quot;First Name&quot;</span>, html_for=<span class="string">&quot;email&quot;</span>),</span><br><span class="line">    rx.checkbox(<span class="string">&quot;Example&quot;</span>),</span><br><span class="line">    rx.form_helper_text(<span class="string">&quot;This is a help text&quot;</span>),</span><br><span class="line">    is_required=<span class="literal">True</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-這邊的結果很明顯</li>
-</ul>
+<h3 id="Form-control"><a href="#Form-control" class="headerlink" title="Form control"></a>Form control</h3><p>先上程式碼的部分。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># def ...</span></span><br><span class="line"><span class="keyword">return</span> rx.form_control(</span><br><span class="line">    rx.form_label(<span class="string">&quot;First Name&quot;</span>, html_for=<span class="string">&quot;email&quot;</span>),</span><br><span class="line">    rx.checkbox(<span class="string">&quot;Example&quot;</span>),</span><br><span class="line">    rx.form_helper_text(<span class="string">&quot;This is a help text&quot;</span>),</span><br><span class="line">    is_required=<span class="literal">True</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>這邊的結果很明顯</p>
+
+
 <p>這邊官網的案例是<code>len(self.name) &lt;= 3</code>，我隨意改成是否為數字。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FormErrorState</span>(rx.State):</span><br><span class="line">    name: <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @rx.var</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">is_error</span>(<span class="params">self</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="comment"># return int(self.name) &lt; 3</span></span><br><span class="line">        <span class="built_in">print</span>(self.name.isdigit())</span><br><span class="line">        <span class="keyword">return</span> self.name.isdigit()</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> rx.vstack(</span><br><span class="line">        rx.form_control(</span><br><span class="line">            rx.<span class="built_in">input</span>(</span><br><span class="line">                placeholder=<span class="string">&quot;name&quot;</span>,</span><br><span class="line">                on_blur=FormErrorState.set_name,</span><br><span class="line">            ),</span><br><span class="line">            rx.cond(</span><br><span class="line">                FormErrorState.is_error,</span><br><span class="line">                rx.form_error_message(</span><br><span class="line">                    <span class="string">&quot;你輸入的是數字&quot;</span></span><br><span class="line">                ),</span><br><span class="line">                rx.form_helper_text(<span class="string">&quot;Enter name&quot;</span>),</span><br><span class="line">            ),</span><br><span class="line">            is_invalid=FormErrorState.is_error,</span><br><span class="line">            is_required=<span class="literal">True</span>,</span><br><span class="line">        )</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
 <p>我們這邊是<code>is_error</code>去判斷，回傳是bool，所以我裡面回傳<code>true</code>的話，就會顯示紅色(對，就是你以為是錯的，結果是對的…)</p>
@@ -294,7 +298,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>文章連結：</strong>
-    <a href="https://xialotus.github.io/2023/11/08/Form%E4%BB%8B%E7%B4%B9/" title="Form介紹-1">https://xialotus.github.io/2023/11/08/Form介紹/</a>
+    <a href="https://xialotus.github.io/2023/11/08/Form%E4%BB%8B%E7%B4%B9/" title="Form介紹">https://xialotus.github.io/2023/11/08/Form介紹/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-TW" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
@@ -379,6 +383,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Forms"><span class="nav-number">1.</span> <span class="nav-text">Forms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Form-control"><span class="nav-number">2.</span> <span class="nav-text">Form control</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

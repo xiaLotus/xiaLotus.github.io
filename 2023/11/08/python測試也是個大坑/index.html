@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://xialotus.github.io/2023/11/08/python%E6%B8%AC%E8%A9%A6%E4%B9%9F%E6%98%AF%E5%80%8B%E5%A4%A7%E5%9D%91/image.png">
 <meta property="article:published_time" content="2023-11-08T11:54:12.000Z">
-<meta property="article:modified_time" content="2023-11-08T13:15:40.945Z">
+<meta property="article:modified_time" content="2023-12-14T02:37:31.685Z">
 <meta property="article:author" content="xiaLotus">
 <meta property="article:tag" content="py-test">
 <meta name="twitter:card" content="summary">
@@ -196,10 +196,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-11-08 19:54:12 / 修改時間：21:15:40" itemprop="dateCreated datePublished" datetime="2023-11-08T19:54:12+08:00">2023-11-08</time>
+              <time title="創建時間：2023-11-08 19:54:12" itemprop="dateCreated datePublished" datetime="2023-11-08T19:54:12+08:00">2023-11-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-12-14 10:37:31" itemprop="dateModified" datetime="2023-12-14T10:37:31+08:00">2023-12-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -285,9 +291,9 @@
 <hr>
 <p>不過更多的，大家應該都是使用 pytest 或是 vscode 內建的方式，我個人是使用後者，畢竟對我來說比較方便一點。</p>
 <p>這裡先提一下 <code>pytest</code> ，在網路上有看到官網的引導，那就隨意的撰寫一個小程式給他運行吧。</p>
-<ul>
-<li>安裝<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pytest</span><br></pre></td></tr></table></figure></li>
-</ul>
+<p>安裝</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pytest</span><br></pre></td></tr></table></figure>
+
 <p>接下來就隨便寫個幾行進去</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">test_passing</span>():</span><br><span class="line">    <span class="keyword">assert</span> [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;a&#x27;</span>] == [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;a&#x27;</span>]</span><br></pre></td></tr></table></figure>
 
