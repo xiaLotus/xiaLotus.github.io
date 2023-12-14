@@ -37,9 +37,10 @@
 <meta property="og:image" content="https://i.imgur.com/o8HHr4N.png">
 <meta property="og:image" content="https://i.imgur.com/f2F0xkc.png">
 <meta property="article:published_time" content="2023-11-12T13:53:16.000Z">
-<meta property="article:modified_time" content="2023-11-12T13:54:13.455Z">
+<meta property="article:modified_time" content="2023-12-14T12:00:42.693Z">
 <meta property="article:author" content="xiaLotus">
 <meta property="article:tag" content="python">
+<meta property="article:tag" content="Qt">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.imgur.com/EQfIZrq.png">
 
@@ -202,10 +203,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-11-12 21:53:16 / 修改時間：21:54:13" itemprop="dateCreated datePublished" datetime="2023-11-12T21:53:16+08:00">2023-11-12</time>
+              <time title="創建時間：2023-11-12 21:53:16" itemprop="dateCreated datePublished" datetime="2023-11-12T21:53:16+08:00">2023-11-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-12-14 20:00:42" itemprop="dateModified" datetime="2023-12-14T20:00:42+08:00">2023-12-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -229,7 +236,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>213</span>
+              <span>212</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -248,55 +255,41 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="必備的功能"><a href="#必備的功能" class="headerlink" title="必備的功能"></a>必備的功能</h2><ol>
+        <h3 id="必備的功能"><a href="#必備的功能" class="headerlink" title="必備的功能"></a>必備的功能</h3><ol>
 <li>比如標頭</li>
 <li>Label等 widget物件(子類)<span id="more"></span></li>
 </ol>
-<h2 id="標頭"><a href="#標頭" class="headerlink" title="標頭"></a>標頭</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root.setWindowTitle(<span class="string">&quot;Just test&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="標頭"><a href="#標頭" class="headerlink" title="標頭"></a>標頭</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root.setWindowTitle(<span class="string">&quot;Just test&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>結果<br><img src="https://i.imgur.com/EQfIZrq.png"></li>
-</ul>
-<h2 id="圖片-標頭"><a href="#圖片-標頭" class="headerlink" title="圖片(標頭)"></a>圖片(標頭)</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QIcon</span><br><span class="line"></span><br><span class="line">root.setWindowIcon(QIcon(<span class="string">&quot;b.jpg&quot;</span>))</span><br></pre></td></tr></table></figure>
+<p>結果<br><img src="https://i.imgur.com/EQfIZrq.png"></p>
+<h3 id="圖片-標頭"><a href="#圖片-標頭" class="headerlink" title="圖片(標頭)"></a>圖片(標頭)</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QIcon</span><br><span class="line"></span><br><span class="line">root.setWindowIcon(QIcon(<span class="string">&quot;b.jpg&quot;</span>))</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>結果<br><img src="https://i.imgur.com/RTzDlVV.png"></li>
-</ul>
-<h2 id="視窗長寬"><a href="#視窗長寬" class="headerlink" title="視窗長寬"></a>視窗長寬</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root.setFixedHeight(<span class="number">500</span>)</span><br><span class="line"><span class="comment"># 長</span></span><br><span class="line">root.setFixedWidth(<span class="number">500</span>).</span><br><span class="line"><span class="comment"># 寬</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>結果<br><img src="https://i.imgur.com/VQFyhB4.png"></li>
-</ul>
-<h2 id="setGeometry"><a href="#setGeometry" class="headerlink" title="setGeometry"></a>setGeometry</h2><ul>
-<li>視窗位置<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># setGeometry(ax: int, ay: int, aw: int, ah: int)</span></span><br><span class="line">root.setGeometry(<span class="number">500</span>, <span class="number">500</span>, <span class="number">500</span>, <span class="number">500</span>)</span><br><span class="line"><span class="comment"># 視窗長、寬、左上角視窗x軸位置、y軸位置</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root.setStyleSheet(<span class="string">&quot;background-color:red&quot;</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>結果<br><img src="https://i.imgur.com/itA72I8.png"></p>
-</li>
-<li><p>也可以寫成 :point_down: </p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">style = (</span><br><span class="line">    <span class="string">&quot;background-color:red&quot;</span></span><br><span class="line">)</span><br><span class="line">root.setStyleSheet(style)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="按鈕"><a href="#按鈕" class="headerlink" title="按鈕"></a>按鈕</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QApplication, QWidget, QPushButton, QLabel</span><br><span class="line"></span><br><span class="line">btn = QPushButton(<span class="string">&quot;click me&quot;</span>, root)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>結果<br><img src="https://i.imgur.com/iJGWZBw.png"></p>
-</li>
-<li><p>可以利用以下方式移動位置或改變大小</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btn.move(<span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">btn.setGeometry(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure></li>
-<li><p>當然，按鈕也可以添加顏色</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><p>顏色部分<br><img src="https://i.imgur.com/o8HHr4N.png"></p>
-</li>
-</ul>
-<h2 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label = QLabel(<span class="string">&quot;男人的嘴，騙人的鬼&quot;</span>, root)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>結果<br><img src="https://i.imgur.com/f2F0xkc.png"></p>
-</li>
-<li><p>文字也可以變色</p>
+<p>結果<br><img src="https://i.imgur.com/RTzDlVV.png"></p>
+<h3 id="視窗長寬"><a href="#視窗長寬" class="headerlink" title="視窗長寬"></a>視窗長寬</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root.setFixedHeight(<span class="number">500</span>)</span><br><span class="line"><span class="comment"># 長</span></span><br><span class="line">root.setFixedWidth(<span class="number">500</span>).</span><br><span class="line"><span class="comment"># 寬</span></span><br></pre></td></tr></table></figure>
+<p>結果<br><img src="https://i.imgur.com/VQFyhB4.png"></p>
+<h3 id="setGeometry"><a href="#setGeometry" class="headerlink" title="setGeometry"></a>setGeometry</h3><p>視窗位置</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># setGeometry(ax: int, ay: int, aw: int, ah: int)</span></span><br><span class="line">root.setGeometry(<span class="number">500</span>, <span class="number">500</span>, <span class="number">500</span>, <span class="number">500</span>)</span><br><span class="line"><span class="comment"># 視窗長、寬、左上角視窗x軸位置、y軸位置</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root.setStyleSheet(<span class="string">&quot;background-color:red&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>結果<br><img src="https://i.imgur.com/itA72I8.png"></p>
+<p>也可以寫成 </p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">style = (</span><br><span class="line">    <span class="string">&quot;background-color:red&quot;</span></span><br><span class="line">)</span><br><span class="line">root.setStyleSheet(style)</span><br></pre></td></tr></table></figure>
+
+<h3 id="按鈕"><a href="#按鈕" class="headerlink" title="按鈕"></a>按鈕</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QApplication, QWidget, QPushButton, QLabel</span><br><span class="line"></span><br><span class="line">btn = QPushButton(<span class="string">&quot;click me&quot;</span>, root)</span><br></pre></td></tr></table></figure>
+<p>結果<br><img src="https://i.imgur.com/iJGWZBw.png"></p>
+<p>可以利用以下方式移動位置或改變大小</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btn.move(<span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">btn.setGeometry(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+<p>當然，按鈕也可以添加顏色</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>顏色部分<br><img src="https://i.imgur.com/o8HHr4N.png"></p>
+<h3 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label = QLabel(<span class="string">&quot;男人的嘴，騙人的鬼&quot;</span>, root)</span><br></pre></td></tr></table></figure>
+<p>結果<br><img src="https://i.imgur.com/f2F0xkc.png"></p>
+<p>文字也可以變色</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label.setStyleSheet(<span class="string">&quot;color:green&quot;</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>字體</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QFont, QIcon</span><br><span class="line"></span><br><span class="line">label.setFont(QFont(<span class="string">&quot;Times New Roman&quot;</span>, <span class="number">50</span>))</span><br></pre></td></tr></table></figure></li>
-</ul>
+
+<p>字體</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QFont, QIcon</span><br><span class="line"></span><br><span class="line">label.setFont(QFont(<span class="string">&quot;Times New Roman&quot;</span>, <span class="number">50</span>))</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -324,6 +317,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/Qt/" rel="tag"># Qt</a>
           </div>
 
         
@@ -397,7 +391,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%85%E5%82%99%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number">1.</span> <span class="nav-text">必備的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%99%E9%A0%AD"><span class="nav-number">2.</span> <span class="nav-text">標頭</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%96%E7%89%87-%E6%A8%99%E9%A0%AD"><span class="nav-number">3.</span> <span class="nav-text">圖片(標頭)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%96%E7%AA%97%E9%95%B7%E5%AF%AC"><span class="nav-number">4.</span> <span class="nav-text">視窗長寬</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setGeometry"><span class="nav-number">5.</span> <span class="nav-text">setGeometry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">6.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E9%88%95"><span class="nav-number">7.</span> <span class="nav-text">按鈕</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E5%AD%97"><span class="nav-number">8.</span> <span class="nav-text">文字</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%85%E5%82%99%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number">1.</span> <span class="nav-text">必備的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%99%E9%A0%AD"><span class="nav-number">2.</span> <span class="nav-text">標頭</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%96%E7%89%87-%E6%A8%99%E9%A0%AD"><span class="nav-number">3.</span> <span class="nav-text">圖片(標頭)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%96%E7%AA%97%E9%95%B7%E5%AF%AC"><span class="nav-number">4.</span> <span class="nav-text">視窗長寬</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setGeometry"><span class="nav-number">5.</span> <span class="nav-text">setGeometry</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">6.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E9%88%95"><span class="nav-number">7.</span> <span class="nav-text">按鈕</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E5%AD%97"><span class="nav-number">8.</span> <span class="nav-text">文字</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -420,13 +414,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>

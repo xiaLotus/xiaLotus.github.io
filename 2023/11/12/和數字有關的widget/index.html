@@ -22,21 +22,22 @@
     var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Scale的數值輸入控制 數值捲軸，先製作水平與垂直的卷軸……">
+  <meta name="description" content="Scale的數值輸入控制數值捲軸，先製作水平與垂直的卷軸……">
 <meta property="og:type" content="article">
 <meta property="og:title" content="和數字有關的widget">
 <meta property="og:url" content="https://xialotus.github.io/2023/11/12/%E5%92%8C%E6%95%B8%E5%AD%97%E6%9C%89%E9%97%9C%E7%9A%84widget/index.html">
 <meta property="og:site_name" content="xia的小窩">
-<meta property="og:description" content="Scale的數值輸入控制 數值捲軸，先製作水平與垂直的卷軸……">
+<meta property="og:description" content="Scale的數值輸入控制數值捲軸，先製作水平與垂直的卷軸……">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/u0hnX3K.png">
 <meta property="og:image" content="https://i.imgur.com/7xEg4pq.png">
 <meta property="og:image" content="https://i.imgur.com/sMCcjeb.png">
 <meta property="og:image" content="https://i.imgur.com/KfD1E9h.png">
 <meta property="article:published_time" content="2023-11-12T08:15:03.000Z">
-<meta property="article:modified_time" content="2023-11-12T08:15:46.363Z">
+<meta property="article:modified_time" content="2023-12-14T12:16:12.312Z">
 <meta property="article:author" content="xiaLotus">
 <meta property="article:tag" content="python">
+<meta property="article:tag" content="tk">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.imgur.com/u0hnX3K.png">
 
@@ -199,10 +200,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-11-12 16:15:03 / 修改時間：16:15:46" itemprop="dateCreated datePublished" datetime="2023-11-12T16:15:03+08:00">2023-11-12</time>
+              <time title="創建時間：2023-11-12 16:15:03" itemprop="dateCreated datePublished" datetime="2023-11-12T16:15:03+08:00">2023-11-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-12-14 20:16:12" itemprop="dateModified" datetime="2023-12-14T20:16:12+08:00">2023-12-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -245,35 +252,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Scale的數值輸入控制"><a href="#Scale的數值輸入控制" class="headerlink" title="Scale的數值輸入控制"></a>Scale的數值輸入控制</h2><ul>
-<li>數值捲軸，先製作水平與垂直的卷軸……<span id="more"></span>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">root = Tk()</span><br><span class="line">root.title(<span class="string">&quot;python-tkinter&quot;</span>)</span><br><span class="line">root.geometry(<span class="string">&quot;600x600&quot;</span>)</span><br><span class="line">root.config(bg = <span class="string">&quot;lightgreen&quot;</span>)</span><br><span class="line"></span><br><span class="line">scale_1 = Scale(root, from_= <span class="number">0</span>, to = <span class="number">10</span>).pack()</span><br><span class="line">scale_2 = Scale(root, from_ = <span class="number">0</span>, to = <span class="number">10</span>,</span><br><span class="line">            length = <span class="number">300</span>, orient = HORIZONTAL).pack()</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure></li>
-<li>結果<br><img src="https://i.imgur.com/u0hnX3K.png"></li>
-</ul>
-<h2 id="取得卷軸值"><a href="#取得卷軸值" class="headerlink" title="取得卷軸值"></a>取得卷軸值</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">pinfo</span>():</span><br><span class="line">    <span class="built_in">print</span>(scale_1.get())</span><br><span class="line"></span><br><span class="line">scale_1 = Scale(root, from_= <span class="number">0</span>, to = <span class="number">10</span>)</span><br><span class="line">scale_1.<span class="built_in">set</span>(<span class="number">3</span>)</span><br><span class="line">scale_1.pack()</span><br><span class="line"></span><br><span class="line">Button(root, text = <span class="string">&quot;數值&quot;</span>, command = pinfo).pack()</span><br></pre></td></tr></table></figure>
+        <h3 id="Scale的數值輸入控制"><a href="#Scale的數值輸入控制" class="headerlink" title="Scale的數值輸入控制"></a>Scale的數值輸入控制</h3><p>數值捲軸，先製作水平與垂直的卷軸……</p>
+<span id="more"></span>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">root = Tk()</span><br><span class="line">root.title(<span class="string">&quot;python-tkinter&quot;</span>)</span><br><span class="line">root.geometry(<span class="string">&quot;600x600&quot;</span>)</span><br><span class="line">root.config(bg = <span class="string">&quot;lightgreen&quot;</span>)</span><br><span class="line"></span><br><span class="line">scale_1 = Scale(root, from_= <span class="number">0</span>, to = <span class="number">10</span>).pack()</span><br><span class="line">scale_2 = Scale(root, from_ = <span class="number">0</span>, to = <span class="number">10</span>,</span><br><span class="line">            length = <span class="number">300</span>, orient = HORIZONTAL).pack()</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure>
+<p>結果<br><img src="https://i.imgur.com/u0hnX3K.png"></p>
+<h3 id="取得卷軸值"><a href="#取得卷軸值" class="headerlink" title="取得卷軸值"></a>取得卷軸值</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">pinfo</span>():</span><br><span class="line">    <span class="built_in">print</span>(scale_1.get())</span><br><span class="line"></span><br><span class="line">scale_1 = Scale(root, from_= <span class="number">0</span>, to = <span class="number">10</span>)</span><br><span class="line">scale_1.<span class="built_in">set</span>(<span class="number">3</span>)</span><br><span class="line">scale_1.pack()</span><br><span class="line"></span><br><span class="line">Button(root, text = <span class="string">&quot;數值&quot;</span>, command = pinfo).pack()</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>結果<br><img src="https://i.imgur.com/7xEg4pq.png"></li>
-</ul>
-<h2 id="askcolor方法"><a href="#askcolor方法" class="headerlink" title="askcolor方法"></a>askcolor方法</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">pinfo</span>():</span><br><span class="line">    mycolor = askcolor()</span><br><span class="line">    root.config(bg = mycolor[<span class="number">1</span>])</span><br><span class="line">    </span><br><span class="line">Button(root, text = <span class="string">&quot;數值&quot;</span>, command = pinfo).pack(pady = <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>結果<br><img src="https://i.imgur.com/sMCcjeb.png"></li>
-</ul>
-<h2 id="spinbox控件"><a href="#spinbox控件" class="headerlink" title="spinbox控件"></a>spinbox控件</h2><ul>
-<li><p>最簡單的spinbox</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spin = Spinbox(root, from_ = <span class="number">0</span>, to = <span class="number">10</span>, increment = <span class="number">2</span>)</span><br><span class="line"><span class="comment"># increment(間隔)</span></span><br><span class="line">spin.pack(pady = <span class="number">20</span>)</span><br></pre></td></tr></table></figure></li>
-<li><p>結果<br><img src="https://i.imgur.com/KfD1E9h.png"></p>
-</li>
-<li><p>get()函數</p>
+<p>結果<br><img src="https://i.imgur.com/7xEg4pq.png"></p>
+<h3 id="askcolor方法"><a href="#askcolor方法" class="headerlink" title="askcolor方法"></a>askcolor方法</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">pinfo</span>():</span><br><span class="line">    mycolor = askcolor()</span><br><span class="line">    root.config(bg = mycolor[<span class="number">1</span>])</span><br><span class="line">    </span><br><span class="line">Button(root, text = <span class="string">&quot;數值&quot;</span>, command = pinfo).pack(pady = <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<p>結果<br><img src="https://i.imgur.com/sMCcjeb.png"></p>
+<h3 id="spinbox控件"><a href="#spinbox控件" class="headerlink" title="spinbox控件"></a>spinbox控件</h3><p>最簡單的spinbox</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spin = Spinbox(root, from_ = <span class="number">0</span>, to = <span class="number">10</span>, increment = <span class="number">2</span>)</span><br><span class="line"><span class="comment"># increment(間隔)</span></span><br><span class="line">spin.pack(pady = <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<p>結果<br><img src="https://i.imgur.com/KfD1E9h.png"></p>
+<p>get()函數</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">pinfo</span>():</span><br><span class="line">    <span class="built_in">print</span>(scale_1.get())</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用序列儲存數值</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scale_1 = Spinbox(root, value = (<span class="number">5</span>, <span class="number">10</span>, <span class="number">20</span> ,<span class="number">30</span>), command = pinfo)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果是非數值資料</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scale_1 = Spinbox(root, value = (<span class="string">&quot;r&quot;</span>, <span class="string">&quot;e&quot;</span>, <span class="string">&quot;d&quot;</span>), command = pinfo)</span><br></pre></td></tr></table></figure></li>
-</ul>
 
+<p>使用序列儲存數值</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scale_1 = Spinbox(root, value = (<span class="number">5</span>, <span class="number">10</span>, <span class="number">20</span> ,<span class="number">30</span>), command = pinfo)</span><br></pre></td></tr></table></figure>
+
+<p>如果是非數值資料</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scale_1 = Spinbox(root, value = (<span class="string">&quot;r&quot;</span>, <span class="string">&quot;e&quot;</span>, <span class="string">&quot;d&quot;</span>), command = pinfo)</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -300,6 +298,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/tk/" rel="tag"># tk</a>
           </div>
 
         
@@ -373,7 +372,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Scale%E7%9A%84%E6%95%B8%E5%80%BC%E8%BC%B8%E5%85%A5%E6%8E%A7%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">Scale的數值輸入控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96%E5%BE%97%E5%8D%B7%E8%BB%B8%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">取得卷軸值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#askcolor%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">askcolor方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spinbox%E6%8E%A7%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">spinbox控件</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scale%E7%9A%84%E6%95%B8%E5%80%BC%E8%BC%B8%E5%85%A5%E6%8E%A7%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">Scale的數值輸入控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%BE%97%E5%8D%B7%E8%BB%B8%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">取得卷軸值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#askcolor%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">askcolor方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spinbox%E6%8E%A7%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">spinbox控件</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -396,13 +395,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>

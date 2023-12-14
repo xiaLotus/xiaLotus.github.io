@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="靜態方法static method  一般來說，我們常使用的是動態方法。">
+  <meta name="description" content="靜態方法static method 一般來說，我們常使用的是動態方法。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pyclass-靜態方法">
 <meta property="og:url" content="https://xialotus.github.io/2023/11/13/pyclass-%E9%9D%9C%E6%85%8B%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="xia的小窩">
-<meta property="og:description" content="靜態方法static method  一般來說，我們常使用的是動態方法。">
+<meta property="og:description" content="靜態方法static method 一般來說，我們常使用的是動態方法。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-11-13T11:29:55.000Z">
-<meta property="article:modified_time" content="2023-11-13T12:25:20.954Z">
+<meta property="article:modified_time" content="2023-12-14T12:37:17.597Z">
 <meta property="article:author" content="xiaLotus">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -194,17 +194,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-11-13 19:29:55 / 修改時間：20:25:20" itemprop="dateCreated datePublished" datetime="2023-11-13T19:29:55+08:00">2023-11-13</time>
+              <time title="創建時間：2023-11-13 19:29:55" itemprop="dateCreated datePublished" datetime="2023-11-13T19:29:55+08:00">2023-11-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-12-14 20:37:17" itemprop="dateModified" datetime="2023-12-14T20:37:17+08:00">2023-12-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%BA%BA%E7%94%9F%E8%8B%A6%E7%9F%AD%EF%BC%8C%E6%88%91%E5%AD%B8python/" itemprop="url" rel="index"><span itemprop="name">人生苦短，我學python</span></a>
+                  <a href="/categories/%E4%BA%BA%E7%94%9F%E8%8B%A6%E7%9F%AD%EF%BC%8C%E6%88%91%E5%AD%B8Python/" itemprop="url" rel="index"><span itemprop="name">人生苦短，我學Python</span></a>
                 </span>
             </span>
 
@@ -221,7 +227,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>114</span>
+              <span>116</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -240,12 +246,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>靜態方法static method</p>
-<ul>
-<li>一般來說，我們常使用的是動態方法。<span id="more"></span></li>
+        <p>靜態方法<code>static method</code></p>
+<p>一般來說，我們常使用的是動態方法。</p>
+<span id="more"></span>
+<ol>
 <li>但是在靜態方法下，即使沒有建立物件也可以呼叫該類別的方法。</li>
 <li>不需要self參數</li>
-</ul>
+</ol>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">cir</span>:</span><br><span class="line">    nums = <span class="number">3</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, rad = <span class="number">2</span></span>):</span><br><span class="line">        self.rad = rad * rad</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">area</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.rad * self.rad * self.__class__.nums</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">totalArea</span>():</span><br><span class="line">        total = <span class="number">10</span></span><br><span class="line">        <span class="keyword">return</span> total + a.area()</span><br><span class="line"></span><br><span class="line">a = cir(<span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(cir.totalArea())</span><br><span class="line"><span class="comment"># 253</span></span><br><span class="line"></span><br><span class="line">a1 = cir(<span class="number">1</span>)</span><br><span class="line">a1.rad = <span class="number">5</span></span><br><span class="line"><span class="built_in">print</span>(cir.totalArea())</span><br><span class="line"><span class="comment"># 253 ， 因為在rad = 2的情況下不會做更動</span></span><br></pre></td></tr></table></figure>
     </div>
 
@@ -368,13 +375,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>

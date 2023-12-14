@@ -30,7 +30,7 @@
 <meta property="og:description" content="python使用class關鍵字定義一個類別">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-11-13T11:28:01.000Z">
-<meta property="article:modified_time" content="2023-11-13T12:26:26.437Z">
+<meta property="article:modified_time" content="2023-12-14T12:38:47.083Z">
 <meta property="article:author" content="xiaLotus">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -194,17 +194,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-11-13 19:28:01 / 修改時間：20:26:26" itemprop="dateCreated datePublished" datetime="2023-11-13T19:28:01+08:00">2023-11-13</time>
+              <time title="創建時間：2023-11-13 19:28:01" itemprop="dateCreated datePublished" datetime="2023-11-13T19:28:01+08:00">2023-11-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-12-14 20:38:47" itemprop="dateModified" datetime="2023-12-14T20:38:47+08:00">2023-12-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%BA%BA%E7%94%9F%E8%8B%A6%E7%9F%AD%EF%BC%8C%E6%88%91%E5%AD%B8python/" itemprop="url" rel="index"><span itemprop="name">人生苦短，我學python</span></a>
+                  <a href="/categories/%E4%BA%BA%E7%94%9F%E8%8B%A6%E7%9F%AD%EF%BC%8C%E6%88%91%E5%AD%B8Python/" itemprop="url" rel="index"><span itemprop="name">人生苦短，我學Python</span></a>
                 </span>
             </span>
 
@@ -240,19 +246,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <ul>
-<li>python使用class關鍵字定義一個類別<span id="more"></span></li>
-</ul>
+        <p>python使用class關鍵字定義一個類別</p>
+<span id="more"></span>
+
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">類別</span>:</span><br><span class="line">	<span class="keyword">pass</span>(主體區塊)</span><br><span class="line"><span class="comment"># 在主體區塊內定義的函式稱為方法(method)</span></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>定義類別後，可以使用……</li>
-</ul>
+<p>定義類別後，可以使用……</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test = 類別()</span><br><span class="line"><span class="comment"># 可以呼叫類別()，當然也可以利用類別建立多個物件</span></span><br><span class="line">test1 = 類別()</span><br></pre></td></tr></table></figure>
-
-
 <p>請注意，定義類別時前面不需要小括號</p>
-<h2 id="物件變數與-init-特殊method"><a href="#物件變數與-init-特殊method" class="headerlink" title="物件變數與__init__特殊method"></a>物件變數與__init__特殊method</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">物件名.變數名 = 變數值</span><br></pre></td></tr></table></figure>
+<h3 id="物件變數與-init-特殊method"><a href="#物件變數與-init-特殊method" class="headerlink" title="物件變數與__init__特殊method"></a>物件變數與__init__特殊method</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">物件名.變數名 = 變數值</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>我們先來定義一個class</li>
@@ -268,22 +270,16 @@
 
 
 <p>這邊告訴我們，在物件建立後，<em><strong>若沒有傳遞</strong></em>，更改變數值是無法更動的</p>
-<h2 id="物件方法-method"><a href="#物件方法-method" class="headerlink" title="物件方法(method)"></a>物件方法(method)</h2><ul>
+<h3 id="物件方法-method"><a href="#物件方法-method" class="headerlink" title="物件方法(method)"></a>物件方法(method)</h3><ul>
 <li>方法次定義在類別內的函式</li>
 </ul>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">cir</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, rad</span>):</span><br><span class="line">        self.rad = rad</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">web</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.rad * self.rad</span><br><span class="line"></span><br><span class="line">c = cir(<span class="number">8</span>)</span><br><span class="line"><span class="built_in">print</span>(c.web())</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>自定義變數數值</li>
-</ul>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ...</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, rad = <span class="string">&quot;black&quot;</span></span>):</span><br><span class="line"><span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
+<h3 id="自定義變數數值"><a href="#自定義變數數值" class="headerlink" title="自定義變數數值"></a>自定義變數數值</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ...</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, rad = <span class="string">&quot;black&quot;</span></span>):</span><br><span class="line"><span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>類別變數</li>
-</ul>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ...</span></span><br><span class="line">    num = <span class="number">55</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, rad</span>):</span><br><span class="line">        self.rad = rad</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">web</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.rad * self.rad * cir.num</span><br><span class="line"><span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
+<h3 id="類別變數"><a href="#類別變數" class="headerlink" title="類別變數"></a>類別變數</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ...</span></span><br><span class="line">    num = <span class="number">55</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, rad</span>):</span><br><span class="line">        self.rad = rad</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">web</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.rad * self.rad * cir.num</span><br><span class="line"><span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
 
-<p>其實不需要想太難，注意一下變數的位置在哪裡就好了。<br>注意類別與物件變數的<strong>互交作用</strong></p>
+<p>其實不需要想太難，注意一下變數的位置在哪裡就好了。<br>注意類別與物件變數的<code>互交作用</code>。</p>
 
     </div>
 
@@ -384,7 +380,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E8%AE%8A%E6%95%B8%E8%88%87-init-%E7%89%B9%E6%AE%8Amethod"><span class="nav-number">1.</span> <span class="nav-text">物件變數與__init__特殊method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E6%96%B9%E6%B3%95-method"><span class="nav-number">2.</span> <span class="nav-text">物件方法(method)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E8%AE%8A%E6%95%B8%E8%88%87-init-%E7%89%B9%E6%AE%8Amethod"><span class="nav-number">1.</span> <span class="nav-text">物件變數與__init__特殊method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E6%96%B9%E6%B3%95-method"><span class="nav-number">2.</span> <span class="nav-text">物件方法(method)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E7%BE%A9%E8%AE%8A%E6%95%B8%E6%95%B8%E5%80%BC"><span class="nav-number">3.</span> <span class="nav-text">自定義變數數值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%9E%E5%88%A5%E8%AE%8A%E6%95%B8"><span class="nav-number">4.</span> <span class="nav-text">類別變數</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -407,13 +403,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>

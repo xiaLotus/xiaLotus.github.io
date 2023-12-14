@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/oI5KHPE.png">
 <meta property="article:published_time" content="2023-11-12T13:11:09.000Z">
-<meta property="article:modified_time" content="2023-11-12T13:13:57.512Z">
+<meta property="article:modified_time" content="2023-12-14T12:29:39.208Z">
 <meta property="article:author" content="xiaLotus">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -196,10 +196,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-11-12 21:11:09 / 修改時間：21:13:57" itemprop="dateCreated datePublished" datetime="2023-11-12T21:11:09+08:00">2023-11-12</time>
+              <time title="創建時間：2023-11-12 21:11:09" itemprop="dateCreated datePublished" datetime="2023-11-12T21:11:09+08:00">2023-11-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-12-14 20:29:39" itemprop="dateModified" datetime="2023-12-14T20:29:39+08:00">2023-12-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -242,35 +248,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="異常概述"><a href="#異常概述" class="headerlink" title="異常概述"></a>異常概述</h2><p>在程式運行途中，經常會遇到各式各樣的錯誤，這些錯誤被統稱為異常。這類錯誤大部分都是SyntaxError : invaild syntax(無效的語法)</p>
+        <h3 id="異常概述"><a href="#異常概述" class="headerlink" title="異常概述"></a>異常概述</h3><p>在程式運行途中，經常會遇到各式各樣的錯誤，這些錯誤被統稱為異常。這類錯誤大部分都是SyntaxError : invaild syntax(無效的語法)</p>
 <span id="more"></span>
 
-<ul>
-<li>舉例<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NameError: name &#x27;sss&#x27; is not defined</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="異常處理語句，使用try…except"><a href="#異常處理語句，使用try…except" class="headerlink" title="異常處理語句，使用try…except"></a>異常處理語句，使用try…except</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    block1</span><br><span class="line"><span class="keyword">except</span> [ExceptionName[<span class="keyword">as</span> alias]]:</span><br><span class="line">    block2</span><br><span class="line"></span><br><span class="line"><span class="comment"># block1表示可能出錯的程式碼區塊</span></span><br><span class="line"><span class="comment"># ExceptionName[as alias]: 可選參數，用於要指定捕獲的異常</span></span><br></pre></td></tr></table></figure>
+<p>舉例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NameError: name &#x27;sss&#x27; is not defined</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="異常處理語句，使用try…except"><a href="#異常處理語句，使用try…except" class="headerlink" title="異常處理語句，使用try…except"></a>異常處理語句，使用try…except</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    block1</span><br><span class="line"><span class="keyword">except</span> [ExceptionName[<span class="keyword">as</span> alias]]:</span><br><span class="line">    block2</span><br><span class="line"></span><br><span class="line"><span class="comment"># block1表示可能出錯的程式碼區塊</span></span><br><span class="line"><span class="comment"># ExceptionName[as alias]: 可選參數，用於要指定捕獲的異常</span></span><br></pre></td></tr></table></figure>
 
 
 
-<ul>
-<li>舉例<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">divsion</span>():</span><br><span class="line">    nums = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    <span class="keyword">if</span> nums != <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;num 不等於 0&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        divsion()</span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;不是整數&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span> ValueError <span class="keyword">as</span> e :</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;輸入錯誤&quot;</span>)</span><br><span class="line"><span class="comment"># input x</span></span><br><span class="line"><span class="comment"># output 輸入錯誤&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li>如果需要同時處理多個異常……<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 複製上面的部分</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        divsion()</span><br><span class="line">    <span class="keyword">except</span> (ValueError, ZeroDivisionError) <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Error: &quot;</span>, e)</span><br></pre></td></tr></table></figure>
-<img src="https://i.imgur.com/oI5KHPE.png"></li>
-<li>這樣就能印出是出了甚麼問題</li>
-</ul>
-<h2 id="異常處理語句，使用try…except…else"><a href="#異常處理語句，使用try…except…else" class="headerlink" title="異常處理語句，使用try…except…else"></a>異常處理語句，使用try…except…else</h2><ul>
-<li>在上面的程式碼加上<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;毫無錯誤&quot;</span>)</span><br><span class="line"><span class="comment"># number</span></span><br><span class="line"><span class="comment"># num不等於0</span></span><br><span class="line"><span class="comment"># 毫無錯誤</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="異常處理語句，使用try…except…finally"><a href="#異常處理語句，使用try…except…finally" class="headerlink" title="異常處理語句，使用try…except…finally"></a>異常處理語句，使用try…except…finally</h2><ul>
-<li>finally加上後，代表不論發生甚麼狀況，都會執行這些程式碼</li>
-</ul>
+<p>舉例</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">divsion</span>():</span><br><span class="line">    nums = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    <span class="keyword">if</span> nums != <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;num 不等於 0&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        divsion()</span><br><span class="line">    <span class="keyword">except</span> ZeroDivisionError:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;不是整數&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span> ValueError <span class="keyword">as</span> e :</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;輸入錯誤&quot;</span>)</span><br><span class="line"><span class="comment"># input x</span></span><br><span class="line"><span class="comment"># output 輸入錯誤&quot;</span></span><br></pre></td></tr></table></figure>
+<p>如果需要同時處理多個異常……</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 複製上面的部分</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        divsion()</span><br><span class="line">    <span class="keyword">except</span> (ValueError, ZeroDivisionError) <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Error: &quot;</span>, e)</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/oI5KHPE.png"><br>這樣就能印出是出了甚麼問題</p>
+<h3 id="異常處理語句，使用try…except…else"><a href="#異常處理語句，使用try…except…else" class="headerlink" title="異常處理語句，使用try…except…else"></a>異常處理語句，使用try…except…else</h3><p>在上面的程式碼加上</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;毫無錯誤&quot;</span>)</span><br><span class="line"><span class="comment"># number</span></span><br><span class="line"><span class="comment"># num不等於0</span></span><br><span class="line"><span class="comment"># 毫無錯誤</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="異常處理語句，使用try…except…finally"><a href="#異常處理語句，使用try…except…finally" class="headerlink" title="異常處理語句，使用try…except…finally"></a>異常處理語句，使用try…except…finally</h3><p>finally加上後，代表不論發生甚麼狀況，都會執行這些程式碼</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;already&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<h2 id="使用raise語句拋出異常"><a href="#使用raise語句拋出異常" class="headerlink" title="使用raise語句拋出異常"></a>使用raise語句拋出異常</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">raise</span> [ExceptionName[(reason)]]</span><br></pre></td></tr></table></figure>
+<h3 id="使用raise語句拋出異常"><a href="#使用raise語句拋出異常" class="headerlink" title="使用raise語句拋出異常"></a>使用raise語句拋出異常</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">raise</span> [ExceptionName[(reason)]]</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>舉例，可以修改成……<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">divsion</span>():</span><br><span class="line">    nums = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    <span class="keyword">if</span> nums &gt;= <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;num 大於 0&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> nums == <span class="number">5</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">&quot;Nope&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5</span></span><br><span class="line"><span class="comment"># num 大於 0</span></span><br><span class="line"><span class="comment"># 輸入錯誤 Nope</span></span><br></pre></td></tr></table></figure></li>
-</ul>
+<p>舉例，可以修改成……</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">divsion</span>():</span><br><span class="line">    nums = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    <span class="keyword">if</span> nums &gt;= <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;num 大於 0&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> nums == <span class="number">5</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">&quot;Nope&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5</span></span><br><span class="line"><span class="comment"># num 大於 0</span></span><br><span class="line"><span class="comment"># 輸入錯誤 Nope</span></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -371,7 +374,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%95%B0%E5%B8%B8%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">異常概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%95%B0%E5%B8%B8%E8%99%95%E7%90%86%E8%AA%9E%E5%8F%A5%EF%BC%8C%E4%BD%BF%E7%94%A8try%E2%80%A6except"><span class="nav-number">2.</span> <span class="nav-text">異常處理語句，使用try…except</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%95%B0%E5%B8%B8%E8%99%95%E7%90%86%E8%AA%9E%E5%8F%A5%EF%BC%8C%E4%BD%BF%E7%94%A8try%E2%80%A6except%E2%80%A6else"><span class="nav-number">3.</span> <span class="nav-text">異常處理語句，使用try…except…else</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%95%B0%E5%B8%B8%E8%99%95%E7%90%86%E8%AA%9E%E5%8F%A5%EF%BC%8C%E4%BD%BF%E7%94%A8try%E2%80%A6except%E2%80%A6finally"><span class="nav-number">4.</span> <span class="nav-text">異常處理語句，使用try…except…finally</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8raise%E8%AA%9E%E5%8F%A5%E6%8B%8B%E5%87%BA%E7%95%B0%E5%B8%B8"><span class="nav-number">5.</span> <span class="nav-text">使用raise語句拋出異常</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%95%B0%E5%B8%B8%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">異常概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%95%B0%E5%B8%B8%E8%99%95%E7%90%86%E8%AA%9E%E5%8F%A5%EF%BC%8C%E4%BD%BF%E7%94%A8try%E2%80%A6except"><span class="nav-number">2.</span> <span class="nav-text">異常處理語句，使用try…except</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%95%B0%E5%B8%B8%E8%99%95%E7%90%86%E8%AA%9E%E5%8F%A5%EF%BC%8C%E4%BD%BF%E7%94%A8try%E2%80%A6except%E2%80%A6else"><span class="nav-number">3.</span> <span class="nav-text">異常處理語句，使用try…except…else</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%95%B0%E5%B8%B8%E8%99%95%E7%90%86%E8%AA%9E%E5%8F%A5%EF%BC%8C%E4%BD%BF%E7%94%A8try%E2%80%A6except%E2%80%A6finally"><span class="nav-number">4.</span> <span class="nav-text">異常處理語句，使用try…except…finally</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8raise%E8%AA%9E%E5%8F%A5%E6%8B%8B%E5%87%BA%E7%95%B0%E5%B8%B8"><span class="nav-number">5.</span> <span class="nav-text">使用raise語句拋出異常</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -394,13 +397,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>

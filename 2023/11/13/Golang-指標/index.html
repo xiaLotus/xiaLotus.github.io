@@ -30,7 +30,7 @@
 <meta property="og:description" content="這裡主要分成四個部分。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-11-13T12:37:45.000Z">
-<meta property="article:modified_time" content="2023-11-13T13:00:13.943Z">
+<meta property="article:modified_time" content="2023-12-14T11:52:21.303Z">
 <meta property="article:author" content="xiaLotus">
 <meta property="article:tag" content="golang">
 <meta name="twitter:card" content="summary">
@@ -194,10 +194,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-11-13 20:37:45 / 修改時間：21:00:13" itemprop="dateCreated datePublished" datetime="2023-11-13T20:37:45+08:00">2023-11-13</time>
+              <time title="創建時間：2023-11-13 20:37:45" itemprop="dateCreated datePublished" datetime="2023-11-13T20:37:45+08:00">2023-11-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-12-14 19:52:21" itemprop="dateModified" datetime="2023-12-14T19:52:21+08:00">2023-12-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -243,7 +249,7 @@
         <p>這裡主要分成四個部分。</p>
 <span id="more"></span>
 
-<h4 id="了解指標"><a href="#了解指標" class="headerlink" title="了解指標"></a>了解指標</h4><p>當我們把 int, string, bool 這類值傳給函式處理時，Go語言會在函式裡複製這些值，建立新的變數。</p>
+<h3 id="了解指標"><a href="#了解指標" class="headerlink" title="了解指標"></a>了解指標</h3><p>當我們把 int, string, bool 這類值傳給函式處理時，Go語言會在函式裡複製這些值，建立新的變數。</p>
 <p>這個複製動作意味著你在呼叫函式時，若函式對參數做出更動，原始的值也不會受到影響，能減少程式碼的錯誤。</p>
 <p>對於這種傳值方式，Go語言採用了一種簡單的記憶體管理系統 — <code>堆疊 (Stack)</code></p>
 <p>每個參數都會在堆疊中獲得自己的記憶體。缺點是有越來越多的數值在函式裡傳遞的時候，這樣的複製動作就會消耗掉記憶體。</p>
@@ -251,33 +257,27 @@
 <p>對一個值建立指標後，Go 語言就無法以堆疊來管理該值所用的記憶體。這是 <code>堆疊</code> 必須仰賴的簡單變數範圍邏輯 <code>( scope loop )</code>，以便得知如何回收該值所使用的記憶體，以上規則不適用於指標。</p>
 <p>Go 語言轉而會把值放在所謂的 堆積 ( heap ) 記憶體空間 : 堆積勇許一個值存在，直到程式沒有任何指標參照到它為止。</p>
 <p>Go 語言會使用所謂的 垃圾回收機制 ( garbage collection ) 程序來回收這些記憶體。</p>
-<h5 id="CPU-vs-指標"><a href="#CPU-vs-指標" class="headerlink" title="CPU vs 指標"></a><code>CPU vs 指標</code></h5><p>如果以指標取代值來傳遞給大量函式，對記憶體的好處不可言喻，可是對 CPU 的負擔就很難評估了~</p>
-<h4 id="取得指標"><a href="#取得指標" class="headerlink" title="取得指標"></a>取得指標</h4><ul>
-<li>可以使用 var</li>
-</ul>
+<h3 id="CPU-vs-指標"><a href="#CPU-vs-指標" class="headerlink" title="CPU vs 指標"></a><code>CPU vs 指標</code></h3><p>如果以指標取代值來傳遞給大量函式，對記憶體的好處不可言喻，可是對 CPU 的負擔就很難評估了~</p>
+<h3 id="取得指標"><a href="#取得指標" class="headerlink" title="取得指標"></a>取得指標</h3><p>可以使用 var</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> &lt;變數&gt; *&lt;<span class="keyword">type</span>&gt;</span><br></pre></td></tr></table></figure>
 
 <p>以這種方式的初始值會是 <code>nil</code></p>
-<ul>
-<li>使用 new()</li>
-</ul>
+<p>使用 new()</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;變數&gt; := <span class="built_in">new</span>(&lt;<span class="keyword">type</span>&gt;)</span><br><span class="line"><span class="keyword">var</span> &lt;變數&gt; = <span class="built_in">new</span>(&lt;<span class="keyword">type</span>&gt;)</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>要取得某個既有變數的指標，請利用 &amp;算符</li>
-</ul>
+<p>要取得某個既有變數的指標，請利用<code>&amp;</code>算符</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;變數 <span class="number">1</span>&gt; :=  &amp;&lt;變數<span class="number">2</span>&gt;</span><br></pre></td></tr></table></figure>
 
 <p>我們取一個例子</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> count1 *<span class="type">int</span></span><br><span class="line">	count2 := <span class="built_in">new</span>(<span class="type">int</span>)</span><br><span class="line"></span><br><span class="line">	countTemp := <span class="number">5</span></span><br><span class="line">	count3 := &amp;countTemp</span><br><span class="line"></span><br><span class="line">	t := &amp;time.Time&#123;&#125;</span><br><span class="line"></span><br><span class="line">	fmt.Printf(<span class="string">&quot;count1 : %#v \n&quot;</span>, count1)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;count2 : %#v \n&quot;</span>, count2)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;count3 : %#v \n&quot;</span>, count3)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;t : %#v \n&quot;</span>, t)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// count1 : (*int)(nil) </span></span><br><span class="line"><span class="comment">// count2 : (*int)(0xc000012098) </span></span><br><span class="line"><span class="comment">// count3 : (*int)(0xc0000120b0)</span></span><br><span class="line"><span class="comment">// t : time.Date(1, time.January, 1, 0, 0, 0, 0, time.UTC)</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="從指標取得值"><a href="#從指標取得值" class="headerlink" title="從指標取得值"></a>從指標取得值</h4><p>如果要真正取得指標的關聯值 ( 即指標指向的記憶體所儲存的內容 )，必須把 * 算符放在變數名稱前面，以便解除 ( derefence ) 指標的參照、真正的取得值</p>
+<h3 id="從指標取得值"><a href="#從指標取得值" class="headerlink" title="從指標取得值"></a>從指標取得值</h3><p>如果要真正取得指標的關聯值 ( 即指標指向的記憶體所儲存的內容 )，必須把 * 算符放在變數名稱前面，以便解除 ( derefence ) 指標的參照、真正的取得值</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;值&gt; = *&lt;指標變數&gt;</span><br></pre></td></tr></table></figure>
 
 <p>接下來我們來實作</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> count1 *<span class="type">int</span></span><br><span class="line">	count2 := <span class="built_in">new</span>(<span class="type">int</span>)</span><br><span class="line"></span><br><span class="line">	countTemp := <span class="number">5</span></span><br><span class="line">	count3 := &amp;countTemp</span><br><span class="line"></span><br><span class="line">	t := &amp;time.Time&#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> count1 != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;count1 : %#v \n&quot;</span>, *count1)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> count2 != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;count2 : %#v \n&quot;</span>, *count2)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> count3 != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;count3 : %#v \n&quot;</span>, *count3)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> t != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;t : %#v \n&quot;</span>, t.String())</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// count2 : 0 </span></span><br><span class="line"><span class="comment">// count3 : 5</span></span><br><span class="line"><span class="comment">// t : &quot;0001-01-01 00:00:00 +0000 UTC&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="使用指標的函式設計"><a href="#使用指標的函式設計" class="headerlink" title="使用指標的函式設計"></a>使用指標的函式設計</h4><p>這邊就直接實作 * 的部分</p>
+<h3 id="使用指標的函式設計"><a href="#使用指標的函式設計" class="headerlink" title="使用指標的函式設計"></a>使用指標的函式設計</h3><p>這邊就直接實作 * 的部分</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">add1</span><span class="params">(count <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	count = count + <span class="number">5</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;add1 value: &quot;</span>, count)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">add2</span><span class="params">(count *<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	*count = *count + <span class="number">5</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;add2 point: &quot;</span>, *count)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> count <span class="type">int</span></span><br><span class="line">	add1(count)</span><br><span class="line">	fmt.Println(<span class="string">&quot;add1 post : &quot;</span>, count)</span><br><span class="line">	add2(&amp;count)</span><br><span class="line">	fmt.Println(<span class="string">&quot;add2 post : &quot;</span>, count)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// add1 value:  5</span></span><br><span class="line"><span class="comment">// add1 post :  0</span></span><br><span class="line"><span class="comment">// add2 point:  5</span></span><br><span class="line"><span class="comment">// add2 post :  5</span></span><br></pre></td></tr></table></figure>
     </div>
 
@@ -378,7 +378,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%86%E8%A7%A3%E6%8C%87%E6%A8%99"><span class="nav-number">1.</span> <span class="nav-text">了解指標</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU-vs-%E6%8C%87%E6%A8%99"><span class="nav-number">1.1.</span> <span class="nav-text">CPU vs 指標</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%96%E5%BE%97%E6%8C%87%E6%A8%99"><span class="nav-number">2.</span> <span class="nav-text">取得指標</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%9E%E6%8C%87%E6%A8%99%E5%8F%96%E5%BE%97%E5%80%BC"><span class="nav-number">3.</span> <span class="nav-text">從指標取得值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%8C%87%E6%A8%99%E7%9A%84%E5%87%BD%E5%BC%8F%E8%A8%AD%E8%A8%88"><span class="nav-number">4.</span> <span class="nav-text">使用指標的函式設計</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%86%E8%A7%A3%E6%8C%87%E6%A8%99"><span class="nav-number">1.</span> <span class="nav-text">了解指標</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU-vs-%E6%8C%87%E6%A8%99"><span class="nav-number">2.</span> <span class="nav-text">CPU vs 指標</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%BE%97%E6%8C%87%E6%A8%99"><span class="nav-number">3.</span> <span class="nav-text">取得指標</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%9E%E6%8C%87%E6%A8%99%E5%8F%96%E5%BE%97%E5%80%BC"><span class="nav-number">4.</span> <span class="nav-text">從指標取得值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%8C%87%E6%A8%99%E7%9A%84%E5%87%BD%E5%BC%8F%E8%A8%AD%E8%A8%88"><span class="nav-number">5.</span> <span class="nav-text">使用指標的函式設計</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -401,13 +401,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>

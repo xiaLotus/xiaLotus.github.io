@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="有三種方式，分為pack、grid、place pack 雖然稱之為pack( )方法，旦它其實只是在tkinker裡的一個類別">
+  <meta name="description" content="有三種方式，分為pack、grid、place pack雖然稱之為pack()方法，旦它其實只是在tkinker裡的一個類別">
 <meta property="og:type" content="article">
 <meta property="og:title" content="視窗控件配置管理">
 <meta property="og:url" content="https://xialotus.github.io/2023/11/12/%E8%A6%96%E7%AA%97%E6%8E%A7%E4%BB%B6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/index.html">
 <meta property="og:site_name" content="xia的小窩">
-<meta property="og:description" content="有三種方式，分為pack、grid、place pack 雖然稱之為pack( )方法，旦它其實只是在tkinker裡的一個類別">
+<meta property="og:description" content="有三種方式，分為pack、grid、place pack雖然稱之為pack()方法，旦它其實只是在tkinker裡的一個類別">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/V5VouaH.png">
 <meta property="og:image" content="https://i.imgur.com/KHq4gaK.png">
@@ -46,9 +46,10 @@
 <meta property="og:image" content="https://i.imgur.com/j0jqezx.png">
 <meta property="og:image" content="https://i.imgur.com/JdHwLJr.png">
 <meta property="article:published_time" content="2023-11-12T07:57:08.000Z">
-<meta property="article:modified_time" content="2023-11-12T08:01:11.202Z">
+<meta property="article:modified_time" content="2023-12-14T12:09:35.193Z">
 <meta property="article:author" content="xiaLotus">
 <meta property="article:tag" content="python">
+<meta property="article:tag" content="tk">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.imgur.com/V5VouaH.png">
 
@@ -211,10 +212,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-11-12 15:57:08 / 修改時間：16:01:11" itemprop="dateCreated datePublished" datetime="2023-11-12T15:57:08+08:00">2023-11-12</time>
+              <time title="創建時間：2023-11-12 15:57:08" itemprop="dateCreated datePublished" datetime="2023-11-12T15:57:08+08:00">2023-11-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-12-14 20:09:35" itemprop="dateModified" datetime="2023-12-14T20:09:35+08:00">2023-12-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -238,7 +245,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>740</span>
+              <span>747</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -258,26 +265,17 @@
 
       
         <p>有三種方式，分為<code>pack</code>、<code>grid</code>、<code>place</code></p>
-<h2 id="pack"><a href="#pack" class="headerlink" title="pack"></a>pack</h2><ul>
-<li>雖然稱之為pack( )方法，旦它其實只是在tkinker裡的一個類別<span id="more"></span></li>
-</ul>
+<h3 id="pack"><a href="#pack" class="headerlink" title="pack"></a>pack</h3><p>雖然稱之為<code>pack()</code>方法，旦它其實只是在<code>tkinker</code>裡的一個類別</p>
+<span id="more"></span>
 <h4 id="side參數"><a href="#side參數" class="headerlink" title="side參數"></a>side參數</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">label_1 = Label(root, text = <span class="string">&quot;男人的嘴&quot;</span>, bg = <span class="string">&quot;lightgreen&quot;</span>)</span><br><span class="line">label_2 = Label(root, text = <span class="string">&quot;騙人的鬼&quot;</span>, bg = <span class="string">&quot;lightyellow&quot;</span>)</span><br><span class="line"></span><br><span class="line">label_1.pack(side = BOTTOM)</span><br><span class="line">label_2.pack(side = TOP)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>結果<br><img src="https://i.imgur.com/V5VouaH.png"></li>
-</ul>
+<p>結果<br><img src="https://i.imgur.com/V5VouaH.png"></p>
 <h4 id="padx-pady-參數"><a href="#padx-pady-參數" class="headerlink" title="padx &#x2F; pady 參數"></a>padx &#x2F; pady 參數</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">label_1 = Label(root, text = <span class="string">&quot;男人的嘴&quot;</span>, bg = <span class="string">&quot;lightgreen&quot;</span>)</span><br><span class="line">label_2 = Label(root, text = <span class="string">&quot;騙人的鬼&quot;</span>, bg = <span class="string">&quot;lightyellow&quot;</span>)</span><br><span class="line">label_3 = Label(root, text = <span class="string">&quot;漂亮的女人都愛騙人&quot;</span>, bg = <span class="string">&quot;lightyellow&quot;</span>)</span><br><span class="line"></span><br><span class="line">label_1.pack(padx = <span class="number">50</span>)</span><br><span class="line">label_2.pack(pady = <span class="number">100</span>)</span><br><span class="line">label_3.pack(fill = X)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>結果<br><img src="https://i.imgur.com/KHq4gaK.png"></li>
-</ul>
+<p>結果<br><img src="https://i.imgur.com/KHq4gaK.png"></p>
 <h4 id="ipadx-ipady-參數"><a href="#ipadx-ipady-參數" class="headerlink" title="ipadx &#x2F; ipady 參數"></a>ipadx &#x2F; ipady 參數</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">label_1.pack(ipadx = <span class="number">50</span>)</span><br><span class="line">label_2.pack(ipady = <span class="number">100</span>)</span><br><span class="line">label_3.pack(fill = X)</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>結果<br><img src="https://i.imgur.com/shwKweV.png"></li>
-</ul>
+<p>結果<br><img src="https://i.imgur.com/shwKweV.png"></p>
 <h4 id="anchor-參數-位置"><a href="#anchor-參數-位置" class="headerlink" title="anchor 參數 (位置)"></a>anchor 參數 (位置)</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label_2.pack(anchor = SE)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>結果<br><img src="https://i.imgur.com/aDW4IvY.png"></li>
-</ul>
+<p>結果<br><img src="https://i.imgur.com/aDW4IvY.png"></p>
 <h4 id="fill-參數"><a href="#fill-參數" class="headerlink" title="fill 參數"></a>fill 參數</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label_1(fill = X)</span><br></pre></td></tr></table></figure>
 
 
@@ -289,52 +287,31 @@
 <ul>
 <li>結果<br><img src="https://i.imgur.com/XcFM4WQ.png"></li>
 </ul>
-<h2 id="grid"><a href="#grid" class="headerlink" title="grid"></a>grid</h2><h4 id="row-colimn"><a href="#row-colimn" class="headerlink" title="row &#x2F; colimn"></a>row &#x2F; colimn</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># label_3 = Label(root, text = &quot;漂亮的女人都愛騙人&quot;, bg = &quot;lightblue&quot;)</span></span><br><span class="line"></span><br><span class="line">label_1.grid(row = <span class="number">0</span>, column = <span class="number">0</span>)</span><br><span class="line">label_2.grid(row = <span class="number">1</span>, column = <span class="number">0</span>)</span><br><span class="line">label_3.grid(row = <span class="number">1</span>, column = <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>結果<br><img src="https://i.imgur.com/pVVY416.png"></li>
-</ul>
+<h3 id="grid"><a href="#grid" class="headerlink" title="grid"></a>grid</h3><p>grid底下還有<code>row / column</code></p>
+<h4 id="row-column"><a href="#row-column" class="headerlink" title="row &#x2F; column"></a>row &#x2F; column</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># label_3 = Label(root, text = &quot;漂亮的女人都愛騙人&quot;, bg = &quot;lightblue&quot;)</span></span><br><span class="line"></span><br><span class="line">label_1.grid(row = <span class="number">0</span>, column = <span class="number">0</span>)</span><br><span class="line">label_2.grid(row = <span class="number">1</span>, column = <span class="number">0</span>)</span><br><span class="line">label_3.grid(row = <span class="number">1</span>, column = <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>結果<br><img src="https://i.imgur.com/pVVY416.png"></p>
 <h4 id="columnspan-參數-標籤占用"><a href="#columnspan-參數-標籤占用" class="headerlink" title="columnspan 參數(標籤占用)"></a>columnspan 參數(標籤占用)</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#label_1 = Label(root, text = &quot;男人的嘴&quot;, bg = &quot;lightgreen&quot;)</span></span><br><span class="line"><span class="comment">#label_2 = Label(root, text = &quot;騙人的鬼&quot;, bg = &quot;lightyellow&quot;)</span></span><br><span class="line"><span class="comment">#label_3 = Label(root, text = &quot;漂亮的女人都愛騙人&quot;, bg = &quot;lightblue&quot;)</span></span><br><span class="line">label_4 = Label(root, text = <span class="string">&quot;所以妳們都很醜&quot;</span>, bg = <span class="string">&quot;lightyellow&quot;</span>)</span><br><span class="line"></span><br><span class="line">label_1.grid(row = <span class="number">0</span>, column = <span class="number">0</span>)</span><br><span class="line">label_2.grid(row = <span class="number">0</span>, column = <span class="number">1</span>)</span><br><span class="line">label_3.grid(row = <span class="number">1</span>, column = <span class="number">0</span>, columnspan = <span class="number">3</span>)</span><br><span class="line">label_4.grid(row = <span class="number">1</span>, column = <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>結果<br><img src="https://i.imgur.com/feNfMon.png"></li>
-<li>總的來說，就是直接占空間，如果沒有設定好就會如上圖，被下一個設定值壓過去</li>
-</ul>
+<p>結果<br><img src="https://i.imgur.com/feNfMon.png"><br>總的來說，就是直接占空間，如果沒有設定好就會如上圖，被下一個設定值壓過去</p>
 <h4 id="rowspan-參數"><a href="#rowspan-參數" class="headerlink" title="rowspan 參數"></a>rowspan 參數</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label_3.grid(row = <span class="number">1</span>, column = <span class="number">0</span>, rowspan = <span class="number">6</span>) </span><br></pre></td></tr></table></figure>
-<ul>
-<li>結果<br><img src="https://i.imgur.com/yOtyW2l.png"></li>
-</ul>
+<p>結果<br><img src="https://i.imgur.com/yOtyW2l.png"></p>
 <h4 id="padx-pady-參數-1"><a href="#padx-pady-參數-1" class="headerlink" title="padx &#x2F; pady 參數"></a>padx &#x2F; pady 參數</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">label_3.grid(row = <span class="number">1</span>, column = <span class="number">0</span>, padx = <span class="number">5</span>) </span><br><span class="line">label_4.grid(row = <span class="number">1</span>, column = <span class="number">1</span>, padx = <span class="number">5</span>, pady = <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>結果<br><img src="https://i.imgur.com/LDIdhp5.png"></li>
-</ul>
+<p>結果<br><img src="https://i.imgur.com/LDIdhp5.png"></p>
 <h4 id="sticky參數-類似anchor參數"><a href="#sticky參數-類似anchor參數" class="headerlink" title="sticky參數(類似anchor參數)"></a>sticky參數(類似anchor參數)</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">label_1.grid(row = <span class="number">0</span>, column = <span class="number">0</span>, padx = <span class="number">10</span>, sticky = W)</span><br><span class="line">label_2.grid(row = <span class="number">0</span>, column = <span class="number">1</span>, sticky = W)</span><br><span class="line">label_3.grid(row = <span class="number">1</span>, column = <span class="number">0</span>) </span><br><span class="line">label_4.grid(row = <span class="number">1</span>, column = <span class="number">1</span>, padx = <span class="number">5</span>, pady = <span class="number">10</span>)</span><br><span class="line"><span class="comment"># 嘗試把sticky參數拿掉，就樣就可以看到變化</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>結果<br><img src="https://i.imgur.com/IeBTOfK.png"></li>
-</ul>
+<p>結果<br><img src="https://i.imgur.com/IeBTOfK.png"></p>
 <h4 id="grid-應用"><a href="#grid-應用" class="headerlink" title="grid( )應用"></a>grid( )應用</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">root = Tk()</span><br><span class="line">root.title(<span class="string">&quot;python-tkinter&quot;</span>)</span><br><span class="line">root.geometry(<span class="string">&quot;300x400&quot;</span>)</span><br><span class="line"></span><br><span class="line">colors = [<span class="string">&quot;red&quot;</span>, <span class="string">&quot;green&quot;</span>, <span class="string">&quot;yellow&quot;</span>, <span class="string">&quot;pink&quot;</span>, <span class="string">&quot;blue&quot;</span>, <span class="string">&quot;black&quot;</span>]</span><br><span class="line">r = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> color <span class="keyword">in</span> colors:</span><br><span class="line">    Label(root, text = color, relief = <span class="string">&quot;groove&quot;</span>, width = <span class="number">20</span>).grid(row = r, column = <span class="number">0</span>)</span><br><span class="line">    Label(root, bg = color, relief = <span class="string">&quot;ridge&quot;</span>, width = <span class="number">20</span>).grid(row = r, column = <span class="number">1</span>)</span><br><span class="line">    r += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure>
 <h4 id="調色盤"><a href="#調色盤" class="headerlink" title="調色盤"></a>調色盤</h4><p><img src="https://i.imgur.com/iaMHRV4.png"></p>
-<ul>
-<li><p>使用rowconfigure &#x2F; columnconfigure</p>
+<p>使用rowconfigure &#x2F; columnconfigure</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rowconfigure(0, weight = 1) row 0 的控件當視窗改變大小的縮放比是 1</span></span><br><span class="line"><span class="comment"># columnconfigure(0, weight = 1) column 0....(同上)</span></span><br><span class="line"></span><br><span class="line">root.rowconfigure(<span class="number">1</span>, weight = <span class="number">1</span>)</span><br><span class="line">root.columnconfigure(<span class="number">0</span>, weight = <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">label_1.grid(row = <span class="number">0</span>, column = <span class="number">0</span>, padx = <span class="number">5</span>, pady = <span class="number">5</span>, sticky = W)</span><br><span class="line">label_2.grid(row = <span class="number">0</span>, column = <span class="number">1</span>, padx = <span class="number">5</span>, pady = <span class="number">5</span>)</span><br><span class="line">label_3.grid(row = <span class="number">1</span>, column = <span class="number">0</span>, columnspan = <span class="number">2</span>, padx = <span class="number">5</span>, pady = <span class="number">5</span>, sticky = N+W+S+E) </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>結果(可以縮放試試看)<br><img src="https://i.imgur.com/3Rut52V.png"></p>
-</li>
-</ul>
-<h2 id="place"><a href="#place" class="headerlink" title="place"></a>place</h2><h4 id="使用x-y-參數"><a href="#使用x-y-參數" class="headerlink" title="使用x &#x2F; y 參數"></a>使用x &#x2F; y 參數</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">label_1.place(x = <span class="number">10</span>, y = <span class="number">200</span>)</span><br><span class="line">label_2.place(x = <span class="number">70</span>, y = <span class="number">200</span>)</span><br><span class="line">label_3.place(x = <span class="number">150</span>, y = <span class="number">200</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>結果<br><img src="https://i.imgur.com/wvXUXvx.png"></li>
-</ul>
+
+<p>結果(可以縮放試試看)<br><img src="https://i.imgur.com/3Rut52V.png"></p>
+<h3 id="place"><a href="#place" class="headerlink" title="place"></a>place</h3><h4 id="使用x-y-參數"><a href="#使用x-y-參數" class="headerlink" title="使用x &#x2F; y 參數"></a>使用x &#x2F; y 參數</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">label_1.place(x = <span class="number">10</span>, y = <span class="number">200</span>)</span><br><span class="line">label_2.place(x = <span class="number">70</span>, y = <span class="number">200</span>)</span><br><span class="line">label_3.place(x = <span class="number">150</span>, y = <span class="number">200</span>)</span><br></pre></td></tr></table></figure>
+<p>結果<br><img src="https://i.imgur.com/wvXUXvx.png"></p>
 <h4 id="使用width-height-參數"><a href="#使用width-height-參數" class="headerlink" title="使用width &#x2F; height 參數"></a>使用width &#x2F; height 參數</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">label_1 = Label(root, text = <span class="string">&quot;男人的嘴，騙人的鬼&quot;</span>, image = Ball, justify = <span class="string">&quot;left&quot;</span>, compound = <span class="string">&quot;right&quot;</span>)</span><br><span class="line">label_1.place(x = <span class="number">20</span>, y = <span class="number">20</span>, width = <span class="number">200</span>, height = <span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">label_2 = Label(root, text = <span class="string">&quot;男人的嘴，騙人的鬼&quot;</span>, image = Ball, justify = <span class="string">&quot;left&quot;</span>, compound = <span class="string">&quot;right&quot;</span>)</span><br><span class="line">label_2.place(x = <span class="number">150</span>, y = <span class="number">300</span>, width = <span class="number">300</span>, height = <span class="number">400</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>結果<br><img src="https://i.imgur.com/j0jqezx.png"></li>
-</ul>
-<h4 id="使用relx-rely-與-relwidth-relheight-參數"><a href="#使用relx-rely-與-relwidth-relheight-參數" class="headerlink" title="使用relx &#x2F; rely 與 relwidth &#x2F; relheight 參數"></a>使用relx &#x2F; rely 與 relwidth &#x2F; relheight 參數</h4><ul>
-<li><p>這邊就是相對父視窗，以相對位置做判斷</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label_1.place(relx = <span class="number">0.1</span>, rely = <span class="number">0.1</span>, relwidth = <span class="number">0.8</span>, relheight = <span class="number">0.8</span>)</span><br></pre></td></tr></table></figure></li>
-<li><p>結果(因為圖太大的緣故……)<br><img src="https://i.imgur.com/JdHwLJr.png"></p>
-</li>
-<li><p>可以嘗試把參數拿掉做實驗喔!!</p>
-</li>
-</ul>
+<p>結果<br><img src="https://i.imgur.com/j0jqezx.png"></p>
+<h4 id="使用relx-rely-與-relwidth-relheight-參數"><a href="#使用relx-rely-與-relwidth-relheight-參數" class="headerlink" title="使用relx &#x2F; rely 與 relwidth &#x2F; relheight 參數"></a>使用relx &#x2F; rely 與 relwidth &#x2F; relheight 參數</h4><p>這邊就是相對父視窗，以相對位置做判斷</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label_1.place(relx = <span class="number">0.1</span>, rely = <span class="number">0.1</span>, relwidth = <span class="number">0.8</span>, relheight = <span class="number">0.8</span>)</span><br></pre></td></tr></table></figure>
+<p>結果(因為圖太大的緣故……)<br><img src="https://i.imgur.com/JdHwLJr.png"></p>
+<p>可以嘗試把參數拿掉做實驗喔!! </p>
 
     </div>
 
@@ -362,6 +339,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/tk/" rel="tag"># tk</a>
           </div>
 
         
@@ -435,7 +413,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pack"><span class="nav-number">1.</span> <span class="nav-text">pack</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#side%E5%8F%83%E6%95%B8"><span class="nav-number">1.0.1.</span> <span class="nav-text">side參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#padx-pady-%E5%8F%83%E6%95%B8"><span class="nav-number">1.0.2.</span> <span class="nav-text">padx &#x2F; pady 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ipadx-ipady-%E5%8F%83%E6%95%B8"><span class="nav-number">1.0.3.</span> <span class="nav-text">ipadx &#x2F; ipady 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#anchor-%E5%8F%83%E6%95%B8-%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.0.4.</span> <span class="nav-text">anchor 參數 (位置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fill-%E5%8F%83%E6%95%B8"><span class="nav-number">1.0.5.</span> <span class="nav-text">fill 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#expand-%E5%8F%83%E6%95%B8"><span class="nav-number">1.0.6.</span> <span class="nav-text">expand 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pack%E6%96%B9%E6%B3%95"><span class="nav-number">1.0.7.</span> <span class="nav-text">pack方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grid"><span class="nav-number">2.</span> <span class="nav-text">grid</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#row-colimn"><span class="nav-number">2.0.1.</span> <span class="nav-text">row &#x2F; colimn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#columnspan-%E5%8F%83%E6%95%B8-%E6%A8%99%E7%B1%A4%E5%8D%A0%E7%94%A8"><span class="nav-number">2.0.2.</span> <span class="nav-text">columnspan 參數(標籤占用)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rowspan-%E5%8F%83%E6%95%B8"><span class="nav-number">2.0.3.</span> <span class="nav-text">rowspan 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#padx-pady-%E5%8F%83%E6%95%B8-1"><span class="nav-number">2.0.4.</span> <span class="nav-text">padx &#x2F; pady 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sticky%E5%8F%83%E6%95%B8-%E9%A1%9E%E4%BC%BCanchor%E5%8F%83%E6%95%B8"><span class="nav-number">2.0.5.</span> <span class="nav-text">sticky參數(類似anchor參數)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#grid-%E6%87%89%E7%94%A8"><span class="nav-number">2.0.6.</span> <span class="nav-text">grid( )應用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AA%BF%E8%89%B2%E7%9B%A4"><span class="nav-number">2.0.7.</span> <span class="nav-text">調色盤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#place"><span class="nav-number">3.</span> <span class="nav-text">place</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8x-y-%E5%8F%83%E6%95%B8"><span class="nav-number">3.0.1.</span> <span class="nav-text">使用x &#x2F; y 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8width-height-%E5%8F%83%E6%95%B8"><span class="nav-number">3.0.2.</span> <span class="nav-text">使用width &#x2F; height 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8relx-rely-%E8%88%87-relwidth-relheight-%E5%8F%83%E6%95%B8"><span class="nav-number">3.0.3.</span> <span class="nav-text">使用relx &#x2F; rely 與 relwidth &#x2F; relheight 參數</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#pack"><span class="nav-number">1.</span> <span class="nav-text">pack</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#side%E5%8F%83%E6%95%B8"><span class="nav-number">1.1.</span> <span class="nav-text">side參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#padx-pady-%E5%8F%83%E6%95%B8"><span class="nav-number">1.2.</span> <span class="nav-text">padx &#x2F; pady 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ipadx-ipady-%E5%8F%83%E6%95%B8"><span class="nav-number">1.3.</span> <span class="nav-text">ipadx &#x2F; ipady 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#anchor-%E5%8F%83%E6%95%B8-%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.4.</span> <span class="nav-text">anchor 參數 (位置)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fill-%E5%8F%83%E6%95%B8"><span class="nav-number">1.5.</span> <span class="nav-text">fill 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#expand-%E5%8F%83%E6%95%B8"><span class="nav-number">1.6.</span> <span class="nav-text">expand 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pack%E6%96%B9%E6%B3%95"><span class="nav-number">1.7.</span> <span class="nav-text">pack方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grid"><span class="nav-number">2.</span> <span class="nav-text">grid</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#row-column"><span class="nav-number">2.1.</span> <span class="nav-text">row &#x2F; column</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#columnspan-%E5%8F%83%E6%95%B8-%E6%A8%99%E7%B1%A4%E5%8D%A0%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">columnspan 參數(標籤占用)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rowspan-%E5%8F%83%E6%95%B8"><span class="nav-number">2.3.</span> <span class="nav-text">rowspan 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#padx-pady-%E5%8F%83%E6%95%B8-1"><span class="nav-number">2.4.</span> <span class="nav-text">padx &#x2F; pady 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sticky%E5%8F%83%E6%95%B8-%E9%A1%9E%E4%BC%BCanchor%E5%8F%83%E6%95%B8"><span class="nav-number">2.5.</span> <span class="nav-text">sticky參數(類似anchor參數)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#grid-%E6%87%89%E7%94%A8"><span class="nav-number">2.6.</span> <span class="nav-text">grid( )應用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AA%BF%E8%89%B2%E7%9B%A4"><span class="nav-number">2.7.</span> <span class="nav-text">調色盤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#place"><span class="nav-number">3.</span> <span class="nav-text">place</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8x-y-%E5%8F%83%E6%95%B8"><span class="nav-number">3.1.</span> <span class="nav-text">使用x &#x2F; y 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8width-height-%E5%8F%83%E6%95%B8"><span class="nav-number">3.2.</span> <span class="nav-text">使用width &#x2F; height 參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8relx-rely-%E8%88%87-relwidth-relheight-%E5%8F%83%E6%95%B8"><span class="nav-number">3.3.</span> <span class="nav-text">使用relx &#x2F; rely 與 relwidth &#x2F; relheight 參數</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -458,13 +436,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
