@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="沒錢就跟別人要錢，別人的錢就是我的錢，但我的錢還是我的錢乞討功能 寫個乞討的功能……">
+  <meta name="description" content="乞討功能寫個乞討的功能……">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python-Discord-bot，從0開始到做出一個機器人系列-19">
 <meta property="og:url" content="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-19/index.html">
 <meta property="og:site_name" content="xia的小窩">
-<meta property="og:description" content="沒錢就跟別人要錢，別人的錢就是我的錢，但我的錢還是我的錢乞討功能 寫個乞討的功能……">
+<meta property="og:description" content="乞討功能寫個乞討的功能……">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-11-08T07:27:18.000Z">
-<meta property="article:modified_time" content="2023-11-08T13:06:17.969Z">
+<meta property="article:modified_time" content="2023-12-14T08:02:35.022Z">
 <meta property="article:author" content="xiaLotus">
 <meta property="article:tag" content="discord.py">
 <meta name="twitter:card" content="summary">
@@ -194,10 +194,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-11-08 15:27:18 / 修改時間：21:06:17" itemprop="dateCreated datePublished" datetime="2023-11-08T15:27:18+08:00">2023-11-08</time>
+              <time title="創建時間：2023-11-08 15:27:18" itemprop="dateCreated datePublished" datetime="2023-11-08T15:27:18+08:00">2023-11-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-12-14 16:02:35" itemprop="dateModified" datetime="2023-12-14T16:02:35+08:00">2023-12-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -221,7 +227,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>588</span>
+              <span>560</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -240,53 +246,38 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="沒錢就跟別人要錢，別人的錢就是我的錢，但我的錢還是我的錢"><a href="#沒錢就跟別人要錢，別人的錢就是我的錢，但我的錢還是我的錢" class="headerlink" title="沒錢就跟別人要錢，別人的錢就是我的錢，但我的錢還是我的錢"></a>沒錢就跟別人要錢，別人的錢就是我的錢，但我的錢還是我的錢</h2><h3 id="乞討功能"><a href="#乞討功能" class="headerlink" title="乞討功能"></a>乞討功能</h3><ul>
-<li><p>寫個乞討的功能……</p>
+        <h3 id="乞討功能"><a href="#乞討功能" class="headerlink" title="乞討功能"></a>乞討功能</h3><p>寫個乞討的功能……</p>
 <span id="more"></span>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cogs/money.py</span></span><br><span class="line"><span class="meta">@commands.command()</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">beg</span>(<span class="params">self, ctx</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>一樣，老步驟，不過最後要微改</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> open_account(ctx.author)</span><br><span class="line">    </span><br><span class="line">users = <span class="keyword">await</span> get_bank_data()</span><br><span class="line">user = ctx.author</span><br></pre></td></tr></table></figure></li>
-<li><p>乞討來的錢一律隨機</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">earnings = random.randrange(<span class="number">101</span>)</span><br></pre></td></tr></table></figure></li>
-<li><p>加上</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> ctx.send(<span class="string">f&quot;某人給了你 <span class="subst">&#123;earnings&#125;</span> 塊錢!!&quot;</span>)</span><br></pre></td></tr></table></figure></li>
-<li><p>之後在json檔裡動手腳</p>
+
+<p>一樣，老步驟，不過最後要微改</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> open_account(ctx.author)</span><br><span class="line">    </span><br><span class="line">users = <span class="keyword">await</span> get_bank_data()</span><br><span class="line">user = ctx.author</span><br></pre></td></tr></table></figure>
+<p>乞討來的錢一律隨機</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">earnings = random.randrange(<span class="number">101</span>)</span><br></pre></td></tr></table></figure>
+<p>加上</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> ctx.send(<span class="string">f&quot;某人給了你 <span class="subst">&#123;earnings&#125;</span> 塊錢!!&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>之後在json檔裡動手腳</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)][<span class="string">&quot;wallet&quot;</span>] += earnings</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>這樣就可以寫入json檔裡了</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;bank.json&quot;</span>, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    json.dump(users, f)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="在進入下個部分前……"><a href="#在進入下個部分前……" class="headerlink" title="在進入下個部分前……"></a>在進入下個部分前……</h3><ul>
-<li><p>我們需要先撰寫將data複寫過的函式</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">update_bank</span>(<span class="params">user, change = <span class="number">0</span>, mode = <span class="string">&quot;wallet&quot;</span></span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure></li>
-<li><p>查看錢包</p>
+<p>這樣就可以寫入json檔裡了</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;bank.json&quot;</span>, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    json.dump(users, f)</span><br></pre></td></tr></table></figure>
+<h3 id="在進入下個部分前……"><a href="#在進入下個部分前……" class="headerlink" title="在進入下個部分前……"></a>在進入下個部分前……</h3><p>我們需要先撰寫將data複寫過的函式</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">update_bank</span>(<span class="params">user, change = <span class="number">0</span>, mode = <span class="string">&quot;wallet&quot;</span></span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>查看錢包</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">users = <span class="keyword">await</span> get_bank_data()</span><br><span class="line">users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)][mode] += change</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;bank.json&quot;</span>, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    json.dump(users, f)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>將money的值還回去(錢包裡的錢)</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">money = [users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)][<span class="string">&quot;wallet&quot;</span>], users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)][<span class="string">&quot;bank&quot;</span>]]    </span><br><span class="line"><span class="keyword">return</span> money</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="大賭怡情，小賭傷身，強賭……"><a href="#大賭怡情，小賭傷身，強賭……" class="headerlink" title="大賭怡情，小賭傷身，強賭……"></a>大賭怡情，小賭傷身，強賭……</h3><ul>
-<li>賭博不可少 (???</li>
-</ul>
+
+<p>將money的值還回去(錢包裡的錢)</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">money = [users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)][<span class="string">&quot;wallet&quot;</span>], users[<span class="built_in">str</span>(user.<span class="built_in">id</span>)][<span class="string">&quot;bank&quot;</span>]]    </span><br><span class="line"><span class="keyword">return</span> money</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="大賭怡情，小賭傷身，強賭……"><a href="#大賭怡情，小賭傷身，強賭……" class="headerlink" title="大賭怡情，小賭傷身，強賭……"></a>大賭怡情，小賭傷身，強賭……</h3><p>引用<code>asyncio</code></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"><span class="meta">@commands.command()</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">slots</span>(<span class="params">self, ctx, amount = <span class="literal">None</span>, mang = <span class="literal">None</span></span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>一樣，先處理好倍率跟賭注</p>
+<p>一樣，先處理好倍率跟賭注</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> open_account(ctx.author)</span><br><span class="line"><span class="keyword">if</span> mang == <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">&quot;請輸入倍率&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">bal = <span class="keyword">await</span> update_bank(ctx.author)</span><br><span class="line">amount = <span class="built_in">int</span>(amount)</span><br><span class="line">mang = <span class="built_in">int</span>(mang)</span><br><span class="line"><span class="keyword">if</span> bal[<span class="number">0</span>] &lt;= <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">&quot;沒錢的，滾拉&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line"><span class="keyword">if</span> amount &gt; bal[<span class="number">0</span>]:</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">&quot;你沒這麼多錢拉幹&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"><span class="keyword">if</span> amount &lt; <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">&quot;正整數...&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"><span class="comment"># 做出限制</span></span><br><span class="line"><span class="keyword">if</span> amount &gt; <span class="number">200</span> <span class="keyword">or</span> mang &gt; <span class="number">10</span> :</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">&quot;不接受太高金額及倍率，最高為199$$&quot;</span>) </span><br><span class="line">    <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>最後，錢進到皮包裡</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">final = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">    a = random.choice([<span class="string">&quot;X&quot;</span>, <span class="string">&quot;O&quot;</span>, <span class="string">&quot;Q&quot;</span>])</span><br><span class="line">    final.append(a)</span><br><span class="line">ans = mang * amount</span><br><span class="line">pos = mang * amount * -<span class="number">1</span></span><br><span class="line"><span class="comment"># win</span></span><br><span class="line"><span class="keyword">if</span> final[<span class="number">0</span>] == final[<span class="number">1</span>] == final[<span class="number">2</span>]:</span><br><span class="line">    <span class="keyword">await</span> update_bank(ctx.author, ans)</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">&quot;想贏嗎??&quot;</span>)</span><br><span class="line">    asyncio.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="built_in">str</span>(final))</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">f&quot;你贏了 <span class="subst">&#123;ans&#125;</span> 塊錢&quot;</span>)</span><br><span class="line"><span class="comment"># lose</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">await</span> update_bank(ctx.author, pos)</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">&quot;想贏嗎??&quot;</span>)</span><br><span class="line">    asyncio.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="built_in">str</span>(final))</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">f&quot;你輸了 <span class="subst">&#123;pos&#125;</span> 塊錢&quot;</span>)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="小問題"><a href="#小問題" class="headerlink" title="小問題"></a>小問題</h3><ul>
-<li><p>第一，關於次數，其實當初是有想過限制次數的，但後來想想好像沒必要</p>
-</li>
-<li><p>第二，關於倍率，這部分可以自己做更改，畢竟是random</p>
-</li>
-<li><p>第三，搶銀行…….好像挺不道德的</p>
-</li>
-<li><p>畢竟所謂的亂數並不是真的隨機，有興趣的話可以<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/voice/110007">點這裡</a>看看別人的說法</p>
-</li>
-</ul>
+
+<p>最後，錢進到皮包裡</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">final = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">    a = random.choice([<span class="string">&quot;X&quot;</span>, <span class="string">&quot;O&quot;</span>, <span class="string">&quot;Q&quot;</span>])</span><br><span class="line">    final.append(a)</span><br><span class="line">ans = mang * amount</span><br><span class="line">pos = mang * amount * -<span class="number">1</span></span><br><span class="line"><span class="comment"># win</span></span><br><span class="line"><span class="keyword">if</span> final[<span class="number">0</span>] == final[<span class="number">1</span>] == final[<span class="number">2</span>]:</span><br><span class="line">    <span class="keyword">await</span> update_bank(ctx.author, ans)</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">&quot;想贏嗎??&quot;</span>)</span><br><span class="line">    asyncio.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="built_in">str</span>(final))</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">f&quot;你贏了 <span class="subst">&#123;ans&#125;</span> 塊錢&quot;</span>)</span><br><span class="line"><span class="comment"># lose</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">await</span> update_bank(ctx.author, pos)</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">&quot;想贏嗎??&quot;</span>)</span><br><span class="line">    asyncio.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="built_in">str</span>(final))</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">f&quot;你輸了 <span class="subst">&#123;pos&#125;</span> 塊錢&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="小問題"><a href="#小問題" class="headerlink" title="小問題"></a>小問題</h3><p>第一，關於次數，其實當初是有想過限制次數的，但後來想想好像沒必要<br>第二，關於倍率，這部分可以自己做更改，畢竟是random<br>第三，搶銀行…….好像挺不道德的</p>
+<p>畢竟所謂的亂數並不是真的隨機，有興趣的話可以<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/voice/110007">點這裡</a>看看別人的說法</p>
 <h3 id="2-0部分更改"><a href="#2-0部分更改" class="headerlink" title="2.0部分更改"></a>2.0部分更改</h3><p>這篇問題不大，就是看了眼花，程式碼是對的，其他小部分就自己修吧，我手裡也沒程式碼了…github上的也沒了，至於怎麼沒了我也忘了，肯定是我刪了github帳號。</p>
 
     </div>
@@ -388,7 +379,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B2%92%E9%8C%A2%E5%B0%B1%E8%B7%9F%E5%88%A5%E4%BA%BA%E8%A6%81%E9%8C%A2%EF%BC%8C%E5%88%A5%E4%BA%BA%E7%9A%84%E9%8C%A2%E5%B0%B1%E6%98%AF%E6%88%91%E7%9A%84%E9%8C%A2%EF%BC%8C%E4%BD%86%E6%88%91%E7%9A%84%E9%8C%A2%E9%82%84%E6%98%AF%E6%88%91%E7%9A%84%E9%8C%A2"><span class="nav-number">1.</span> <span class="nav-text">沒錢就跟別人要錢，別人的錢就是我的錢，但我的錢還是我的錢</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%9E%E8%A8%8E%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.</span> <span class="nav-text">乞討功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E9%80%B2%E5%85%A5%E4%B8%8B%E5%80%8B%E9%83%A8%E5%88%86%E5%89%8D%E2%80%A6%E2%80%A6"><span class="nav-number">1.2.</span> <span class="nav-text">在進入下個部分前……</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E8%B3%AD%E6%80%A1%E6%83%85%EF%BC%8C%E5%B0%8F%E8%B3%AD%E5%82%B7%E8%BA%AB%EF%BC%8C%E5%BC%B7%E8%B3%AD%E2%80%A6%E2%80%A6"><span class="nav-number">1.3.</span> <span class="nav-text">大賭怡情，小賭傷身，強賭……</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E5%95%8F%E9%A1%8C"><span class="nav-number">1.4.</span> <span class="nav-text">小問題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-0%E9%83%A8%E5%88%86%E6%9B%B4%E6%94%B9"><span class="nav-number">1.5.</span> <span class="nav-text">2.0部分更改</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%9E%E8%A8%8E%E5%8A%9F%E8%83%BD"><span class="nav-number">1.</span> <span class="nav-text">乞討功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E9%80%B2%E5%85%A5%E4%B8%8B%E5%80%8B%E9%83%A8%E5%88%86%E5%89%8D%E2%80%A6%E2%80%A6"><span class="nav-number">2.</span> <span class="nav-text">在進入下個部分前……</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E8%B3%AD%E6%80%A1%E6%83%85%EF%BC%8C%E5%B0%8F%E8%B3%AD%E5%82%B7%E8%BA%AB%EF%BC%8C%E5%BC%B7%E8%B3%AD%E2%80%A6%E2%80%A6"><span class="nav-number">3.</span> <span class="nav-text">大賭怡情，小賭傷身，強賭……</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E5%95%8F%E9%A1%8C"><span class="nav-number">4.</span> <span class="nav-text">小問題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-0%E9%83%A8%E5%88%86%E6%9B%B4%E6%94%B9"><span class="nav-number">5.</span> <span class="nav-text">2.0部分更改</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -469,7 +460,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">3:50</span>
+    <span title="所需總閱讀時間">3:49</span>
 </div>
 
 <!--

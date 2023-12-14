@@ -22,17 +22,17 @@
     var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="終極密碼DC版撰寫大家熟知的終極密碼">
+  <meta name="description" content="撰寫大家熟知的終極密碼下方是示意圖。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python-Discord-bot，從0開始到做出一個機器人系列-25">
 <meta property="og:url" content="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-25/index.html">
 <meta property="og:site_name" content="xia的小窩">
-<meta property="og:description" content="終極密碼DC版撰寫大家熟知的終極密碼">
+<meta property="og:description" content="撰寫大家熟知的終極密碼下方是示意圖。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/9uv4bCG.png">
 <meta property="og:image" content="https://i.imgur.com/wAO7ope.png">
 <meta property="article:published_time" content="2023-11-08T07:55:01.000Z">
-<meta property="article:modified_time" content="2023-11-08T13:06:46.838Z">
+<meta property="article:modified_time" content="2023-12-14T08:33:59.502Z">
 <meta property="article:author" content="xiaLotus">
 <meta property="article:tag" content="discord.py">
 <meta name="twitter:card" content="summary">
@@ -197,10 +197,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2023-11-08 15:55:01 / 修改時間：21:06:46" itemprop="dateCreated datePublished" datetime="2023-11-08T15:55:01+08:00">2023-11-08</time>
+              <time title="創建時間：2023-11-08 15:55:01" itemprop="dateCreated datePublished" datetime="2023-11-08T15:55:01+08:00">2023-11-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-12-14 16:33:59" itemprop="dateModified" datetime="2023-12-14T16:33:59+08:00">2023-12-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -224,7 +230,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>260</span>
+              <span>257</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
@@ -243,20 +249,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="終極密碼DC版"><a href="#終極密碼DC版" class="headerlink" title="終極密碼DC版"></a>終極密碼DC版</h2><h2 id="撰寫大家熟知的終極密碼"><a href="#撰寫大家熟知的終極密碼" class="headerlink" title="撰寫大家熟知的終極密碼"></a>撰寫大家熟知的終極密碼</h2><span id="more"></span>
-<ul>
-<li>示意圖<br><img src="https://i.imgur.com/9uv4bCG.png"></li>
-</ul>
+        <h3 id="撰寫大家熟知的終極密碼"><a href="#撰寫大家熟知的終極密碼" class="headerlink" title="撰寫大家熟知的終極密碼"></a>撰寫大家熟知的終極密碼</h3><p>下方是示意圖。</p>
+<span id="more"></span>
+
+<p><img src="https://i.imgur.com/9uv4bCG.png"></p>
 <h3 id="開始撰寫"><a href="#開始撰寫" class="headerlink" title="開始撰寫"></a>開始撰寫</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cogs/guess.py</span></span><br><span class="line"><span class="meta">@commands.command()</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">guess</span>(<span class="params">self, ctx</span>):</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 檢查回傳的是否是同一個人(已及是否在同一個頻道)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">check</span>(<span class="params">number</span>):</span><br><span class="line">        <span class="keyword">return</span> number.author == ctx.author <span class="keyword">and</span> number.channel == ctx.message.channel</span><br><span class="line">    <span class="keyword">global</span> lowernumber</span><br><span class="line">    <span class="keyword">global</span> highernumber</span><br><span class="line">    </span><br><span class="line">    lowernumber = <span class="number">1</span></span><br><span class="line">    highernumber = <span class="number">100</span></span><br><span class="line">    </span><br><span class="line">    number = random.randint(lowernumber, highernumber)</span><br><span class="line">    <span class="comment"># print(number)</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">&#x27;1-100，任意選一個數字&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">5</span>):    </span><br><span class="line">        response = <span class="keyword">await</span> self.bot.wait_for(<span class="string">&#x27;message&#x27;</span>, check = check)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span> : </span><br><span class="line">            guess = <span class="built_in">int</span>(response.content) </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">await</span> ctx.send(<span class="string">&quot;請輸入數字&quot;</span>)</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> guess == number : </span><br><span class="line">            <span class="keyword">await</span> ctx.send(<span class="string">&quot;猜對了&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> guess &gt; <span class="number">100</span> :</span><br><span class="line">            <span class="keyword">await</span> ctx.send(<span class="string">&quot;超過100，格式錯誤&quot;</span>)</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> guess &lt; number:</span><br><span class="line">            lowernumber = guess</span><br><span class="line">            <span class="keyword">await</span> ctx.send(<span class="string">f&quot;比 <span class="subst">&#123;lowernumber&#125;</span>大，比 <span class="subst">&#123;highernumber&#125;</span> 小&quot;</span>)</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> guess &gt; number :</span><br><span class="line">            highernumber = guess</span><br><span class="line">            <span class="keyword">await</span> ctx.send(<span class="string">f&quot;比 <span class="subst">&#123;lowernumber&#125;</span>大，比 <span class="subst">&#123;highernumber&#125;</span> 小&quot;</span>)</span><br><span class="line">               </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">setup</span>(<span class="params">bot</span>):</span><br><span class="line">    bot.add_cog(guess(bot))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>阿，當然可以跟前面的bank結合……<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">guess</span>(<span class="params">self, ctx, ante</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 賭注</span></span><br><span class="line">    HM = [<span class="number">2.8</span>, <span class="number">2.3</span>, <span class="number">1.9</span>, <span class="number">1.5</span>, <span class="number">1.1</span>]</span><br></pre></td></tr></table></figure></li>
-</ul>
+<p>阿，當然可以跟前面的bank結合……</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">guess</span>(<span class="params">self, ctx, ante</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 賭注</span></span><br><span class="line">    HM = [<span class="number">2.8</span>, <span class="number">2.3</span>, <span class="number">1.9</span>, <span class="number">1.5</span>, <span class="number">1.1</span>]</span><br></pre></td></tr></table></figure>
+
 <h3 id="細部的部分"><a href="#細部的部分" class="headerlink" title="細部的部分"></a>細部的部分</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">int</span>(ante) &gt; <span class="number">240</span> :</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">&quot;賭注不得高於240&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> </span><br><span class="line">ante = <span class="built_in">int</span>(ante)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 省略</span></span><br><span class="line"><span class="keyword">if</span> guess == number : </span><br><span class="line">    <span class="keyword">await</span> open_account(ctx.author)</span><br><span class="line">    bal = <span class="keyword">await</span> update_bank(ctx.author)</span><br><span class="line">    final = <span class="built_in">int</span>(ante) * <span class="built_in">float</span>(HM[i])</span><br><span class="line">    <span class="keyword">await</span> update_bank(ctx.author, <span class="built_in">int</span>(final))</span><br><span class="line">    <span class="keyword">await</span> ctx.send(<span class="string">f&quot;猜對了，你獲得了<span class="subst">&#123;final&#125;</span>$$&quot;</span>)</span><br><span class="line">    <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>結果示意圖<br><img src="https://i.imgur.com/wAO7ope.png"></li>
-</ul>
+<p>結果示意圖<br><img src="https://i.imgur.com/wAO7ope.png"></p>
 
     </div>
 
@@ -357,7 +361,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%82%E6%A5%B5%E5%AF%86%E7%A2%BCDC%E7%89%88"><span class="nav-number">1.</span> <span class="nav-text">終極密碼DC版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%92%B0%E5%AF%AB%E5%A4%A7%E5%AE%B6%E7%86%9F%E7%9F%A5%E7%9A%84%E7%B5%82%E6%A5%B5%E5%AF%86%E7%A2%BC"><span class="nav-number">2.</span> <span class="nav-text">撰寫大家熟知的終極密碼</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%96%8B%E5%A7%8B%E6%92%B0%E5%AF%AB"><span class="nav-number">2.1.</span> <span class="nav-text">開始撰寫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%B0%E9%83%A8%E7%9A%84%E9%83%A8%E5%88%86"><span class="nav-number">2.2.</span> <span class="nav-text">細部的部分</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%92%B0%E5%AF%AB%E5%A4%A7%E5%AE%B6%E7%86%9F%E7%9F%A5%E7%9A%84%E7%B5%82%E6%A5%B5%E5%AF%86%E7%A2%BC"><span class="nav-number">1.</span> <span class="nav-text">撰寫大家熟知的終極密碼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%96%8B%E5%A7%8B%E6%92%B0%E5%AF%AB"><span class="nav-number">2.</span> <span class="nav-text">開始撰寫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%B0%E9%83%A8%E7%9A%84%E9%83%A8%E5%88%86"><span class="nav-number">3.</span> <span class="nav-text">細部的部分</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -438,7 +442,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">3:50</span>
+    <span title="所需總閱讀時間">3:49</span>
 </div>
 
 <!--
