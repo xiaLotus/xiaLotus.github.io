@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xialotus.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="對於javascript，我們可以使用jest來進行測試。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascipt-jest基本操作">
+<meta property="og:url" content="https://xialotus.github.io/2024/02/19/javascipt-jest%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:site_name" content="xia的小窩">
+<meta property="og:description" content="對於javascript，我們可以使用jest來進行測試。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-02-19T07:34:01.000Z">
+<meta property="article:modified_time" content="2024-02-19T08:25:09.713Z">
+<meta property="article:author" content="xiaLotus">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xialotus.github.io/2024/02/19/javascipt-jest%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>javascipt-jest基本操作 | xia的小窩</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xia的小窩</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一起來coding和碼字吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/xiaLotus" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2024/02/19/javascipt-jest%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+      <meta itemprop="name" content="xiaLotus">
+      <meta itemprop="description" content="xia的小窩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xia的小窩">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          javascipt-jest基本操作
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2024-02-19 15:34:01 / 修改時間：16:25:09" itemprop="dateCreated datePublished" datetime="2024-02-19T15:34:01+08:00">2024-02-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript%E5%AD%B8%E7%BF%92%E7%B4%80%E9%8C%84/" itemprop="url" rel="index"><span itemprop="name">JavaScript學習紀錄</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="閱讀次數" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">閱讀次數：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>882</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>3 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>對於javascript，我們可以使用<code>jest</code>來進行測試。</p>
+<span id="more"></span>
+
+<h3 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h3><p>我們先安裝<code>node</code>，這個在前面的blog應該有提及，這裡就不放連結了。<br>直接從<code>npm</code>下手吧。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev jest</span><br></pre></td></tr></table></figure>
+
+<p>我們在資料夾禮建立<code>sum.js</code>與<code>sum.test.js</code>，來做簡單的測試。<br>先撰寫<code>sum.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params">a, b</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = sum;</span><br></pre></td></tr></table></figure>
+
+<p>接著在<code>sum.test.js</code>禮撰寫</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sum = <span class="built_in">require</span>(<span class="string">&#x27;./sum&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&quot;adds 1 + 2 to 3 ?&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">expect</span>(<span class="title function_">sum</span>(<span class="number">1</span>, <span class="number">2</span>)).<span class="title function_">toBe</span>(<span class="number">3</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>接著在<code>cmd</code>禮輸入</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm test</span><br></pre></td></tr></table></figure>
+
+<p>就可以看見</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">PASS  ./sum.test.js</span><br><span class="line">  √ adds <span class="number">1</span> + <span class="number">2</span> to <span class="number">3</span> ? (<span class="number">3</span> ms)</span><br><span class="line">                                                                                                    </span><br><span class="line">Test Suites: <span class="number">1</span> passed, <span class="number">1</span> total                                                                      </span><br><span class="line"><span class="function">Tests:       1 <span class="title">passed</span>, 1 <span class="title">total</span>                                                                      </span></span><br><span class="line"><span class="function"><span class="title">Snapshots</span>:   0 <span class="title">total</span></span></span><br><span class="line"><span class="function"><span class="title">Time</span>:        0.526 <span class="title">s</span>, <span class="title">estimated</span> 1 <span class="title">s</span></span></span><br><span class="line"><span class="function"><span class="title">Ran</span> <span class="title">all</span> <span class="title">test</span> <span class="title">suites</span>.</span></span><br></pre></td></tr></table></figure>
+
+<p>如果有問題，請去<code>package.json</code>裡翻找並修正。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;jest&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="匹配器"><a href="#匹配器" class="headerlink" title="匹配器"></a>匹配器</h3><p>這裡的<code>toBe</code>叫做匹配器，當然不是只有這個，還有<code>toBeNull</code>、<code>toBeUndefined</code>、<code>toBeTruthy</code>、<code>toBeFalsy</code>……等等。</p>
+<h4 id="拋錯"><a href="#拋錯" class="headerlink" title="拋錯"></a>拋錯</h4><p>在<code>sum.js</code>禮繼續撰寫</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>  <span class="title function_">myFunction</span>(<span class="params">input</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> input !== <span class="string">&#x27;number&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;Invaild Input&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = myFunction;</span><br></pre></td></tr></table></figure>
+
+<p>這時候我們可以知道，如果這個<code>input</code>如果不是數字的話，就會拋出錯誤。<br>那我們就可以在<code>sum.test.js</code>禮寫下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myFunction = <span class="built_in">require</span>(<span class="string">&#x27;./sum&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&#x27;throws on invaild input&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">expect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">myFunction</span>(<span class="string">&#x27;ase&#x27;</span>);</span><br><span class="line">    &#125;).<span class="title function_">toThrow</span>();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>這個時候會<code>pass</code>，因為它裡面本來就不是數字。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PASS  ./sum.test.js</span><br><span class="line">  √ throws on invaild input (<span class="number">8</span> ms)</span><br></pre></td></tr></table></figure>
+
+<h4 id="相等"><a href="#相等" class="headerlink" title="相等"></a>相等</h4><p>在<code>sum.test.js</code>禮撰寫。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">test</span>(<span class="string">&#x27;object assignment &#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> data = &#123;</span><br><span class="line">        one : <span class="number">1</span></span><br><span class="line">    &#125;;</span><br><span class="line">    data[<span class="string">&#x27;two&#x27;</span>] = <span class="number">2</span>;</span><br><span class="line">    <span class="title function_">expect</span>(data).<span class="title function_">toEqual</span>(&#123;<span class="attr">one</span>: <span class="number">1</span>, <span class="attr">two</span>: <span class="number">2</span>&#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>這裡我們可以一目瞭然的看見<code>toEqual</code>。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PASS  ./sum.test.js</span><br><span class="line"> √ object assignment  (<span class="number">4</span> ms)</span><br></pre></td></tr></table></figure>
+
+<h4 id="falsy-thruthy"><a href="#falsy-thruthy" class="headerlink" title="falsy, thruthy"></a>falsy, thruthy</h4><p>這裡是針對<code>if</code>的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">test</span>(<span class="string">&#x27;null is falsy &#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> n = <span class="literal">null</span>;</span><br><span class="line">    <span class="title function_">expect</span>(n).<span class="title function_">toBeFalsy</span>();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>null</code>為否，則通過。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PASS  ./sum.test.js</span><br><span class="line"> √ null is falsy  (<span class="number">2</span> ms)</span><br></pre></td></tr></table></figure>
+
+<h3 id="async-await"><a href="#async-await" class="headerlink" title="async, await"></a>async, await</h3><p>這裡的話就和機器人那會差不多，jest只要知道它測試的東西是不是完成，就可以往其他地方執行其他程式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">test</span>(<span class="string">&#x27;the date  is peanute butter&#x27;</span>, <span class="function"><span class="params">done</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">callback</span>(<span class="params">data</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="title function_">expect</span>(data).<span class="title function_">toBe</span>(<span class="string">&#x27;peanute butter&#x27;</span>);</span><br><span class="line">            <span class="title function_">done</span>();</span><br><span class="line">        &#125;<span class="keyword">catch</span>(error)&#123;</span><br><span class="line">            <span class="title function_">done</span>(error);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">fetchData</span>(callback);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>上面的是測試階段，也就是說我只要知道它執行ok就沒問題咧。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fetchData</span>(<span class="params">callback</span>)&#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">callback</span>(<span class="string">&#x27;peanut butter&#x27;</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = fetchData;</span><br></pre></td></tr></table></figure>
+<p>我這裡定義的是，在1000毫秒之後，回掉這個函式，並傳遞<code>peanut butter</code>這個參數。<br><code>setTimeout</code>是模擬等待數據返回的過程。</p>
+<h4 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h4><p>我這裡先定義一個<code>fetchPromise</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fetchPromise</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="title function_">resolve</span>(<span class="string">&#x27;peanut butter&#x27;</span>), <span class="number">1000</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = fetchPromise;</span><br></pre></td></tr></table></figure>
+<p>這裡會丟回來一個<code>Promise</code>，在延遲1000毫秒之後，會回傳<code>resolve</code>，並傳遞一個<code>peanut butter</code>。<br>所以，那我們只需要這麼寫</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">test</span>(<span class="string">&#x27;the data is peanut butter&#x27;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> data = <span class="keyword">await</span> <span class="title function_">fetchPromise</span>();</span><br><span class="line">    <span class="title function_">expect</span>(data).<span class="title function_">toBe</span>(<span class="string">&#x27;peanut butter&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>這樣就可以知道這個值是不是一樣了，一樣就會<code>pass</code>。</p>
+<h4 id="模擬函數"><a href="#模擬函數" class="headerlink" title="模擬函數"></a>模擬函數</h4><p>這裡簡單介紹一下<code>mock function</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">test</span>(<span class="string">&#x27;mock implementation of a basic function&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> mock = jest.<span class="title function_">fn</span>(<span class="function"><span class="params">x</span> =&gt;</span> <span class="number">42</span> + x);</span><br><span class="line">    <span class="title function_">expect</span>(<span class="title function_">mock</span>(<span class="number">1</span>)).<span class="title function_">toBe</span>(<span class="number">43</span>);</span><br><span class="line">    <span class="title function_">expect</span>(mock).<span class="title function_">toHaveBeenCalledWith</span>(<span class="number">1</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>第一點，我們先建立一個<code>mock</code>函式，它有個<code>x</code>參數，把<code>x</code>值丟進去後會回傳<code>42 + x</code>的結果。<br>第二點，如果<code>toHaveBeenCalledWith()</code>這裡面的數字被調用過，那就是<code>pass</code>(因為是使用指定的參數)。</p>
+<h4 id="監測"><a href="#監測" class="headerlink" title="監測"></a>監測</h4><p>這裡使用<code>jest.spyOn</code>來達到效果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">test</span>(<span class="string">&#x27;spying on method of an object&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> vedio = &#123;</span><br><span class="line">        <span class="title function_">play</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> spy = jest.<span class="title function_">spyOn</span>(vedio, <span class="string">&#x27;play&#x27;</span>);</span><br><span class="line">    vedio.<span class="title function_">play</span>();</span><br><span class="line"></span><br><span class="line">    <span class="title function_">expect</span>(spy).<span class="title function_">toHaveBeenCalled</span>();</span><br><span class="line">    spy.<span class="title function_">mockRestore</span>();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>我們建立了<code>vedio</code>這個<code>function</code>，裡面有個<code>play</code>函式，如果使用了則返回<code>true</code>。<br>這個<code>spy</code>監聽了<code>vedio</code>裡面的<code>play</code>函式。<br>如果這個<code>paly</code>被調用過，那這裡就會<code>pass</code>。<br><code>spy.mockRestore()</code>，如果被調用過，則恢復到原始狀態，不會對後續的測試產生影響。</p>
+<p>簡單來說，還有許多的地方沒深究，還是得花點時間。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>作者： </strong>xiaLotus
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章連結：</strong>
+    <a href="https://xialotus.github.io/2024/02/19/javascipt-jest%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="javascipt-jest基本操作">https://xialotus.github.io/2024/02/19/javascipt-jest基本操作/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-TW" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/12/11/python-flask-db%E5%9C%A8shell%E7%9A%84%E6%93%8D%E4%BD%9C/" rel="prev" title="python-flask-db在shell的操作">
+      <i class="fa fa-chevron-left"></i> python-flask-db在shell的操作
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D"><span class="nav-number">1.</span> <span class="nav-text">安裝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%B9%E9%85%8D%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">匹配器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%8B%E9%8C%AF"><span class="nav-number">2.1.</span> <span class="nav-text">拋錯</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E7%AD%89"><span class="nav-number">2.2.</span> <span class="nav-text">相等</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#falsy-thruthy"><span class="nav-number">2.3.</span> <span class="nav-text">falsy, thruthy</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#async-await"><span class="nav-number">3.</span> <span class="nav-text">async, await</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Promise"><span class="nav-number">3.1.</span> <span class="nav-text">Promise</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E6%93%AC%E5%87%BD%E6%95%B8"><span class="nav-number">3.2.</span> <span class="nav-text">模擬函數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%A3%E6%B8%AC"><span class="nav-number">3.3.</span> <span class="nav-text">監測</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaLotus"
+      src="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xiaLotus</p>
+  <div class="site-description" itemprop="description">xia的小窩</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">118</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xiaLotus" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xiaLotus" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:a91321987@gmail.com" title="E-Mail → mailto:a91321987@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-TW" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2023 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaLotus</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="總字數">64k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="所需總閱讀時間">3:53</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="訪客總數">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="總瀏覽次數">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
