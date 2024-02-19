@@ -30,7 +30,7 @@
 <meta property="og:description" content="對於javascript，我們可以使用jest來進行測試。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2024-02-19T07:34:01.000Z">
-<meta property="article:modified_time" content="2024-02-19T08:25:09.713Z">
+<meta property="article:modified_time" content="2024-02-19T08:28:15.809Z">
 <meta property="article:author" content="xiaLotus">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2024-02-19 15:34:01 / 修改時間：16:25:09" itemprop="dateCreated datePublished" datetime="2024-02-19T15:34:01+08:00">2024-02-19</time>
+              <time title="創建時間：2024-02-19 15:34:01 / 修改時間：16:28:15" itemprop="dateCreated datePublished" datetime="2024-02-19T15:34:01+08:00">2024-02-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,13 +246,13 @@
 <h3 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h3><p>我們先安裝<code>node</code>，這個在前面的blog應該有提及，這裡就不放連結了。<br>直接從<code>npm</code>下手吧。</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev jest</span><br></pre></td></tr></table></figure>
 
-<p>我們在資料夾禮建立<code>sum.js</code>與<code>sum.test.js</code>，來做簡單的測試。<br>先撰寫<code>sum.js</code></p>
+<p>我們在資料夾裡建立<code>sum.js</code>與<code>sum.test.js</code>，來做簡單的測試。<br>先撰寫<code>sum.js</code></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params">a, b</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = sum;</span><br></pre></td></tr></table></figure>
 
-<p>接著在<code>sum.test.js</code>禮撰寫</p>
+<p>接著在<code>sum.test.js</code>裡撰寫</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sum = <span class="built_in">require</span>(<span class="string">&#x27;./sum&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&quot;adds 1 + 2 to 3 ?&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">expect</span>(<span class="title function_">sum</span>(<span class="number">1</span>, <span class="number">2</span>)).<span class="title function_">toBe</span>(<span class="number">3</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p>接著在<code>cmd</code>禮輸入</p>
+<p>接著在<code>cmd</code>裡輸入</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm test</span><br></pre></td></tr></table></figure>
 
 <p>就可以看見</p>
@@ -262,16 +262,16 @@
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;jest&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="匹配器"><a href="#匹配器" class="headerlink" title="匹配器"></a>匹配器</h3><p>這裡的<code>toBe</code>叫做匹配器，當然不是只有這個，還有<code>toBeNull</code>、<code>toBeUndefined</code>、<code>toBeTruthy</code>、<code>toBeFalsy</code>……等等。</p>
-<h4 id="拋錯"><a href="#拋錯" class="headerlink" title="拋錯"></a>拋錯</h4><p>在<code>sum.js</code>禮繼續撰寫</p>
+<h4 id="拋錯"><a href="#拋錯" class="headerlink" title="拋錯"></a>拋錯</h4><p>在<code>sum.js</code>裡繼續撰寫</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>  <span class="title function_">myFunction</span>(<span class="params">input</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> input !== <span class="string">&#x27;number&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;Invaild Input&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = myFunction;</span><br></pre></td></tr></table></figure>
 
-<p>這時候我們可以知道，如果這個<code>input</code>如果不是數字的話，就會拋出錯誤。<br>那我們就可以在<code>sum.test.js</code>禮寫下</p>
+<p>這時候我們可以知道，如果這個<code>input</code>如果不是數字的話，就會拋出錯誤。<br>那我們就可以在<code>sum.test.js</code>裡寫下</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myFunction = <span class="built_in">require</span>(<span class="string">&#x27;./sum&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&#x27;throws on invaild input&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">expect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">myFunction</span>(<span class="string">&#x27;ase&#x27;</span>);</span><br><span class="line">    &#125;).<span class="title function_">toThrow</span>();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>這個時候會<code>pass</code>，因為它裡面本來就不是數字。</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PASS  ./sum.test.js</span><br><span class="line">  √ throws on invaild input (<span class="number">8</span> ms)</span><br></pre></td></tr></table></figure>
 
-<h4 id="相等"><a href="#相等" class="headerlink" title="相等"></a>相等</h4><p>在<code>sum.test.js</code>禮撰寫。</p>
+<h4 id="相等"><a href="#相等" class="headerlink" title="相等"></a>相等</h4><p>在<code>sum.test.js</code>裡撰寫。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">test</span>(<span class="string">&#x27;object assignment &#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> data = &#123;</span><br><span class="line">        one : <span class="number">1</span></span><br><span class="line">    &#125;;</span><br><span class="line">    data[<span class="string">&#x27;two&#x27;</span>] = <span class="number">2</span>;</span><br><span class="line">    <span class="title function_">expect</span>(data).<span class="title function_">toEqual</span>(&#123;<span class="attr">one</span>: <span class="number">1</span>, <span class="attr">two</span>: <span class="number">2</span>&#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>這裡我們可以一目瞭然的看見<code>toEqual</code>。</p>
