@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xialotus.github.io/2024/06/18/%E5%AF%A6%E7%BF%92%E7%B6%B2%E5%9D%80/</loc>
+    
+    <lastmod>2024-06-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://xialotus.github.io/2024/02/19/javascipt-jest%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</loc>
     
     <lastmod>2024-02-19</lastmod>
@@ -1102,7 +1111,7 @@
 
   <url>
     <loc>https://xialotus.github.io/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -1110,63 +1119,70 @@
   
   <url>
     <loc>https://xialotus.github.io/tags/Reflex/</loc>
-    <lastmod>2024-02-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xialotus.github.io/tags/python/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://xialotus.github.io/tags/golang/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xialotus.github.io/tags/python/</loc>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://xialotus.github.io/tags/tk/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://xialotus.github.io/tags/JavaScript/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://xialotus.github.io/tags/Qt/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://xialotus.github.io/tags/discord-py/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://xialotus.github.io/tags/py-test/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xialotus.github.io/tags/%E5%AF%A6%E7%BF%92/</loc>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://xialotus.github.io/tags/%E8%87%AA%E6%88%91%E4%BB%8B%E7%B4%B9/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -1175,70 +1191,77 @@
   
   <url>
     <loc>https://xialotus.github.io/categories/2023iT%E9%90%B5%E4%BA%BA%E8%B3%BD/</loc>
-    <lastmod>2024-02-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://xialotus.github.io/categories/%E4%BA%BA%E7%94%9F%E8%8B%A6%E7%9F%AD%EF%BC%8C%E6%88%91%E5%AD%B8Python/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://xialotus.github.io/categories/golang%E5%AD%B8%E7%BF%92%E7%B4%80%E9%8C%84/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xialotus.github.io/categories/%E4%BA%BA%E7%94%9F%E8%8B%A6%E7%9F%AD%EF%BC%8C%E6%88%91%E5%AD%B8Python/</loc>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://xialotus.github.io/categories/thinker/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://xialotus.github.io/categories/JavaScript%E5%AD%B8%E7%BF%92%E7%B4%80%E9%8C%84/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://xialotus.github.io/categories/pyqt6/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://xialotus.github.io/categories/2021iT%E9%90%B5%E4%BA%BA%E8%B3%BD/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://xialotus.github.io/categories/Flask/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://xialotus.github.io/categories/env/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://xialotus.github.io/categories/web/</loc>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://xialotus.github.io/categories/%E9%9A%A8%E7%AD%86/</loc>
-    <lastmod>2024-02-19</lastmod>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

@@ -168,6 +168,125 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-28/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
+      <meta itemprop="name" content="xiaLotus">
+      <meta itemprop="description" content="xia的小窩">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xia的小窩">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-28/" class="post-title-link" itemprop="url">python-Discord-bot，從0開始到做出一個機器人系列-28</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2023-11-08 16:00:57" itemprop="dateCreated datePublished" datetime="2023-11-08T16:00:57+08:00">2023-11-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2023-12-14 16:08:17" itemprop="dateModified" datetime="2023-12-14T16:08:17+08:00">2023-12-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/2021iT%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2021iT鐵人賽</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="文章字數">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">文章字數：</span>
+              <span>355</span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
+              <span>1 分鐘</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <span id="more"></span>
+<h3 id="1-註冊及登入"><a href="#1-註冊及登入" class="headerlink" title="1. 註冊及登入"></a>1. 註冊及登入</h3><p><a target="_blank" rel="noopener" href="https://www.mongodb.com/cloud/atlas/lp/try2?utm_source=google&utm_campaign=gs_apac_taiwan_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624371&gclid=CjwKCAjwuvmHBhAxEiwAWAYj-AVVh-3EfotgpGm7rwWFGQzmQns8arpxsMCzlIupDPn-AM3tX3599xoCYCMQAvD_BwE">mongo database</a></p>
+<h3 id="2-Altas"><a href="#2-Altas" class="headerlink" title="2. Altas"></a>2. Altas</h3><p><a target="_blank" rel="noopener" href="https://www.mongodb.com/cloud/atlas/efficiency?utm_source=google&utm_campaign=gs_apac_taiwan_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624371&gclid=CjwKCAjwuvmHBhAxEiwAWAYj-BaTOKVzZIIcnS-k2vulVcUU7WUSXjz9MF0tpuZiMTzfnB1lwMB73RoCxtMQAvD_BwE">點這邊</a></p>
+<p>之後應該會出現這個畫面<br><img src="https://i.imgur.com/r1hqZqA.png"><br>點擊Add new project<br><img src="https://i.imgur.com/5zQL7Ns.png"><br>next後，create the Project</p>
+<p>創建資料庫<br><img src="https://i.imgur.com/baw9fWW.png"></p>
+<p>選免錢的<br><img src="https://i.imgur.com/LbVyWXR.png"></p>
+<p>create<br><img src="https://i.imgur.com/IV4VqUU.png"></p>
+<p>點擊Database Access<br><img src="https://i.imgur.com/oNAdYTK.png"></p>
+<p>自己設定密碼<br><img src="https://i.imgur.com/oyGX75q.png"></p>
+<p>點擊Network Access，Add an IP address(右邊的按下去)<br><img src="https://i.imgur.com/wHGGMfU.png"></p>
+<p>回到Database，點擊Browse Collection、Add My Own Data<br><img src="https://i.imgur.com/cq909fO.png"></p>
+<p>回到Database，點擊Connect<br><img src="https://i.imgur.com/De7ss92.png"></p>
+<p>點中間的<br><img src="https://i.imgur.com/AtusS73.png"></p>
+<p>複製程式碼</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#這是範例</span></span><br><span class="line">mongodb+srv://admin:&lt;password&gt;@cluster0.ltujo.mongodb.net/myFirstDatabase?retryWrites=true&amp;w=majority</span><br></pre></td></tr></table></figure>
+
+<h3 id="新增資料"><a href="#新增資料" class="headerlink" title="新增資料"></a>新增資料</h3><p>打開資料夾，先嘗試使用這個資料庫，隨便建立一個檔案</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install mongo</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</span><br><span class="line"></span><br><span class="line">cluster = MongoClient(<span class="string">&quot;剛剛複製的，password換成自己的就好&quot;</span>)</span><br><span class="line"></span><br><span class="line">db = cluster[<span class="string">&#x27;discord_bot_database&#x27;</span>]</span><br><span class="line">collection = db[<span class="string">&#x27;data&#x27;</span>]</span><br><span class="line"></span><br><span class="line">post = &#123; <span class="string">&quot;name&quot;</span> : <span class="string">&quot;12345&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">collection.insert_one(post)</span><br></pre></td></tr></table></figure>
+<p>執行後<br><img src="https://i.imgur.com/8ACzczN.png"></p>
+<h3 id="查詢資料"><a href="#查詢資料" class="headerlink" title="查詢資料"></a>查詢資料</h3><p>找到第一個key值 &#x3D; 12345</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</span><br><span class="line"></span><br><span class="line">cluster = MongoClient(<span class="string">&quot;剛剛複製的&quot;</span>)</span><br><span class="line"></span><br><span class="line">db = cluster[<span class="string">&#x27;discord_bot_database&#x27;</span>]</span><br><span class="line">collection = db[<span class="string">&#x27;data&#x27;</span>]</span><br><span class="line"></span><br><span class="line">findone = collection.find_one(&#123;<span class="string">&#x27;name&#x27;</span> : <span class="string">&#x27;12345&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(findone)</span><br></pre></td></tr></table></figure>
+<p>執行後<br><img src="https://i.imgur.com/qiLaCn6.png"></p>
+<h3 id="修改資料"><a href="#修改資料" class="headerlink" title="修改資料"></a>修改資料</h3><p>修改第一個name值</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</span><br><span class="line"></span><br><span class="line">cluster = MongoClient(<span class="string">&quot;剛剛複製的&quot;</span>)</span><br><span class="line"></span><br><span class="line">db = cluster[<span class="string">&#x27;discord_bot_database&#x27;</span>]</span><br><span class="line">collection = db[<span class="string">&#x27;data&#x27;</span>]</span><br><span class="line"></span><br><span class="line">first_data = &#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&quot;12345&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">second_data = &#123;<span class="string">&quot;$set&quot;</span> : &#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;50000&quot;</span>&#125;&#125;</span><br><span class="line"></span><br><span class="line">collection.update_one(first_data, second_data)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Successful&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>結果<br><img src="https://i.imgur.com/3GmhVkG.png"></p>
+<h3 id="刪除資料"><a href="#刪除資料" class="headerlink" title="刪除資料"></a>刪除資料</h3><p>刪除第一個name</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</span><br><span class="line"></span><br><span class="line">cluster = MongoClient(<span class="string">&quot;剛剛複製的&quot;</span>)</span><br><span class="line"></span><br><span class="line">db = cluster[<span class="string">&#x27;discord_bot_database&#x27;</span>]</span><br><span class="line">collection = db[<span class="string">&#x27;data&#x27;</span>]</span><br><span class="line"></span><br><span class="line">del_data = &#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;50000&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">collection.delete_one(del_data)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Successful&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>結果<br><img src="https://i.imgur.com/1ogkXGa.png"></p>
+<p>2023-11-8 - 其實我不是很清楚有沒有地方有改，我這邊放上來的資料是2021年的，所以有更改的話請用你們自己查到的東西下去寫。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-27/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1019,101 +1138,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://xialotus.github.io/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-18/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/116232069?s=48&v=4#/images/avatar.gif">
-      <meta itemprop="name" content="xiaLotus">
-      <meta itemprop="description" content="xia的小窩">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xia的小窩">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-18/" class="post-title-link" itemprop="url">python-Discord-bot，從0開始到做出一個機器人系列-18</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2023-11-08 15:13:35" itemprop="dateCreated datePublished" datetime="2023-11-08T15:13:35+08:00">2023-11-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2023-12-14 16:32:34" itemprop="dateModified" datetime="2023-12-14T16:32:34+08:00">2023-12-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2021iT%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">2021iT鐵人賽</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="文章字數">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">文章字數：</span>
-              <span>486</span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              <span>2 分鐘</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="創建你的錢包"><a href="#創建你的錢包" class="headerlink" title="創建你的錢包"></a>創建你的錢包</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/11/08/python-Discord-bot%EF%BC%8C%E5%BE%9E0%E9%96%8B%E5%A7%8B%E5%88%B0%E5%81%9A%E5%87%BA%E4%B8%80%E5%80%8B%E6%A9%9F%E5%99%A8%E4%BA%BA%E7%B3%BB%E5%88%97-18/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1185,20 +1209,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">118</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
